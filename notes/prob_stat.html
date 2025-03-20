@@ -1,0 +1,964 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Probability and Statistics &#8212; UCI Math 10, Spring 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/prob_stat';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Spring 2025</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Spring 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/prob_stat.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Probability and Statistics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-experiments">Random Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variables">Random Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-random-variables">Discrete Random Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-random-variables">Continuous Random Variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-function-pmf">probability mass function (PMF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">probability density function (PDF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-random-variables-and-data">What is the relationship between random variables and data?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-probabilities">How to estimate probabilities?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-expectation-of-a-random-variable-from-data">How to estimate the expectation of a random variable from data?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-variance-of-a-random-variable-from-data">How to estimate the variance of a random variable from data?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation">Standard Deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance">Covariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality">Causality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-is-not-causation">Correlation is Not Causation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-is-not-no-causation">Independent is Not “No-Causation”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establishing-causality">Establishing Causality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">Computation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-probabilities">Estimating probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-distribution-using-histogram">visualizing distribution using histogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-e-x">How to estimate the E[X]</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">Law of large numbers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-of-variance">Estimation of variance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-covariance">Computing covariance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-correlation">Visualizing correlation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-theorem">Central limit theorem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="probability-and-statistics">
+<h1>Probability and Statistics<a class="headerlink" href="#probability-and-statistics" title="Link to this heading">#</a></h1>
+<p>These concepts are important in data science, enabling us to quantify uncertainty and variability in data.</p>
+<p>Note: probability and statistics is not a prerequisite for this course. This notebook focuses on the intuitive understanding of these concepts using examples.</p>
+<section id="random-experiments">
+<h2>Random Experiments<a class="headerlink" href="#random-experiments" title="Link to this heading">#</a></h2>
+<p><strong>Example</strong>: roll a die is a random experiment.
+The set of all possible outcomes is the sample space, in this case, <span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 5, 6\}\)</span>.
+An event is a subset of the sample space, e.g., the event “rolling an even number” is <span class="math notranslate nohighlight">\(\{2, 4, 6\}\)</span>.</p>
+</section>
+<section id="probability">
+<h2>Probability<a class="headerlink" href="#probability" title="Link to this heading">#</a></h2>
+<p>There are the following rules for probability:</p>
+<ol class="arabic simple">
+<li><p>The probability of any event is between 0 and 1.</p></li>
+<li><p>The probability of the whole sample space is 1, that is, something in the sample space must happen.</p></li>
+<li><p>If two events cannot happen at the same time, then the probability of either event happening is the sum of the probabilities of each event.</p></li>
+</ol>
+<p><strong>Example</strong>: If we roll a die, the probability of getting k is some positive number between 0 and 1 for each k in <span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 5, 6\}\)</span>.</p>
+<p>The probability of getting any number between 1 and 6 is 1 (the die cannot land on the edge)</p>
+<p>The probability of getting “either 1 or 2” is the probability of getting 1 plus the probability of getting 2.</p>
+<p><strong>How to define probability?</strong></p>
+<p>This is actually a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_interpretations">very interesting question</a>. For our purposes, we will just keep it intuitive.</p>
+<p>We say that that the probability of tossing a coin and getting a head is 0.5, because (1) we did it many times and half of the times we got heads, or (2) we believe that the coin is fair and the two outcomes are equally likely.</p>
+</section>
+<section id="random-variables">
+<h2>Random Variables<a class="headerlink" href="#random-variables" title="Link to this heading">#</a></h2>
+<p>Random variables maps each outcome of a random experiment to a number.</p>
+<p><strong>Example</strong>: If we flip a coin, we can define a random variable <span class="math notranslate nohighlight">\(X\)</span> that is 1 if the coin lands heads, and 0 if the coin lands tails. Here, <span class="math notranslate nohighlight">\(X \in \{0, 1\}\)</span>. Alternatively, if we are betting 1 dollar on heads we can define a random variable <span class="math notranslate nohighlight">\(X\)</span> that represent the payoff, <span class="math notranslate nohighlight">\(X \in \{-1, 1\}\)</span>.</p>
+<section id="discrete-random-variables">
+<h3>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Link to this heading">#</a></h3>
+<p>A random variable is discrete if it takes on a finite number of values.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(X\)</span> represents the outcome of rolling a die, then <span class="math notranslate nohighlight">\(X \in \{1, 2, 3, 4, 5, 6\}\)</span>, with <span class="math notranslate nohighlight">\(P(X = x) = \frac{1}{6}\)</span> for each <span class="math notranslate nohighlight">\(x \in \{1, 2, 3, 4, 5, 6\}\)</span>.</p>
+<p>Note: usually, X denotes a random variable, while x denotes a specific value of that variable.</p>
+<p>Note: we usually consider finite number of outcomes. But there could be infinite but countable number of outcomes. For example, the number of flips until the first head. It could be 1, 2, 3, 4, …, 100, … and so on (if we are unlucky).</p>
+</section>
+<section id="continuous-random-variables">
+<h3>Continuous Random Variables<a class="headerlink" href="#continuous-random-variables" title="Link to this heading">#</a></h3>
+<p>A random variable is continuous if it can take on any value in an interval.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(Y\)</span> denotes the time (in minutes) for the next bus to arrive, then <span class="math notranslate nohighlight">\(Y \in [0, \infty)\)</span>. Here, <span class="math notranslate nohighlight">\(Y\)</span> could be 2.5 minutes, 3.14159 minutes, or any other positive real number.</p>
+</section>
+</section>
+<section id="distributions">
+<h2>Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h2>
+<p>The probability distribution of a random variable provides a complete description of the likelihood of various outcomes.</p>
+<section id="probability-mass-function-pmf">
+<h3>probability mass function (PMF)<a class="headerlink" href="#probability-mass-function-pmf" title="Link to this heading">#</a></h3>
+<p>For a discrete variable <span class="math notranslate nohighlight">\(X\)</span>, the PMF is the function <span class="math notranslate nohighlight">\(p(x) = P(X = x)\)</span> that gives the probability that <span class="math notranslate nohighlight">\(X\)</span> is equal to a particular value <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(X\)</span> represents the outcome of rolling a die, then we have the PMF <span class="math notranslate nohighlight">\(p(x) = \frac{1}{6}\)</span> for each <span class="math notranslate nohighlight">\(x \in \{1, 2, 3, 4, 5, 6\}\)</span>, and 0 otherwise.</p>
+<p>Note that <span class="math notranslate nohighlight">\(\sum_{\text{all outcome x}} p(x) = 1\)</span>.</p>
+</section>
+<section id="probability-density-function-pdf">
+<h3>probability density function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h3>
+<p>For a continuous variable <span class="math notranslate nohighlight">\(Y\)</span>, the PDF, <span class="math notranslate nohighlight">\(f(y)\)</span>, is such that the probability of <span class="math notranslate nohighlight">\(Y\)</span> falling in an interval <span class="math notranslate nohighlight">\([a, b]\)</span> is given by the integral of <span class="math notranslate nohighlight">\(f(y)\)</span> over that interval:</p>
+<div class="math notranslate nohighlight">
+\[P(a \leq Y \leq b) = \int_a^b f(y) dy\]</div>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(Y\)</span> is uniformly distributed on <span class="math notranslate nohighlight">\([0, 1]\)</span>, then <span class="math notranslate nohighlight">\(f(y) = 1\)</span> for <span class="math notranslate nohighlight">\(y \in [0, 1]\)</span>, and 0 otherwise.</p>
+<p>Note that <span class="math notranslate nohighlight">\(\int_{-\infty}^{\infty} f(y) dy = 1\)</span>.</p>
+</section>
+<section id="what-is-the-relationship-between-random-variables-and-data">
+<h3>What is the relationship between random variables and data?<a class="headerlink" href="#what-is-the-relationship-between-random-variables-and-data" title="Link to this heading">#</a></h3>
+<p>Data are realizations of random variables. We collect data to learn about the underlying random process.</p>
+<p>For example: let’s say we want to know if a coin is fair – this is a question about the underlying random process, the distribution of the random variable. To answer this question, we start flipping the coin and recording the outcomes. This is the data, which is the realization of the random variable.</p>
+</section>
+<section id="how-to-estimate-probabilities">
+<h3>How to estimate probabilities?<a class="headerlink" href="#how-to-estimate-probabilities" title="Link to this heading">#</a></h3>
+<p>We can estimate the probability of an event by looking at the relative frequency of that event:</p>
+<div class="math notranslate nohighlight">
+\[P(A) \approx \frac{\text{number of times A happened}}{\text{total number of trials}}\]</div>
+</section>
+</section>
+<section id="expectation">
+<h2>Expectation<a class="headerlink" href="#expectation" title="Link to this heading">#</a></h2>
+<p>The expectation or expected value of a random variable the average value of the random variable, weighted by the probability of each value.
+You can always think of a random variable as the “payoff” in a game, and the expectation is the “average payoff” in each round of the game if you play it many times.</p>
+<p>For a discrete random variable <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(E[X] = \sum_{x} x \cdot P(X = x)\)</span>.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(X\)</span> represents the outcome of rolling a die, then <span class="math notranslate nohighlight">\(E[X] = \sum_{x=1}^{6} x \cdot \frac{1}{6} = 3.5\)</span>.</p>
+<p>For a continuous random variable <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(E[Y] = \int_{-\infty}^{\infty} y \cdot f_Y(y) \, dy\)</span>.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(Y\)</span> is uniformly distributed on <span class="math notranslate nohighlight">\([0, 1]\)</span>, then <span class="math notranslate nohighlight">\(E[Y] = \int_{0}^{1} y \cdot 1 \, dy = \frac{1}{2}\)</span>.</p>
+<p>We have <span class="math notranslate nohighlight">\(E[aX + bY] = aE[X] + bE[Y]\)</span> for any constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<section id="how-to-estimate-the-expectation-of-a-random-variable-from-data">
+<h3>How to estimate the expectation of a random variable from data?<a class="headerlink" href="#how-to-estimate-the-expectation-of-a-random-variable-from-data" title="Link to this heading">#</a></h3>
+<p>One common approach is to use the sample mean: if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are independent and identically distributed (i.i.d.) samples of <span class="math notranslate nohighlight">\(X\)</span>, then the sample mean <span class="math notranslate nohighlight">\(\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i\)</span> is an estimator of <span class="math notranslate nohighlight">\(E[X]\)</span></p>
+</section>
+</section>
+<section id="variance">
+<h2>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
+<p>Variance quantifies the spread of a distribution around its mean, reflecting the variability of the random variable. <span class="math notranslate nohighlight">\(\text{Var}(X) = E[(X - E[X])^2]\)</span></p>
+<p>We have <span class="math notranslate nohighlight">\(\text{Var}(aX+b) = a^2 \text{Var}(X)\)</span> for any constant <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<section id="how-to-estimate-the-variance-of-a-random-variable-from-data">
+<h3>How to estimate the variance of a random variable from data?<a class="headerlink" href="#how-to-estimate-the-variance-of-a-random-variable-from-data" title="Link to this heading">#</a></h3>
+<p>One common approach is to use the sample variance: if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are i.i.d. samples of <span class="math notranslate nohighlight">\(X\)</span>. Let <span class="math notranslate nohighlight">\(\bar{X}\)</span> be the sample mean, then the sample variance <span class="math notranslate nohighlight">\(S^2 = \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^2\)</span> is an estimator of <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span>.</p>
+<p>Note: you might see 1/(n-1) instead of 1/n in the definition of sample variance. For large n, the difference is negligible.</p>
+</section>
+</section>
+<section id="standard-deviation">
+<h2>Standard Deviation<a class="headerlink" href="#standard-deviation" title="Link to this heading">#</a></h2>
+<p>The standard deviation is the square root of the variance, <span class="math notranslate nohighlight">\(\sigma^2 = \text{Var}(X)\)</span>, providing a measure of the spread of a distribution in the same units as the random variable.</p>
+</section>
+<section id="covariance">
+<h2>Covariance<a class="headerlink" href="#covariance" title="Link to this heading">#</a></h2>
+<p>Covariance provides a measure of how two random variables change together. For example, if we treat weight and height as random variables, then knowing that someone is taller than average might make it more likely that they have above-average weight.</p>
+<p>For random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, the covariance is defined as <span class="math notranslate nohighlight">\(\text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])]\)</span>.</p>
+</section>
+<section id="correlation">
+<h2>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h2>
+<p>Correlation is a standardized measure of how two random variables change together, ranging from -1 to 1.
+<span class="math notranslate nohighlight">\( \text{Corr}(X, Y) = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \cdot \text{Var}(Y)}}\)</span>.</p>
+</section>
+<section id="causality">
+<h2>Causality<a class="headerlink" href="#causality" title="Link to this heading">#</a></h2>
+<section id="correlation-is-not-causation">
+<h3>Correlation is Not Causation<a class="headerlink" href="#correlation-is-not-causation" title="Link to this heading">#</a></h3>
+<p>Correlation measures the strength and direction of a linear relationship between two variables. However, it does not imply causation.</p>
+<p>For example: Ice cream sales and drowning incidents might be correlated (both increase in the summer), but one does not cause the other.</p>
+<p>See <a class="reference external" href="https://www.tylervigen.com/spurious-correlations">Spurious Correlations</a> for more examples.</p>
+</section>
+<section id="independent-is-not-no-causation">
+<h3>Independent is Not “No-Causation”<a class="headerlink" href="#independent-is-not-no-causation" title="Link to this heading">#</a></h3>
+<p>Suppose two light switches, A and B, control the light bulb in the following way: the light is on if (1) A on B off or (2) A off B on.
+Assume the switch are independent “coin flips”: equally likely to be on or off.
+Then knowing the state of switch A gives no information about the light. But there is still a “cause and effect” relationship between the switch and the light.
+We only see this relationship when we consider both switches together.
+(Example adapted from <a class="reference external" href="https://stats.stackexchange.com/questions/357255/does-statistical-independence-mean-lack-of-causation">here</a>)</p>
+</section>
+<section id="establishing-causality">
+<h3>Establishing Causality<a class="headerlink" href="#establishing-causality" title="Link to this heading">#</a></h3>
+<p>Establishing causality is challenging, and might require controlled experiments beyond observational data.</p>
+</section>
+</section>
+<section id="computation">
+<h2>Computation<a class="headerlink" href="#computation" title="Link to this heading">#</a></h2>
+<p>The following Python code demonstrates how to do computation related to the previous concepts.</p>
+<section id="estimating-probabilities">
+<h3>Estimating probabilities<a class="headerlink" href="#estimating-probabilities" title="Link to this heading">#</a></h3>
+<p>When we don’t know the probability of some event, we can estimate it by running the experiment many times and calculating the relative frequency of the event.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate list of random integers</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="c1"># estimating the probability of rolling a 6</span>
+<span class="c1"># n is number of experiments, or sample size</span>
+<span class="c1"># larger n, &quot;closer&quot; to true probability</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.15
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># uniform distribution on [0, 1]</span>
+<span class="c1"># estimating the probability hitting [0, 0.5]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.53
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-distribution-using-histogram">
+<h3>visualizing distribution using histogram<a class="headerlink" href="#visualizing-distribution-using-histogram" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to install seaborn</span>
+<span class="c1"># %conda install seaborn</span>
+<span class="c1"># %pip install numpy</span>
+<span class="c1"># %conda install numpy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for to visualize the distribution, we can use a histogram</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">),</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([20., 13., 17., 14., 17., 19.]),
+ array([0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5]),
+ &lt;BarContainer object of 6 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/4de0426ace8f9b20fc3c39f96a33d0a466b8b7b91b64b1d242f5527ad5450107.png" src="../_images/4de0426ace8f9b20fc3c39f96a33d0a466b8b7b91b64b1d242f5527ad5450107.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># can also use seaborn</span>
+<span class="c1"># import seaborn</span>
+<span class="c1"># seaborn.histplot(x, discrete=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate uniform random numbers</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="c1"># seaborn.histplot(x, stat=&#39;density&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([49., 57., 42., 46., 53., 52., 54., 52., 47., 53., 49., 51., 62.,
+        55., 47., 32., 60., 30., 50., 59.]),
+ array([0.  , 0.05, 0.1 , 0.15, 0.2 , 0.25, 0.3 , 0.35, 0.4 , 0.45, 0.5 ,
+        0.55, 0.6 , 0.65, 0.7 , 0.75, 0.8 , 0.85, 0.9 , 0.95, 1.  ]),
+ &lt;BarContainer object of 20 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/86d1597e10383aa4848234cb49d297881dbce486f6a6cb5d2232704a674ea835.png" src="../_images/86d1597e10383aa4848234cb49d297881dbce486f6a6cb5d2232704a674ea835.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gaussian normal distribution</span>
+<span class="c1"># as n increases, the histogram looks more like the density function</span>
+<span class="c1"># mu is the mean, sigma is the standard deviation</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">1</span> 
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># sample size</span>
+<span class="n">x</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c1"># generate samples from the normal distribution</span>
+
+<span class="c1"># plot the histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="c1"># plot the density function</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11bc71a90&gt;]
+</pre></div>
+</div>
+<img alt="../_images/0c718bd0c1f8b6591a9bdbd74a59833c706d70fc9739513ac1e6dc2fc91d4ab8.png" src="../_images/0c718bd0c1f8b6591a9bdbd74a59833c706d70fc9739513ac1e6dc2fc91d4ab8.png" />
+</div>
+</div>
+<section id="how-to-estimate-the-e-x">
+<h4>How to estimate the E[X]<a class="headerlink" href="#how-to-estimate-the-e-x" title="Link to this heading">#</a></h4>
+<p>the expecttion can be estimated by the sample mean</p>
+<p>Let <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> be samples from a random variable <span class="math notranslate nohighlight">\(X\)</span>. The sample mean <span class="math notranslate nohighlight">\(\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i\)</span> approximate the <span class="math notranslate nohighlight">\(E[X]\)</span></p>
+</section>
+<section id="law-of-large-numbers">
+<h4>Law of large numbers<a class="headerlink" href="#law-of-large-numbers" title="Link to this heading">#</a></h4>
+<p>The law of large numbers states that the sample mean converges to the expected value as the sample size increases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In each experiment, we draw n samples and estimate the mean.</span>
+<span class="c1"># For small n, each estimation might have large variability for different repetitions.</span>
+<span class="c1"># As n increases, the variability decreases.</span>
+<span class="c1"># For very large n, the estimates are almost the same as the true mean and the variability is very small.</span>
+
+<span class="c1"># use n sample to estimate the mean</span>
+<span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">]</span>
+
+<span class="c1"># number of repetitions for each n</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> 
+
+<span class="c1"># store the estimates, each row is a different n, each column is a different repetition</span>
+<span class="n">estiamtes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">k</span><span class="p">))</span>
+
+<span class="c1"># sample sizes</span>
+<span class="n">logn</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># log10 of n</span>
+<span class="n">means</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># estimated mean</span>
+
+<span class="k">for</span> <span class="n">ni</span> <span class="ow">in</span> <span class="n">n</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">ni</span><span class="p">)</span>
+        <span class="n">logn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ni</span><span class="p">))</span>
+        <span class="n">means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># scatter plot of </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">logn</span><span class="p">,</span> <span class="n">means</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;log10(n)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;estimated mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;estimated mean&#39;)
+</pre></div>
+</div>
+<img alt="../_images/fe2a1f9b544f5739a66c8ed75e9d494bba7e313bac5158b2a39b4a4dca269cab.png" src="../_images/fe2a1f9b544f5739a66c8ed75e9d494bba7e313bac5158b2a39b4a4dca269cab.png" />
+</div>
+</div>
+</section>
+<section id="estimation-of-variance">
+<h4>Estimation of variance<a class="headerlink" href="#estimation-of-variance" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># estimate variance of dice row</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">var1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">var2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1291000000000007 3.1291000000000007
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="computing-covariance">
+<h3>Computing covariance<a class="headerlink" href="#computing-covariance" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">np.cov(x,</span> <span class="pre">y)</span></code> return a 2x2 matrix M, where M[0, 0] is the variance of x, M[1, 1] is the variance of y, M[0, 1] is the covariance of x and y, and M[1, 0] is the covariance of y and x, which is the same as M[0, 1]. Similarly, <code class="docutils literal notranslate"><span class="pre">np.corrcoef(x,</span> <span class="pre">y)</span></code> returns the correlation matrix.</p>
+<section id="visualizing-correlation">
+<h4>Visualizing correlation<a class="headerlink" href="#visualizing-correlation" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># sample size</span>
+
+<span class="c1"># X is a random variable uniformly distributed on [0, 1]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Y is a linear function of X plus noise</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># z is independent of X</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">cov_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">cov_xz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">corr_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">corr_xz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># scatter plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># plot x vs y and x vs z, different colors, show name</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;(X, Y), cov = </span><span class="si">%.2f</span><span class="s1">, corr = </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cov_xy</span><span class="p">,</span> <span class="n">corr_xy</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;(X, Z), cov = </span><span class="si">%.2f</span><span class="s1">, corr = </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cov_xz</span><span class="p">,</span> <span class="n">corr_xz</span><span class="p">))</span>
+<span class="c1"># show legend</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ff2c1742da3a265087b7599e37b461ce63af59c95987f60eaf1aec71fff72d3c.png" src="../_images/ff2c1742da3a265087b7599e37b461ce63af59c95987f60eaf1aec71fff72d3c.png" />
+</div>
+</div>
+</section>
+<section id="central-limit-theorem">
+<h4>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Link to this heading">#</a></h4>
+<p>Roughly speaking, sample average are normally distributed for large sample sizes, regardless of the distribution of the underlying random variable!</p>
+<p>This explains why the normal distribution is so common.</p>
+<p>If <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are independent and identically distributed random variables with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>,
+if we define</p>
+<div class="math notranslate nohighlight">
+\[ Z =  \frac{\sqrt{n}(\bar{X} - \mu)}{\sigma}\]</div>
+<p>then for large n, Z is approximately normally distributed with mean 0 and variance 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we know that the coin flip has a mean of 0.5 and a variance of 0.25</span>
+<span class="n">gaussian_density</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c1"># number of experiments, in each experiment we draw n samples, and estimate the mean</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">z_samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>	
+
+	<span class="c1"># draw n samples</span>
+	<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+	<span class="c1"># compute the sample mean</span>
+	<span class="n">sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+	<span class="c1"># do the transformation</span>
+	<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">sample_mean</span> <span class="o">-</span>  <span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span>
+
+	<span class="n">z_samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="c1"># plot the histogram of z_samples</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z_samples</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="c1"># overlay the density function of the standard normal distribution</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">gaussian_density</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-5.0, 5.0)
+</pre></div>
+</div>
+<img alt="../_images/c7879232c511f2fda8604256aaf9359bc6f300bc91df46dc47a38793da0c502c.png" src="../_images/c7879232c511f2fda8604256aaf9359bc6f300bc91df46dc47a38793da0c502c.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-experiments">Random Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variables">Random Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-random-variables">Discrete Random Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-random-variables">Continuous Random Variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-function-pmf">probability mass function (PMF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">probability density function (PDF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-random-variables-and-data">What is the relationship between random variables and data?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-probabilities">How to estimate probabilities?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-expectation-of-a-random-variable-from-data">How to estimate the expectation of a random variable from data?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-variance-of-a-random-variable-from-data">How to estimate the variance of a random variable from data?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation">Standard Deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance">Covariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality">Causality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-is-not-causation">Correlation is Not Causation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-is-not-no-causation">Independent is Not “No-Causation”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establishing-causality">Establishing Causality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">Computation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-probabilities">Estimating probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-distribution-using-histogram">visualizing distribution using histogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-e-x">How to estimate the E[X]</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">Law of large numbers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-of-variance">Estimation of variance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-covariance">Computing covariance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-correlation">Visualizing correlation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-theorem">Central limit theorem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ray Zirui Zhang 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

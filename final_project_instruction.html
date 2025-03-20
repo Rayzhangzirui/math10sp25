@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Final Project Instruction &#8212; UCI Math 10, Spring 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_project_instruction';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notes" href="notes/notes_intro.html" />
+    <link rel="prev" title="Course Syllabus" href="syllabus.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Spring 2025</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    UC Irvine, Math 10, Spring 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="notes/python_review.html">Python review</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/final_project_instruction.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Final Project Instruction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goal">Goal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-advice">Project Advice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="final-project-instruction">
+<h1>Final Project Instruction<a class="headerlink" href="#final-project-instruction" title="Link to this heading">#</a></h1>
+<section id="goal">
+<h2>Goal<a class="headerlink" href="#goal" title="Link to this heading">#</a></h2>
+<p>The purpose of the final project is to submit a notebook project which analyzes a dataset of your choice. This type of project could look great in a portfolio when applying to internships and jobs.</p>
+</section>
+<section id="submission">
+<h2>Submission<a class="headerlink" href="#submission" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Due date: 11:59pm, Wednesday of the Finals Week.</p></li>
+<li><p>Before making the submission, Restart kernel&gt;Run all to make sure there is no error.</p></li>
+<li><p>Submit .ipynb to Gradescope</p></li>
+<li><p>Format: the first cell of the notebook should be a markdown cell with the following format:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># [Title]</span>
+
+<span class="n">Author</span><span class="p">:</span> <span class="p">[</span><span class="n">Name</span><span class="p">]</span>
+
+<span class="n">Course</span> <span class="n">Project</span><span class="p">,</span> <span class="n">UC</span> <span class="n">Irvine</span><span class="p">,</span> <span class="n">Math</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Spring</span> <span class="mi">25</span>
+
+<span class="n">I</span> <span class="n">would</span> <span class="n">like</span> <span class="n">to</span> <span class="n">post</span> <span class="n">my</span> <span class="n">notebook</span> <span class="n">on</span> <span class="n">the</span> <span class="n">course</span><span class="s1">&#39;s website. [Yes/No]</span>
+</pre></div>
+</div>
+<p>Answer the question regarding whether you want your project posted in the course notes. If the answer is “yes”, you can also email me to update or remove the notebook later.</p>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>This is an individual project.</p></li>
+<li><p>The project should clearly build on the Math 10 material.</p></li>
+<li><p>The primary focus of the project must be on something involving data, and primarily using one or more datasets that weren’t covered in Math 10.</p></li>
+<li><p>Anything that is taken from another source (either the idea for the project or a piece of code, even if you edit that code) should be explicitly referenced with a link.  (For example, you could write, “The configuration of this Altair chart was adapted from …”).</p></li>
+</ul>
+</section>
+<section id="rubric">
+<h2>Rubric<a class="headerlink" href="#rubric" title="Link to this heading">#</a></h2>
+<p>The course project is worth 20% of the course grade, and we will grade the project out of 20 total points.</p>
+<ul class="simple">
+<li><p><strong>Clarity</strong> (4 points)</p>
+<ul>
+<li><p>The notebook is well-formatted, with appropriate use of section headers, markdown, and text to guide the reader.</p></li>
+<li><p>The project has a relevant title</p></li>
+<li><p>Datasets are clearly described with sources provided.</p></li>
+</ul>
+</li>
+<li><p><strong>Code Quality</strong> (4 points)</p>
+<ul>
+<li><p>Code runs without errors.</p></li>
+<li><p>Code is well-commented and easy to follow.</p></li>
+</ul>
+</li>
+<li><p><strong>Data Exploration and Visualization</strong> (4 points)</p>
+<ul>
+<li><p>Pandas is used appropriately for data exploration.</p></li>
+<li><p>Data cleaning, analysis, or feature engineering is performed where needed, and is clearly explained.</p></li>
+<li><p>A variety of charts are included that provide insights into the data.</p></li>
+<li><p>The charts are well-labeled and easy to understand (e.g., appropriate titles, axis labels, legends).</p></li>
+</ul>
+</li>
+<li><p><strong>Analysis</strong> (4 points)</p>
+<ul>
+<li><p>Machine learning models are used appropriately where relevant.</p></li>
+<li><p>Key data analysis concepts such as overfitting, cross-validation, or bias-variance tradeoff are discussed where relevant.</p></li>
+<li><p>Results are clearly interpreted with appropriate conclusions drawn.</p></li>
+</ul>
+</li>
+<li><p><strong>Extra</strong> (4 points)</p>
+<ul>
+<li><p>The project has new algorithms (tree-based models, support vector machines, etc.) that go beyond the course material. Training neural networks count as an extra.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<p>Here are examples of student projects:
+<a class="reference external" href="https://rayzhangzirui.github.io/math10fa24/final_projects/intro.html">Fall 2024</a>,
+<a class="reference external" href="https://rayzhangzirui.github.io/math10sp24/final_project_demo/intro.html">Spring 2024</a>,
+<a class="reference external" href="https://christopherdavisuci.github.io/UCI-Math-10-S23/Proj/StudentProjects.html">Spring 2023</a>,
+<a class="reference external" href="https://christopherdavisuci.github.io/UCI-Math-10-S22/Proj/StudentProjects.html">Spring 2022</a>,
+<a class="reference external" href="https://christopherdavisuci.github.io/UCI-Math-10-W22/Proj/StudentProjects.html">Winter 2022</a>,
+<a class="reference external" href="https://christopherdavisuci.github.io/UCI-Math-10-F22/Proj/StudentProjects.html">Fall 2022</a>.</p>
+</section>
+<section id="project-advice">
+<h2>Project Advice<a class="headerlink" href="#project-advice" title="Link to this heading">#</a></h2>
+<p>Here is some general advice:</p>
+<ul class="simple">
+<li><p><strong>Data Source</strong>: You can use datasets that are built in to a Python library like Seaborn or scikit-learn, or you can use dataset from <a class="reference external" href="https://https://kaggle.com/">Kaggle</a>, <a class="reference external" href="https://www.openml.org/">openml.org</a>, <a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">UC Irvine Machine Learning Repository</a>, etc. You also also welcome to use your own dataset, but make sure that privacy is not violated.</p></li>
+<li><p><strong>Avoid Repetition:</strong> Don’t repeat the same technique multiple times unless essential. A variety of different charts is better than the same chart for different datasets.</p></li>
+<li><p><strong>Don’t Oversearch:</strong> Don’t spend too much time searching for the perfect dataset or idea. Exploring a dataset in an interesting way is more important than having a perfect dataset.</p></li>
+<li><p><strong>Be Reasonable:</strong> Keep your statements reasonable. It’s better to say “Therefore, we didn’t see any relationship between A and B,” than to make a claim that isn’t supported by the data.</p></li>
+<li><p><strong>Show Your Learning:</strong> The main point is to demonstrate what you’ve learned in Math 10. A project based on material outside of what was covered in class won’t score well, even if it’s advanced.</p></li>
+<li><p><strong>Use Markdown:</strong> Include many markdown cells to explain what you are doing. These can be very short, even just one sentence. Use <code class="docutils literal notranslate"><span class="pre">**bold</span> <span class="pre">text**</span></code> in markdown cells for emphasis, not in Python comments.</p></li>
+<li><p><strong>Reference Everything:</strong> Reference all sources clearly. If your project is based on an idea or tutorial, include a clear link to the original source. Your project will be graded on how well you explain and build on the tutorial content.</p></li>
+</ul>
+</section>
+<section id="frequently-asked-questions">
+<h2>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Link to this heading">#</a></h2>
+<p><strong>Q: Is there a length requirement?</strong></p>
+<ul class="simple">
+<li><p>No specific length, but aim to spend about 12 productive hours on the project. Productive means time spent actively working on the project, not just browsing tutorials or datasets.</p></li>
+</ul>
+<p><strong>Q: What if I’m worried my project is too short?</strong></p>
+<ul class="simple">
+<li><p>It’s fine to switch topics halfway through. If you finish your original plan and want to start something new with a different dataset, go ahead.</p></li>
+</ul>
+<p><strong>Q: What if much of my work involved data cleaning, but it’s not in the project?</strong></p>
+<ul class="simple">
+<li><p>Include all data cleaning steps in the project. Work done outside Python, like in Excel, won’t count.</p></li>
+</ul>
+<p><strong>Q: Can I use a different plotting library?</strong></p>
+<ul class="simple">
+<li><p>Yes, the content of the figure is more important than the library used. But choosing a different plotting library does not count as an “extra” for the project.</p></li>
+</ul>
+<p><strong>Q: Do I need to post my project in the course notes?</strong></p>
+<ul class="simple">
+<li><p>Posting is optional. It can be useful for applications to internships or grad school. You can email me to update or remove it later.</p></li>
+</ul>
+<p><strong>Q: How can I use an Excel file instead of a CSV file?</strong></p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">pd.read_excel</span></code> for Excel files. Alternatively, open the Excel file in Excel or Google Sheets, save it as a CSV, and then upload that CSV file.</p></li>
+</ul>
+<p><strong>Q: What if the dataset is large and the algorithm takes a long time to run?</strong></p>
+<ul class="simple">
+<li><p>Scaling can improve convergence of some algorithm. Features with larger scales will dominate the gradients, causing slower convergence. he optimization trajectory might “zig-zag” rather than smoothly progressing toward the minimum.</p></li>
+<li><p>You can reduce the dimensionality of the data and work with a smaller dataset.</p></li>
+<li><p>It’s fine to use a subset of the data for the project. Just mention that you did so.</p></li>
+</ul>
+<p><strong>Q: I can’t intall pytorch or tensorflow on my computer.</strong></p>
+<ul class="simple">
+<li><p>Installing pytorch or tensorflow can be tricky sometime.</p></li>
+<li><p>You can use Google Colab, which is a free Jupyter notebook environment that runs on Google’s cloud servers. It comes with many libraries pre-installed, including PyTorch and TensorFlow, and have free access to GPUs.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="syllabus.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Course Syllabus</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="notes/notes_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goal">Goal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-advice">Project Advice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ray Zirui Zhang 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
