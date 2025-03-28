@@ -2,13 +2,15 @@
 
 
 **Schedule**:
+
 Lecture: MWF 11:00-11:50	@ALP 3600
+
 Lab: TuTh 1:00- 1:50p	@ALP 3600
 
 **Assessment**:
 * 20% in-lab quizzes: (lowest dropped). There will be in-lab quizzes in the lab.
 * 20% homework: (lowest dropped) There will be programming homework each week.
-* 20% midterm 1: 5/5 at ALP 3600, in-class, closed book and closed computer.
+* 20% midterm 1: 5/2 at ALP 3600, in-class, closed book and closed computer.
 * 20% midterm 2: 6/6 at ALP 3600, in-class, closed book and closed computer.
 * 20% final project: 6/11 (Wed) 11:59pm
 
