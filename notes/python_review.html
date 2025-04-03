@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/python_review';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Homework" href="../homework/intro.html" />
+    <link rel="next" title="NumPy Review" href="numpy.html" />
     <link rel="prev" title="Notes" href="notes_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -168,10 +168,16 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Python review</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -326,6 +332,8 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-of-variables">Scope of variables</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-function">Lambda function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting">Sorting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">f-string</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-module">Import module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-material">Extra material</a></li>
 </ul>
 </li>
@@ -854,9 +862,69 @@ Use the <code class="docutils literal notranslate"><span class="pre">key</span><
 </div>
 </div>
 </section>
+<section id="f-string">
+<h2>f-string<a class="headerlink" href="#f-string" title="Link to this heading">#</a></h2>
+<p>f-string allow you to embed expressions inside the string by wrapping them in curly braces</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="mf">3.4</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = hello
+b = 4.08
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-module">
+<h2>Import module<a class="headerlink" href="#import-module" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pi</span></code> and <code class="docutils literal notranslate"><span class="pre">sin</span></code> are not defined natively in Python, but they are defined in the <code class="docutils literal notranslate"><span class="pre">math</span></code> module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">29</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pi</span>
+
+<span class="ne">NameError</span>: name &#39;pi&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the definition of sin and pi from the math module</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span><span class="n">pi</span>
+<span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="c1"># notice that this is not 0 due to round-off error</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2246467991473532e-16
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="extra-material">
 <h2>Extra material<a class="headerlink" href="#extra-material" title="Link to this heading">#</a></h2>
-<p>Not on the exam, but might be useful for coding.</p>
+<p>Not on the exam, but might be useful to know.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A function can call itself, this is called recursion</span>
@@ -882,23 +950,6 @@ Use the <code class="docutils literal notranslate"><span class="pre">key</span><
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for actual copy of the data, look up python deepcopy</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1, 2, 3] [1, 2, 3]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How to see if two variables are bound to the same object? </span>
 <span class="c1"># Can use id(), think of it as the memory address of the object</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
@@ -908,19 +959,15 @@ Use the <code class="docutils literal notranslate"><span class="pre">key</span><
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4518811712, 4518811712)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4520025984, 4520025984)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The notion of &quot;scope&quot; can be more complicated, </span>
-<span class="c1"># for simplicity, we only talked about global and local scope.</span>
-
-
-<span class="c1"># When your function return a function, it is called a closure, this function &quot;capture the environment variable&quot;</span>
-<span class="c1"># No need to worry about this for this class.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The notion of &quot;scope&quot; can be more complicated. For simplicity, we only talked about global and local scope.</span>
+<span class="c1"># When a function is returned, it is called a closure, and this function &quot;capture the environment variable&quot;</span>
 
 <span class="k">def</span> <span class="nf">function_factory</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="c1"># This function returns another function</span>
@@ -992,11 +1039,11 @@ Use the <code class="docutils literal notranslate"><span class="pre">key</span><
       </div>
     </a>
     <a class="right-next"
-       href="../homework/intro.html"
+       href="numpy.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Homework</p>
+        <p class="prev-next-title">NumPy Review</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1029,6 +1076,8 @@ Use the <code class="docutils literal notranslate"><span class="pre">key</span><
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-of-variables">Scope of variables</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-function">Lambda function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting">Sorting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">f-string</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-module">Import module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-material">Extra material</a></li>
 </ul>
 </li>
