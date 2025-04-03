@@ -444,14 +444,15 @@
 <p><strong>Exercise:</strong></p>
 <p>Create a class Matrix2, which represents a 2x2 matrix. The class should have the following attributes:</p>
 <ul class="simple">
-<li><p>a, b, c, d: Elements of the 2x2 matrix, organized as:
-$<span class="math notranslate nohighlight">\(
+<li><p>a, b, c, d: Elements of the 2x2 matrix, organized as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{bmatrix}
 a &amp; b \\
 c &amp; d
 \end{bmatrix}
-\)</span>$</p></li>
-</ul>
+\end{split}\]</div>
 <p>Methods:</p>
 <ul class="simple">
 <li><p>A = Matrix2(a, b, c, d): Constructor that initializes the matrix with the given values.</p></li>
@@ -464,7 +465,12 @@ c &amp; d
 <span class="o">|</span> <span class="n">c</span>  <span class="n">d</span> <span class="o">|</span>
 </pre></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Matrix</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
@@ -501,6 +507,7 @@ c &amp; d
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -553,8 +560,8 @@ det(A) = -2
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
-    <span class="k">def</span> <span class="nf">sayhello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> says hello&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">saymyname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I&#39;m </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Child class inheriting from Animal</span>
 <span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
@@ -566,7 +573,7 @@ det(A) = -2
 <span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;Snoopy&quot;</span><span class="p">)</span>
 
 <span class="c1"># It can access the attributes and methods of the parent class</span>
-<span class="n">dog</span><span class="o">.</span><span class="n">sayhello</span><span class="p">()</span>
+<span class="n">dog</span><span class="o">.</span><span class="n">saymyname</span><span class="p">()</span>
 
 <span class="c1"># It also has its own methods</span>
 <span class="n">dog</span><span class="o">.</span><span class="n">speak</span><span class="p">()</span>
@@ -574,7 +581,7 @@ det(A) = -2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Snoopy says hello
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I&#39;m Snoopy
 wof
 </pre></div>
 </div>
