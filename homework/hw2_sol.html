@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Homework 2 (Due 10/11/2024 at 11:59pm) &#8212; UCI Math 10, Spring 2025</title>
+    <title>Homework 2 (Due 4/11/2024 at 11:59pm) &#8212; UCI Math 10, Spring 2025</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -170,10 +170,28 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -306,7 +324,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Homework 2 (Due 10/11/2024 at 11:59pm)</h1>
+    <h1>Homework 2 (Due 4/11/2024 at 11:59pm)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -329,8 +347,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="homework-2-due-10-11-2024-at-11-59pm">
-<h1>Homework 2 (Due 10/11/2024 at 11:59pm)<a class="headerlink" href="#homework-2-due-10-11-2024-at-11-59pm" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-2-due-4-11-2024-at-11-59pm">
+<h1>Homework 2 (Due 4/11/2024 at 11:59pm)<a class="headerlink" href="#homework-2-due-4-11-2024-at-11-59pm" title="Link to this heading">#</a></h1>
 <section id="name">
 <h2>Name:<a class="headerlink" href="#name" title="Link to this heading">#</a></h2>
 </section>
@@ -372,6 +390,11 @@ Show your solution is correct by output the first 10 Fibonacci numbers.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>(3)</strong> Write a function, <code class="docutils literal notranslate"><span class="pre">myfibo_rec(n)</span></code>, using recursion, that returns the n-th Fibonacci number.</p>
 <div class="cell tag_sol docutils container">
@@ -390,6 +413,11 @@ Show your solution is correct by output the first 10 Fibonacci numbers.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>(4) [Extra, not graded]</strong> Compare the time it takes to run <code class="docutils literal notranslate"><span class="pre">myfibo(20)</span></code> and <code class="docutils literal notranslate"><span class="pre">myfibo_rec(20)</span></code>. Which one is faster? Why?</p>
 <div class="cell docutils container">
@@ -400,11 +428,21 @@ Show your solution is correct by output the first 10 Fibonacci numbers.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>363 ns ± 5.37 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it 
 <span class="n">myfibo_rec</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>669 μs ± 10.7 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -437,6 +475,11 @@ Show your solution is correct by output the first 10 Fibonacci numbers.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 6, 10]
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>(2)</strong></p>
 <p>Generate a list of numbers between 1 and 100 that exclude (1) multiples of 7 and (2) numbers that ends with 7</p>
@@ -462,14 +505,102 @@ Show your solution is correct by output the first 10 Fibonacci numbers.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 18, 19, 20, 22, 23, 24, 25, 26, 29, 30, 31, 32, 33, 34, 36, 38, 39, 40, 41, 43, 44, 45, 46, 48, 50, 51, 52, 53, 54, 55, 58, 59, 60, 61, 62, 64, 65, 66, 68, 69, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 88, 89, 90, 92, 93, 94, 95, 96, 99, 100]
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>(3)</strong></p>
-<p>Sort the previous list in “increasing order”,  in term of the absolute distance to the number 50. No need to break tie. For example, if the list is [48,50,51], the sorted list should be [50,51,48]. Do it in one-line.</p>
-<p>Hint: use list comprehension, and the built-in function <code class="docutils literal notranslate"><span class="pre">sorted</span></code> or <code class="docutils literal notranslate"><span class="pre">sort</span></code>, and lambda function.</p>
+<p>Given the previous list, write a one-liner that sorts the list in increasing order based on the value of sin(x) for each element x. In other words, for any two elements x and y, x should come before y if sin(x) &lt; sin(y). You can assume that ties can be kept in their original order.</p>
+<p>Hint: Use list comprehension along with the built-in function <code class="docutils literal notranslate"><span class="pre">sorted</span></code> (or the list method <code class="docutils literal notranslate"><span class="pre">sort</span></code>) and a lambda function.</p>
 <div class="cell tag_sol docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code here</span>
-<span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">50</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11,
+ 55,
+ 99,
+ 80,
+ 36,
+ 30,
+ 74,
+ 61,
+ 5,
+ 93,
+ 86,
+ 24,
+ 68,
+ 23,
+ 43,
+ 92,
+ 48,
+ 4,
+ 18,
+ 62,
+ 73,
+ 29,
+ 81,
+ 54,
+ 10,
+ 12,
+ 100,
+ 79,
+ 31,
+ 75,
+ 60,
+ 16,
+ 6,
+ 50,
+ 94,
+ 85,
+ 41,
+ 25,
+ 69,
+ 66,
+ 22,
+ 44,
+ 88,
+ 3,
+ 19,
+ 72,
+ 38,
+ 82,
+ 53,
+ 9,
+ 13,
+ 78,
+ 34,
+ 32,
+ 76,
+ 59,
+ 15,
+ 51,
+ 95,
+ 40,
+ 26,
+ 65,
+ 1,
+ 45,
+ 89,
+ 90,
+ 46,
+ 2,
+ 20,
+ 64,
+ 71,
+ 39,
+ 83,
+ 96,
+ 52,
+ 8,
+ 58,
+ 33]
 </pre></div>
 </div>
 </div>
@@ -545,8 +676,18 @@ Show your solution is correct by output the first 10 Fibonacci numbers.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+(1, 2)
+True
+8
+False
+True
+</pre></div>
 </div>
-<p><strong>Q4 [Extra, not graded]</strong> Two sum problem</p>
+</div>
+</div>
+<p><strong>Q4</strong> Two sum problem</p>
 <p>The problem is from <a class="reference external" href="https://leetcode.com/problems/two-sum/">Leetcode</a>, which is a website for practicing coding problems.</p>
 <p>Given an array of integers <code class="docutils literal notranslate"><span class="pre">nums</span></code> and an integer <code class="docutils literal notranslate"><span class="pre">target</span></code>, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.</p>
 <p>Example 1:</p>
@@ -567,7 +708,20 @@ Show your solution is correct by output the first 10 Fibonacci numbers.</p>
 </div></blockquote>
 <div class="cell tag_sol docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">twoSumDict</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="n">target</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">twoSumList</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="c1"># solve the problem using list,</span>
+    <span class="c1"># this is slow</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)):</span>
+            <span class="c1"># check if the two numbers add up to target</span>
+            <span class="k">if</span> <span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+
+
+
+<span class="k">def</span> <span class="nf">twoSumDict</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="n">target</span><span class="p">):</span>
+    <span class="c1"># solve the problem using dictionary,</span>
+    <span class="c1"># this is faster than twoSumList</span>
     <span class="n">dict_num_idx</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># dictionary {num : index}</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
         <span class="c1"># nums[i] is my current num</span>
@@ -583,8 +737,20 @@ Show your solution is correct by output the first 10 Fibonacci numbers.</p>
             <span class="c1"># if not there, we keep in our dictionary</span>
             <span class="c1"># might use it in the future</span>
             <span class="n">dict_num_idx</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+    
 
-<span class="n">twoSumDict</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">15</span><span class="p">],</span> <span class="mi">9</span><span class="p">)</span> <span class="c1"># should return [0, 1]</span>
+<span class="c1"># test</span>
+<span class="c1"># should return [0, 1] or [1, 0]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">twoSumDict</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">15</span><span class="p">],</span> <span class="mi">9</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">twoSumList</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">15</span><span class="p">],</span> <span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 0]
+[0, 1]
 </pre></div>
 </div>
 </div>
