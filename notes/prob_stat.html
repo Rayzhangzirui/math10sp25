@@ -191,6 +191,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -360,8 +361,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality">Causality</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-is-not-causation">Correlation is Not Causation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-is-not-no-causation">Independent is Not “No-Causation”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establishing-causality">Establishing Causality</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">Computation</a><ul class="nav section-nav flex-column">
@@ -472,7 +471,7 @@ You can always think of a random variable as the “payoff” in a game, and the
 <p>We have <span class="math notranslate nohighlight">\(E[aX + bY] = aE[X] + bE[Y]\)</span> for any constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <section id="how-to-estimate-the-expectation-of-a-random-variable-from-data">
 <h3>How to estimate the expectation of a random variable from data?<a class="headerlink" href="#how-to-estimate-the-expectation-of-a-random-variable-from-data" title="Link to this heading">#</a></h3>
-<p>One common approach is to use the sample mean: if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are independent and identically distributed (i.i.d.) samples of <span class="math notranslate nohighlight">\(X\)</span>, then the sample mean <span class="math notranslate nohighlight">\(\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i\)</span> is an estimator of <span class="math notranslate nohighlight">\(E[X]\)</span></p>
+<p>One common approach is to use the sample mean: if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are samples drawn from the random variable <span class="math notranslate nohighlight">\(X\)</span>, then the sample mean <span class="math notranslate nohighlight">\(\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i\)</span> is an estimator of <span class="math notranslate nohighlight">\(E[X]\)</span></p>
 </section>
 </section>
 <section id="variance">
@@ -482,7 +481,7 @@ You can always think of a random variable as the “payoff” in a game, and the
 <section id="how-to-estimate-the-variance-of-a-random-variable-from-data">
 <h3>How to estimate the variance of a random variable from data?<a class="headerlink" href="#how-to-estimate-the-variance-of-a-random-variable-from-data" title="Link to this heading">#</a></h3>
 <p>One common approach is to use the sample variance: if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are i.i.d. samples of <span class="math notranslate nohighlight">\(X\)</span>. Let <span class="math notranslate nohighlight">\(\bar{X}\)</span> be the sample mean, then the sample variance <span class="math notranslate nohighlight">\(S^2 = \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^2\)</span> is an estimator of <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span>.</p>
-<p>Note: you might see 1/(n-1) instead of 1/n in the definition of sample variance. For large n, the difference is negligible.</p>
+<p>Note: you might see 1/(n-1) instead of 1/n in the definition of sample variance. We won’t go into the details of the difference in this class. For large n, the difference is negligible.</p>
 </section>
 </section>
 <section id="standard-deviation">
@@ -506,18 +505,6 @@ You can always think of a random variable as the “payoff” in a game, and the
 <p>Correlation measures the strength and direction of a linear relationship between two variables. However, it does not imply causation.</p>
 <p>For example: Ice cream sales and drowning incidents might be correlated (both increase in the summer), but one does not cause the other.</p>
 <p>See <a class="reference external" href="https://www.tylervigen.com/spurious-correlations">Spurious Correlations</a> for more examples.</p>
-</section>
-<section id="independent-is-not-no-causation">
-<h3>Independent is Not “No-Causation”<a class="headerlink" href="#independent-is-not-no-causation" title="Link to this heading">#</a></h3>
-<p>Suppose two light switches, A and B, control the light bulb in the following way: the light is on if (1) A on B off or (2) A off B on.
-Assume the switch are independent “coin flips”: equally likely to be on or off.
-Then knowing the state of switch A gives no information about the light. But there is still a “cause and effect” relationship between the switch and the light.
-We only see this relationship when we consider both switches together.
-(Example adapted from <a class="reference external" href="https://stats.stackexchange.com/questions/357255/does-statistical-independence-mean-lack-of-causation">here</a>)</p>
-</section>
-<section id="establishing-causality">
-<h3>Establishing Causality<a class="headerlink" href="#establishing-causality" title="Link to this heading">#</a></h3>
-<p>Establishing causality is challenging, and might require controlled experiments beyond observational data.</p>
 </section>
 </section>
 <section id="computation">
@@ -923,8 +910,6 @@ if we define</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality">Causality</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-is-not-causation">Correlation is Not Causation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-is-not-no-causation">Independent is Not “No-Causation”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establishing-causality">Establishing Causality</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">Computation</a><ul class="nav section-nav flex-column">
