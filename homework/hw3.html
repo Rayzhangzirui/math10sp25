@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Homework 3 (Due 4/18/2024 at 11:59pm) &#8212; UCI Math 10, Spring 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'homework/hw3';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Homework 2 (Due 4/11/2024 at 11:59pm)" href="hw2_sol.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Spring 2025</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Spring 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Homework</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/homework/hw3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Homework 3 (Due 4/18/2024 at 11:59pm)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#name">Name:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id">ID:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-3-due-4-18-2024-at-11-59pm">
+<h1>Homework 3 (Due 4/18/2024 at 11:59pm)<a class="headerlink" href="#homework-3-due-4-18-2024-at-11-59pm" title="Link to this heading">#</a></h1>
+<section id="name">
+<h2>Name:<a class="headerlink" href="#name" title="Link to this heading">#</a></h2>
+</section>
+<section id="id">
+<h2>ID:<a class="headerlink" href="#id" title="Link to this heading">#</a></h2>
+<p><strong>Submission instruction:</strong></p>
+<ul class="simple">
+<li><p>Download the file as .ipynb (see top right corner on the webpage).</p></li>
+<li><p>Write your name and ID in the field above.</p></li>
+<li><p>Answer the questions in the .ipynb file in either markdown or code cells.</p></li>
+<li><p>Before submission, make sure to rerun all cells by clicking <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Restart</span> <span class="pre">&amp;</span> <span class="pre">Run</span> <span class="pre">All</span></code> and check all the outputs.</p></li>
+<li><p>Upload the .ipynb file to Gradescope.</p></li>
+</ul>
+<p><strong>Q1.</strong>
+Before applying any algorithm to a real-world problem, it is common practice to first understand its behavior on synthetic data. Let’s generate a synthetic data set for a regression problem: given input-output pairs, we aim to learn a function that maps inputs to outputs.</p>
+<p>Suppose we have input <span class="math notranslate nohighlight">\(x\)</span> and output <span class="math notranslate nohighlight">\(y\)</span> that are related by the equation <span class="math notranslate nohighlight">\(y = 2x + 1\)</span>.</p>
+<p>However, in practice, we can only observe noisy data. That is, given input <span class="math notranslate nohighlight">\(x_i\)</span>, we observe output <span class="math notranslate nohighlight">\(y_i\)</span> that is related to <span class="math notranslate nohighlight">\(x_i\)</span> by the equation <span class="math notranslate nohighlight">\(y_i = 2x_i + 1 + \epsilon_i\)</span>, where <span class="math notranslate nohighlight">\(\epsilon_i\)</span> is a random noise term. A common model for <span class="math notranslate nohighlight">\(\epsilon_i\)</span> is a Gaussian random variable with mean 0 and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>Suppose <span class="math notranslate nohighlight">\(\sigma = 1\)</span>.
+Generate 10 data points for <span class="math notranslate nohighlight">\(x\)</span> uniformly randomly distributed in the range of <span class="math notranslate nohighlight">\([0, 1]\)</span>. Make a plot that contain the following elements:</p>
+<p>(1) The ground truth function.</p>
+<p>(2) The noisy data points.</p>
+<p>(3) Add a legend to the plot, where the ground truth is labeled as “Ground truth” and the noisy data points are labeled as “Noisy data”. Label the x-axis as “x” and the y-axis as “y”.</p>
+<p>A sample figure is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a9b7364bebfd2fd563ddcfde77414c30d81064b3af2a893c4cf69efe45019f05.png" src="../_images/a9b7364bebfd2fd563ddcfde77414c30d81064b3af2a893c4cf69efe45019f05.png" />
+</div>
+</div>
+<p><strong>Q2</strong></p>
+<p>We usually denote a normal distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> as <span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma^2)\)</span>.</p>
+<p>Let’s generate a synthetic data set for a classification problem. Let X be a random variable that follows a normal distribution <span class="math notranslate nohighlight">\(\mathcal{N}(0, 1)\)</span> and Y be a random variable that follows a normal distribution <span class="math notranslate nohighlight">\(\mathcal{N}(2, 0.5^2)\)</span>.
+X and Y can be some feature of two groups. For example, the height of high school students and the height of college students. Different groups can have different distributions of the same feature.</p>
+<p>Generate 1000 samples for X and 500 samples for Y. This models the scenario where we have more data for one group than the other.</p>
+<p>(1) Plot the histograms of X and Y in the same figure.</p>
+<p>(2) Add label “X samples” to the histogram of X and label “Y samples” to the histogram of Y. Add a legend to the plot.</p>
+<p>(3) The two histograms should have different color and set the transparency to 0.5 so that we can see the overlap of the two histograms.</p>
+<p>Hint: the transparency is usually named as <code class="docutils literal notranslate"><span class="pre">alpha</span></code> in most plotting libraries.</p>
+<p>A sample figure is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/42af3a6e666f3d24cf150a70525bc6aeb23b139f01eb009fb61b8d56a60a0a03.png" src="../_images/42af3a6e666f3d24cf150a70525bc6aeb23b139f01eb009fb61b8d56a60a0a03.png" />
+</div>
+</div>
+<p><strong>Q3.</strong> Let’s bring our data science skill to the Wall Street.
+One model of stock price is the random walk model:</p>
+<p>Suppose <span class="math notranslate nohighlight">\(X_n\)</span> is the stock price at day <span class="math notranslate nohighlight">\(n\)</span>. <span class="math notranslate nohighlight">\(X_0\)</span> is the initial stock price. At each day, the change of stock price is a random variable <span class="math notranslate nohighlight">\(Z_n\)</span>, which is normally distributed with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The stock price at day <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(X_n = X_{n-1} + Z_n\)</span>.</p>
+<p>(1) Write a function <code class="docutils literal notranslate"><span class="pre">stock_price_simulation</span></code>, that take input</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X0</span></code>: the initial stock price</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mu</span></code>: the mean of the normal distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sigma</span></code>: the standard deviation of the normal distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the number of days</p></li>
+</ul>
+<p>Return a list (or numpy array) of stock prices at each day <span class="math notranslate nohighlight">\([X_0, X_1, ..., X_n]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(2) Take <span class="math notranslate nohighlight">\(X_0 = 100, n = 100, \mu = 0.1, \sigma = 1\)</span>. Sample 10 trajectories of the stock price and plot them in the same graph.</p>
+<p>A sample figure is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7642f3bce5bfb9dedc9f7205ac766d030fc6026f73d0e3ffc088fccebdf62302.png" src="../_images/7642f3bce5bfb9dedc9f7205ac766d030fc6026f73d0e3ffc088fccebdf62302.png" />
+</div>
+</div>
+<p>(3) Estimate the expectation and standard deviation of the stock price on day 100, using 1000 samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(4) A call option is a contract that allows you to buy a stock at a fixed price at a future date. Suppose you own a call option that allows you to buy a stock at day 100 at price 105 (this is called the strike price).</p>
+<p>If the stock price at day 100 is above 105 (say 120). Then you can exercise the option, pay 105 to get the stock, and sell it at the market price (120) to make a profit (15).</p>
+<p>If the stock price at day 100 is below 105 (say 100). Then you can choose not to exercise the option, and you will lose nothing.</p>
+<p>(a) Estimate the probability that you can make a profit using the call option.</p>
+<p>(b) Suppose you’re the seller or the buyer of this call option. What should be the fair price of the call option? Note that the price is fair if neither the buyer nor the seller are expected to make a profit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Q4</p>
+<p>One model of wealth inequality is the <a class="reference external" href="https://en.wikipedia.org/wiki/Pareto_distribution">pareto distribution</a>.</p>
+<p>Let’s generate N = 1000 samples from a pareto distribution with parameters <code class="docutils literal notranslate"><span class="pre">a=20</span></code> using the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">pareto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can think of x as samples of the wealth of individuals in a society.</p>
+<p>(1) Plot the histogram of the samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(2) The k-quantile of a distribution is the value such that k% of the samples are less than or equal to the value. For example, the 50-quantile is the median.</p>
+<p>What are the median and the mean of the samples? What is the percentage of the population that are above-average wealthy?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(3) What is the <strong>smallest</strong> percentage of the population that owns more than 80% of the total wealth? In other words, what percentage of the top k% of the population owns more than 80% of the total wealth?</p>
+<p>For example, if there are 5 individuals and their wealth is 1, 1, 1, 2, and 5 (total 10), then the top 20% of the population (the one individual with wealth 5) owns 50% of the wealth.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./homework"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hw2_sol.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Homework 2 (Due 4/11/2024 at 11:59pm)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#name">Name:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id">ID:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ray Zirui Zhang 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
