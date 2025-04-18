@@ -182,6 +182,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
 
 
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -189,6 +192,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html"><strong>Problem</strong></a></li>
+
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -415,7 +424,6 @@ Generate 10 data points for <span class="math notranslate nohighlight">\(x\)</sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a9b7364bebfd2fd563ddcfde77414c30d81064b3af2a893c4cf69efe45019f05.png" src="../_images/a9b7364bebfd2fd563ddcfde77414c30d81064b3af2a893c4cf69efe45019f05.png" />
 </div>
 </div>
 <p><strong>Q2</strong></p>
@@ -457,7 +465,6 @@ X and Y can be some feature of two groups. For example, the height of high schoo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/42af3a6e666f3d24cf150a70525bc6aeb23b139f01eb009fb61b8d56a60a0a03.png" src="../_images/42af3a6e666f3d24cf150a70525bc6aeb23b139f01eb009fb61b8d56a60a0a03.png" />
 </div>
 </div>
 <p><strong>Q3.</strong> Let’s bring our data science skill to the Wall Street.
@@ -505,7 +512,6 @@ One model of stock price is the random walk model:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7642f3bce5bfb9dedc9f7205ac766d030fc6026f73d0e3ffc088fccebdf62302.png" src="../_images/7642f3bce5bfb9dedc9f7205ac766d030fc6026f73d0e3ffc088fccebdf62302.png" />
 </div>
 </div>
 <p>(3) Estimate the expectation and standard deviation of the stock price on day 100, using 1000 samples.</p>
@@ -526,7 +532,7 @@ One model of stock price is the random walk model:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimate mean: 109.72, Estimate variance: 9.88
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -554,8 +560,7 @@ One model of stock price is the random walk model:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated probability of profit: 0.68
-Expected payoff: 6.79
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -583,10 +588,6 @@ Expected payoff: 6.79
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Density&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/dd6e23e09a757d2d56a582acbd453de5846fc064ddfa869f29a6ec198fda02c8.png" src="../_images/dd6e23e09a757d2d56a582acbd453de5846fc064ddfa869f29a6ec198fda02c8.png" />
 </div>
 </div>
 <p>(2) The k-quantile of a distribution is the value such that k% of the samples are less than or equal to the value. For example, the 50-quantile is the median.</p>
@@ -606,9 +607,7 @@ Expected payoff: 6.79
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean: 0.05478922635429945
-Median: 0.03654850409304311
-Percent above mean: 0.37
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -631,7 +630,7 @@ Percent above mean: 0.37
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Top 42.199999999999996% people have 80% of the total wealth
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
