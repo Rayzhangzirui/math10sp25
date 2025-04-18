@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/linear_regression';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Multiple Linear Regression" href="multi_linear_reg.html" />
+    <link rel="next" title="Lectures" href="../lecture/intro.html" />
     <link rel="prev" title="Visualization" href="visualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,8 +183,6 @@
 
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_linear_reg.html">Multiple Linear Regression</a></li>
-
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -204,6 +202,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw2.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -348,9 +347,10 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-effect-of-centering-the-data">What is the effect of centering the data?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-effect-of-scaling-the-data">What is the effect of scaling the data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-best-constant-model">What is the best constant model?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a></li>
 </ul>
             </nav>
@@ -493,6 +493,15 @@ score = 0.580
 <img alt="../_images/00aace7c64e3ea6eb2bb8ac0f8b90dfc7b1e90bd75baefe79b4a224a9550bdf7.png" src="../_images/00aace7c64e3ea6eb2bb8ac0f8b90dfc7b1e90bd75baefe79b4a224a9550bdf7.png" />
 </div>
 </div>
+<section id="what-is-the-best-constant-model">
+<h3>What is the best constant model?<a class="headerlink" href="#what-is-the-best-constant-model" title="Link to this heading">#</a></h3>
+<p>What is the best constant <span class="math notranslate nohighlight">\(b\)</span> that minimizes the loss function <span class="math notranslate nohighlight">\(L(b)\)</span>?</p>
+<div class="math notranslate nohighlight">
+\[L(b)=\frac{1}{N}\sum_{i=1}^N\big(b-y_i\big)^2\]</div>
+<p>We can analytically solve <span class="math notranslate nohighlight">\(\partial_{b}L = 0\)</span>, and yields</p>
+<div class="math notranslate nohighlight">
+\[b^* = \bar{y}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{y}\)</span> is the mean of <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p>We can also use <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to fit the linear model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,63 +535,9 @@ score = 0.580
 </div>
 </div>
 </div>
-</section>
-<section id="what-is-the-effect-of-centering-the-data">
-<h2>What is the effect of centering the data?<a class="headerlink" href="#what-is-the-effect-of-centering-the-data" title="Link to this heading">#</a></h2>
-<p>When <span class="math notranslate nohighlight">\(X\)</span> is centered, the slope <span class="math notranslate nohighlight">\(w\)</span> remains the same, but the intercept <span class="math notranslate nohighlight">\(b\)</span> changes.</p>
-<p>The intercept now means the predicted Y when X is at the mean.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_center</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_center</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;w = </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, b = </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 2.467, b = 3.332
-</pre></div>
-</div>
-</div>
-</div>
-<p>When Y is centered, then the intercept <span class="math notranslate nohighlight">\(b\)</span> is 0, and the slope <span class="math notranslate nohighlight">\(w\)</span> is the correlation between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_center</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_center</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y_center</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;w = </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, b = </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 2.467, b = 0.000
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="what-is-the-effect-of-scaling-the-data">
-<h2>What is the effect of scaling the data?<a class="headerlink" href="#what-is-the-effect-of-scaling-the-data" title="Link to this heading">#</a></h2>
-<p>When <span class="math notranslate nohighlight">\(X/c\)</span> is used, the optimal slope is now <span class="math notranslate nohighlight">\(c w\)</span>, and the intercept does not change</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># suppose we want to scale x to [0, 1]</span>
-<span class="n">scale_factor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">x_scale</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">scale_factor</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_scale</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;w = </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, b = </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 4.756, b = 0.462
-</pre></div>
-</div>
-</div>
-</div>
 <p>For <em>linear regression</em>, centering and scaling the data (both training and testing data ) does not affect the performance of the model.</p>
 <p>For some other models, centering and scaling can be essential</p>
+</section>
 </section>
 <section id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
@@ -676,11 +631,11 @@ $<span class="math notranslate nohighlight">\(w = \frac{Cov(X,Y)}{Var(X)}\)</spa
       </div>
     </a>
     <a class="right-next"
-       href="multi_linear_reg.html"
+       href="../lecture/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multiple Linear Regression</p>
+        <p class="prev-next-title">Lectures</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -703,9 +658,10 @@ $<span class="math notranslate nohighlight">\(w = \frac{Cov(X,Y)}{Var(X)}\)</spa
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-effect-of-centering-the-data">What is the effect of centering the data?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-effect-of-scaling-the-data">What is the effect of scaling the data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-best-constant-model">What is the best constant model?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a></li>
 </ul>
   </nav></div>
