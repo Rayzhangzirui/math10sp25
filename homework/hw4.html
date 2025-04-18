@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -410,7 +410,7 @@
 <p>Can we predict the future?</p>
 <p>For instance, can we use past temperatures to predict future temperatures, or past stock prices to predict future stock prices? These are examples of <strong>time series</strong> data, where there is a natural ordering of the data points based on time. This is different from the penguins dataset.</p>
 <p>In the following example, we will use stock price data for Google to explore time series data analysis.</p>
-<p>Download the data from the <a class="reference download internal" download="" href="../_downloads/3d5700b0e15341be78cab93e6a784489/google.csv"><span class="xref download myst">link</span></a>.  This is the stock price data for Google from 10/17/2023 to 10/17/2024. The columns include:</p>
+<p>Download the data from the <a class="reference download internal" download="" href="../_downloads/3d5700b0e15341be78cab93e6a784489/google.csv"><span class="xref download myst">link</span></a>.  This is the 1-year stock price data for Google. The columns include:</p>
 <ul class="simple">
 <li><p><strong>Date</strong>: The date of the stock price</p></li>
 <li><p><strong>Open</strong>: The opening price of the stock</p></li>
@@ -495,7 +495,7 @@ Name: Date, Length: 252, dtype: bool
 </section>
 <section id="q3-moving-average">
 <h2>Q3: Moving Average<a class="headerlink" href="#q3-moving-average" title="Link to this heading">#</a></h2>
-<p><strong>Moving average</strong> is a common technique used in time series analysis to smooth out short-term fluctuations and highlight longer-term trends.</p>
+<p><strong>Moving average</strong> is a common technique used in time series analysis to smooth out short-term fluctuations and highlight long-term trends.</p>
 <p>Given a sequence of numbers <span class="math notranslate nohighlight">\(x_1, x_2, x_3, \ldots, x_n\)</span>, the moving average with window size <span class="math notranslate nohighlight">\(k\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -563,7 +563,8 @@ Name: Date, Length: 252, dtype: bool
 </div>
 </div>
 <p><strong>(3)</strong></p>
-<p>For time series data, one common question is whether there is “momentum” in the data. For example, in basketball, if a player made the last three shots, is it more likely that the play will make the next shot?(<a class="reference external" href="https://en.wikipedia.org/wiki/Hot_hand">wiki page on Hot Hand</a>) Similarly, for stock prices, if the price increased yesterday, is it more likely that it will increase today?</p>
+<p>For time series data, one common question is whether there is “momentum” in the data. For example, in basketball, if a player made the last three shots, is it more likely that the player will make the next shot?(<a class="reference external" href="https://en.wikipedia.org/wiki/Hot_hand">wiki page on “Hot Hand”</a>)</p>
+<p>Similarly, for stock prices, if the price increased yesterday, is it more likely that it will increase today?</p>
 <p>Plot the scatter plot of the ‘percent_change’ of one day and the ‘percent_change’ of the next day, and calculate the correlation between the two. Does the number support or refute the idea of momentum?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
