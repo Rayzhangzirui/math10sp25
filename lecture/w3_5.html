@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Problem &#8212; UCI Math 10, Spring 2025</title>
+    <title>Week 3, Fri, 4/18 &#8212; UCI Math 10, Spring 2025</title>
   
   
   
@@ -183,6 +183,7 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lectures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -193,9 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="w2_5.html">Week 2, Fri, 4/11</a></li>
 <li class="toctree-l2"><a class="reference internal" href="w3_1.html">Week 3, Mon, 4/14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="w3_3.html">Week 3, Wed, 4/16</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Problem</strong></a></li>
-
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Week 3, Fri, 4/18</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -335,7 +334,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Problem</h1>
+    <h1>Week 3, Fri, 4/18</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -345,11 +344,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Problem</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -360,7 +358,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="week-3-fri-4-18">
+<h1>Week 3, Fri, 4/18<a class="headerlink" href="#week-3-fri-4-18" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -456,7 +456,7 @@
 </div>
 </div>
 <section id="problem">
-<h1><strong>Problem</strong><a class="headerlink" href="#problem" title="Link to this heading">#</a></h1>
+<h2><strong>Problem</strong><a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
 <p>Given the <em>training dataset</em> <span class="math notranslate nohighlight">\(x_i\in\mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(y_i\in\mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(i= 1,2,..., N\)</span>, we want to find the linear function</p>
 <div class="math notranslate nohighlight">
 \[ y\approx f(x) = wx + b \]</div>
@@ -465,7 +465,7 @@
 \[ \hat{y} = f(x) = w x+b \]</div>
 </section>
 <section id="loss-function-and-optimization">
-<h1>Loss Function and Optimization<a class="headerlink" href="#loss-function-and-optimization" title="Link to this heading">#</a></h1>
+<h2>Loss Function and Optimization<a class="headerlink" href="#loss-function-and-optimization" title="Link to this heading">#</a></h2>
 <p>With the training dataset, define the loss function <span class="math notranslate nohighlight">\(L(w,b)\)</span> of parameter <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, which is also called <strong>mean squared error</strong> (MSE)</p>
 <div class="math notranslate nohighlight">
 \[L(w,b)=\frac{1}{N}\sum_{i=1}^N\big(\hat{y}^{(i)}-y_i\big)^2=\frac{1}{N}\sum_{i=1}^N\big((wx_i+b)-y_i\big)^2,\]</div>
@@ -546,7 +546,7 @@
 </div>
 </section>
 <section id="evaluating-the-model">
-<h1>Evaluating the Model<a class="headerlink" href="#evaluating-the-model" title="Link to this heading">#</a></h1>
+<h2>Evaluating the Model<a class="headerlink" href="#evaluating-the-model" title="Link to this heading">#</a></h2>
 <ul>
 <li><p><strong>Mean Squared Error (MSE)</strong>: Smaller MSE indicates better performance. However, MSE depends on the units of measurement—for example, changing units from meters to millimeters multiplies the MSE by a factor of <span class="math notranslate nohighlight">\(1000^2\)</span>.</p></li>
 <li><p><strong>Coefficient of Determination <span class="math notranslate nohighlight">\( R^{2} \)</span></strong>:
@@ -605,6 +605,7 @@ $<span class="math notranslate nohighlight">\( R^{2} = 1 - \frac{\sum_{i=1}^{N}(
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -672,11 +673,10 @@ $<span class="math notranslate nohighlight">\( R^{2} = 1 - \frac{\sum_{i=1}^{N}(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Problem</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

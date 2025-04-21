@@ -65,6 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/multi_linear_reg';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="prev" title="Linear Regression" href="linear_regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,10 +164,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
@@ -183,6 +183,7 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Multiple Linear Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -193,9 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html"><strong>Problem</strong></a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -345,17 +344,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multiple Linear Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-the-coefficients">Interpretation of the coefficients</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -370,6 +364,7 @@
 <h1>Multiple Linear Regression<a class="headerlink" href="#multiple-linear-regression" title="Link to this heading">#</a></h1>
 <section id="problem">
 <h2><strong>Problem</strong><a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
+<p>See the end of the notebook for the <a class="reference internal" href="##notations"><span class="xref myst">notations</span></a></p>
 <p>Given the data <span class="math notranslate nohighlight">\((x_i,y_i), i= 1,2,..., N\)</span>, this time with <span class="math notranslate nohighlight">\(y_i\in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(x_i\in\mathbb{R}^{p}\)</span>, we fit the multi-variable linear function</p>
 <div class="math notranslate nohighlight">
 \[y_i\approx\mathbf{f}(x)=\beta_{0}+\beta_{1}x_{i1}+..+\beta_{p}x_{ip} = \mathbf{x}_i^T\beta,\]</div>
@@ -573,102 +568,89 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
 <div class="cell_output docutils container">
 </div>
 </div>
-<p>Linear regression with the penguing dataset</p>
-<p>We will use the 3 features <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code>,<code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">bill_depth_mm</span></code> to predict the <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> of the penguins.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;penguins&#39;</span><span class="p">)</span>
-
-<span class="c1"># need to remove missing values</span>
-<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">thresh</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">,</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span><span class="s1">&#39;bill_depth_mm&#39;</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">]</span>
-
-
-<span class="c1"># predict body mass from flipper length and bill length</span>
-<span class="n">lreg_sklearn</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
-
-
-<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7614704841272493
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-</section>
-<section id="interpretation-of-the-coefficients">
-<h2>Interpretation of the coefficients<a class="headerlink" href="#interpretation-of-the-coefficients" title="Link to this heading">#</a></h2>
-<p>The coefficient can be interpreted as “the change in the target variable for a one-unit change in the predictor variable, holding other predictors constant”.</p>
-<p><strong>Does the size of the coefficient mean “importance”?</strong></p>
-<p>This interpretation can make sense in some cases when the variables are of the same scale and “comparable”. For example, if Y is the house price, and X1 is the size of the living room in square feet, X2 is the size of the garage in square feet. Then maybe the coefficient of X1 is larger than X2, and we can say that the size of the living room has more impact on the house price than the size of the garage.</p>
-<p>Generally, the size of the coefficient is not a good indicator of the importance of the feature. The size of the coefficient is affected by the scale of the feature. If we change the unit of the feature, the coefficient will change accordingly. For example, if we change the unit of the feature from meters to centimeters, the coefficient will be 100 times larger. However, the importance of the feature does not change.</p>
-<p>But we can ask the following question:</p>
-<p><strong>If we exclude or include a feature from the model, how much does the model performance decrease or increase?</strong></p>
-<p>If the model performance decreases significantly when we exclude a feature, then we can consider the feature to be important in making predictions.</p>
-<p>We would like to find the smallest set of features that give good performance. By selecting only a few features, the model is also easier to interpret: For example, for medical diagnosis, we would like to use as few features as possible to make the diagnosis instead of doing all the lab tests available.</p>
-<p>Some methods to select the features include:</p>
-<ul class="simple">
-<li><p><strong>Best subset selection</strong>: Try all possible subsets of features and choose the one that gives the best performance.</p></li>
-<li><p><strong>Forward selection</strong>: Start with an empty set of features. Add the feature that gives the best performance. Continue adding features until the performance plateaus.</p></li>
-<li><p><strong>Backward selection</strong>: Start with all features. Remove the feature that gives the smallest decrease in performance. Continue removing features until removing any feature significantly decreases the performance.</p></li>
-</ul>
-<p>However, for the forward and backward selection, the result might depends on the order of adding/removing features. For example, suppose <span class="math notranslate nohighlight">\(Y = X_1 + X_2\)</span>. <span class="math notranslate nohighlight">\(X_3\)</span> is highly correlated with <span class="math notranslate nohighlight">\(X_2\)</span>. Then both (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>) and (<span class="math notranslate nohighlight">\(X_1\)</span>,<span class="math notranslate nohighlight">\(X_2\)</span>) are good models. If we start with all (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>), we might end up with (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>) or (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>) depending on the order of considering the features.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="colinearity">
-<h1>Colinearity<a class="headerlink" href="#colinearity" title="Link to this heading">#</a></h1>
-<p>If two variables are highly correlated, intuitively, we can say that they are measuring the same thing. In the context of linear regression, this is called multicollinearity.</p>
-<p>Suppose <span class="math notranslate nohighlight">\(Y = aX_1\)</span> and <span class="math notranslate nohighlight">\(X_2 = bX_1\)</span>, then we can write <span class="math notranslate nohighlight">\(Y = \beta_1 X_1 + \beta_2 X_2\)</span> for any <span class="math notranslate nohighlight">\(\beta_1\)</span>  and <span class="math notranslate nohighlight">\(\beta_2\)</span> such that <span class="math notranslate nohighlight">\(\beta_1 + b \beta_2 = a\)</span>.</p>
-<p>We can see that the coefficients are not unique.</p>
-<p>This cause a few problems:</p>
+<section id="notations">
+<h3>Notations<a class="headerlink" href="#notations" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p><strong>Interpretation</strong>: it’s difficult to interpret the coefficients. Originally, we would say that a one unit increase in <span class="math notranslate nohighlight">\(X_1\)</span> would lead to a <span class="math notranslate nohighlight">\(\beta_1\)</span> increase in <span class="math notranslate nohighlight">\(Y\)</span>. But now, we can’t say that, because we can’t change <span class="math notranslate nohighlight">\(X_1\)</span> without changing <span class="math notranslate nohighlight">\(X_2\)</span>.</p></li>
-<li><p><strong>Large Variance of the parameter</strong>: Since there could be infinite solutions, there is no guarantee which one the solver will find. Therefore small changes in the data could lead to large changes in the coefficients.</p></li>
-<li><p><strong>Numerical Stability</strong>: Sometimes the solver can’t find the solution.</p></li>
+<li><p>Vectors</p></li>
 </ol>
-<p>However, this does not affect the prediction: even though the coefficients are not unique, the prediction will be the same.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># append collinear columns</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># regression with X0 and X1=2*X0</span>
-<span class="n">lreg_sklearn</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;coefs: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">, intercept: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-
-<span class="c1"># regression with X0</span>
-<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;coefs: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">, intercept: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefs: [0.08374443 0.16748885], intercept: 0.3645154675052994, score: 0.015743465462821682
-coefs: [0.41872214], intercept: 0.36451546750529923, score: 0.015743465462821682
-</pre></div>
-</div>
-</div>
-</div>
+<p>A vector is a column of numbers. For example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{v} =
+\begin{bmatrix}
+v_1 \\
+v_2 \\
+\vdots \\
+v_n
+\end{bmatrix} \in \mathbb{R}^n\end{split}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Matrices</p></li>
+</ol>
+<p>A matrix is a 2D array of numbers arranged in rows and columns. For example, an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix has m rows and n columns:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{A} =
+\begin{bmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{bmatrix} \in \mathbb{R}^{m \times n}\end{split}\]</div>
+<p>We can partition the matrix into rows of vectors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{A} =
+\begin{bmatrix}
+\mathbf{a}_1^T \\
+\mathbf{a}_2^T \\
+\vdots \\
+\mathbf{a}_m^T
+\end{bmatrix} \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{a}_i \in \mathbb{R}^{n}\)</span> is a vector of the <span class="math notranslate nohighlight">\(i\)</span>-th row of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<p>We consider a vector as a matrix with one column.</p>
+<ol class="arabic simple" start="3">
+<li><p>Matrix Transpose</p></li>
+</ol>
+<p>The transpose of a matrix <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span>, denoted <span class="math notranslate nohighlight">\(\mathbf{A}^T\)</span>, is an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix where rows and columns are swapped:
+<span class="math notranslate nohighlight">\((\mathbf{A}^T)_{ij} = \mathbf{A}_{ji}\)</span></p>
+<ol class="arabic simple" start="4">
+<li><p>Vector Inner Product</p></li>
+</ol>
+<p>Given two vectors <span class="math notranslate nohighlight">\(\mathbf{u}, \mathbf{v} \in \mathbb{R}^n\)</span>, their inner product (or dot product) is:</p>
+<div class="math notranslate nohighlight">
+\[&lt;\mathbf{u}, \mathbf{v}&gt; = \mathbf{u}^T \mathbf{v} = \sum_{i=1}^n u_i v_i\]</div>
+<ol class="arabic simple" start="5">
+<li><p>Matrix-Vector Multiplication</p></li>
+</ol>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v} \in \mathbb{R}^n\)</span>, then the product</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{A} \mathbf{v} = \begin{bmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{bmatrix}
+\begin{bmatrix}
+v_1 \\
+v_2 \\
+\vdots \\
+v_n
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}v_1 + a_{12}v_2 + \cdots + a_{1n}v_n \\
+a_{21}v_1 + a_{22}v_2 + \cdots + a_{2n}v_n \\
+\vdots \\
+a_{m1}v_1 + a_{m2}v_2 + \cdots + a_{mn}v_n
+\end{bmatrix} 
+=
+\begin{bmatrix}
+\mathbf{a}_{1}^T \mathbf{v} \\
+\mathbf{a}_{2}^T \mathbf{v} \\
+\vdots \\
+\mathbf{a}_{m}^T \mathbf{v}
+\end{bmatrix}
+\in \mathbb{R}^m\end{split}\]</div>
+<p>This is a linear combination of the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, weighted by the components of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -701,6 +683,24 @@ coefs: [0.41872214], intercept: 0.36451546750529923, score: 0.015743465462821682
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="linear_regression.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Linear Regression</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lecture/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lectures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -718,17 +718,12 @@ coefs: [0.41872214], intercept: 0.36451546750529923, score: 0.015743465462821682
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multiple Linear Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-the-coefficients">Interpretation of the coefficients</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
