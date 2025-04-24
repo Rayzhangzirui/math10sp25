@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>What is a “good” fit? &#8212; UCI Math 10, Spring 2025</title>
+    <title>Week 4, Mon, 4/21 &#8212; UCI Math 10, Spring 2025</title>
   
   
   
@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture/w4_1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Homework" href="../homework/intro.html" />
+    <link rel="next" title="Week 4, Wed, 4/23" href="w4_3.html" />
     <link rel="prev" title="Week 3, Fri, 4/18" href="w3_5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +184,10 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lectures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -195,7 +199,8 @@
 <li class="toctree-l2"><a class="reference internal" href="w3_1.html">Week 3, Mon, 4/14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="w3_3.html">Week 3, Wed, 4/16</a></li>
 <li class="toctree-l2"><a class="reference internal" href="w3_5.html">Week 3, Fri, 4/18</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">What is a “good” fit?</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w4_3.html">Week 4, Wed, 4/23</a></li>
 
 </ul>
 </details></li>
@@ -336,7 +341,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>What is a “good” fit?</h1>
+    <h1>Week 4, Mon, 4/21</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -346,13 +351,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What is a “good” fit?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-good-fit">What is a “good” fit?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -363,7 +367,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="week-4-mon-4-21">
+<h1>Week 4, Mon, 4/21<a class="headerlink" href="#week-4-mon-4-21" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1063,7 +1069,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <section id="what-is-a-good-fit">
-<h1>What is a “good” fit?<a class="headerlink" href="#what-is-a-good-fit" title="Link to this heading">#</a></h1>
+<h2>What is a “good” fit?<a class="headerlink" href="#what-is-a-good-fit" title="Link to this heading">#</a></h2>
 <p>It depends on the metric we use to evaluate the model.</p>
 <p>The best model in terms of MSE(mean squared error) might not be the best model in terms of MAE(mean absolute error).</p>
 <div class="math notranslate nohighlight">
@@ -1102,7 +1108,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </section>
 <section id="problem">
-<h1><strong>Problem</strong><a class="headerlink" href="#problem" title="Link to this heading">#</a></h1>
+<h2><strong>Problem</strong><a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
 <p>Given the data <span class="math notranslate nohighlight">\((x_i,y_i), i= 1,2,..., N\)</span>, this time with <span class="math notranslate nohighlight">\(y_i\in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(x_i\in\mathbb{R}^{p}\)</span>, we fit the multi-variable linear function</p>
 <div class="math notranslate nohighlight">
 \[y_i\approx\mathbf{f}(x)=\beta_{0}+\beta_{1}x_{i1}+..+\beta_{p}x_{ip} = \mathbf{x}_i^T\beta,\]</div>
@@ -1145,7 +1151,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 \end{split}\]</div>
 <p>Here <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is a <span class="math notranslate nohighlight">\(N\times (p+1)\)</span> matrix, and is called the data matrix or design matrix.</p>
 <section id="loss-function-and-optimization">
-<h2>Loss Function and Optimization<a class="headerlink" href="#loss-function-and-optimization" title="Link to this heading">#</a></h2>
+<h3>Loss Function and Optimization<a class="headerlink" href="#loss-function-and-optimization" title="Link to this heading">#</a></h3>
 <p>With the dataset, define the loss function <span class="math notranslate nohighlight">\(L(\beta)\)</span> of parameters <span class="math notranslate nohighlight">\(\beta\)</span>, which is the <strong>Residual Sum of Squares</strong> (RSS). We could also divide it by <span class="math notranslate nohighlight">\(N\)</span> to get the <strong>Mean Squared Error</strong> (MSE). This does not change the optimal solution</p>
 <div class="math notranslate nohighlight">
 \[L(\beta)= \sum_{i=1}^N(y_i-\mathbf{x}_i^T\beta)^{2},\]</div>
@@ -1172,6 +1178,7 @@ $$\mathbf{X}^{T}(\mathbf{Y}-\mathbf{X} \hat{\beta})=0$$
 
 We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to the column space of $\mathbf{X}$. -->
 <p><strong>Exercise</strong>: Check that when <span class="math notranslate nohighlight">\(p=1\)</span>, the solution is equivalent to the single-variable regression.</p>
+</section>
 </section>
 </section>
 
@@ -1215,11 +1222,11 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
       </div>
     </a>
     <a class="right-next"
-       href="../homework/intro.html"
+       href="w4_3.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Homework</p>
+        <p class="prev-next-title">Week 4, Wed, 4/23</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1240,13 +1247,12 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What is a “good” fit?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-good-fit">What is a “good” fit?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>

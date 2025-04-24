@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/multi_linear_reg';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="next" title="Polynomial Regression" href="polynomial_reg.html" />
     <link rel="prev" title="Linear Regression" href="linear_regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +184,10 @@
 
 <li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-Variance Tradeoff</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -195,6 +199,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -344,12 +351,20 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multiple Linear Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-regression-with-the-penguing-dataset">Multiple linear regression with the penguing dataset</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
 </ul>
 </li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -454,7 +469,7 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0213983560341369 [1.95369397 2.97982926]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0056070886315767 [2.0122929  2.94319523]
 </pre></div>
 </div>
 </div>
@@ -483,7 +498,7 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X2&#39;)
 </pre></div>
 </div>
-<img alt="../_images/47418971ea4bda02087a50eb7499abf67154e52e4f5ee96387155c6cabf740a6.png" src="../_images/47418971ea4bda02087a50eb7499abf67154e52e4f5ee96387155c6cabf740a6.png" />
+<img alt="../_images/e52877d4a790b818466344eef3a266caf4cdae4813b63c02bbafd817e4f6c7e9.png" src="../_images/e52877d4a790b818466344eef3a266caf4cdae4813b63c02bbafd817e4f6c7e9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -508,8 +523,8 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.02139836 1.95369397 2.97982926]
-[1.02139836 1.95369397 2.97982926]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.00560709 2.0122929  2.94319523]
+[1.00560709 2.0122929  2.94319523]
 </pre></div>
 </div>
 </div>
@@ -569,8 +584,87 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
 </div>
 </div>
 </section>
+</section>
+<section id="multiple-linear-regression-with-the-penguing-dataset">
+<h2>Multiple linear regression with the penguing dataset<a class="headerlink" href="#multiple-linear-regression-with-the-penguing-dataset" title="Link to this heading">#</a></h2>
+<p>We will use the 3 features <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code>,<code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">bill_depth_mm</span></code> to predict the <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> of the penguins.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;penguins&#39;</span><span class="p">)</span>
+
+<span class="c1"># need to remove missing values, otherwise we get an error</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">,</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span><span class="s1">&#39;bill_depth_mm&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">]</span>
+
+
+<span class="c1"># predict body mass from flipper length and bill length</span>
+<span class="n">lreg_sklearn</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
+
+
+<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7639366781169294
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="colinearity">
+<h1>Colinearity<a class="headerlink" href="#colinearity" title="Link to this heading">#</a></h1>
+<p>If two variables are highly correlated, intuitively, we can say that they are measuring the same thing. In the context of linear regression, this is called multicollinearity.</p>
+<p>Suppose <span class="math notranslate nohighlight">\(Y = aX_1\)</span> and <span class="math notranslate nohighlight">\(X_2 = bX_1\)</span>, then we can write <span class="math notranslate nohighlight">\(Y = \beta_1 X_1 + \beta_2 X_2\)</span> for any <span class="math notranslate nohighlight">\(\beta_1\)</span>  and <span class="math notranslate nohighlight">\(\beta_2\)</span> such that <span class="math notranslate nohighlight">\(\beta_1 + b \beta_2 = a\)</span>.</p>
+<p>We can see that the coefficients are not unique.</p>
+<p>This cause a few problems:</p>
+<ol class="arabic simple">
+<li><p><strong>Interpretation</strong>: it’s difficult to interpret the coefficients. Originally, we would say that a one unit increase in <span class="math notranslate nohighlight">\(X_1\)</span> would lead to a <span class="math notranslate nohighlight">\(\beta_1\)</span> increase in <span class="math notranslate nohighlight">\(Y\)</span>. But now, we can’t say that, because we can’t change <span class="math notranslate nohighlight">\(X_1\)</span> without changing <span class="math notranslate nohighlight">\(X_2\)</span>.</p></li>
+<li><p><strong>Large Variance of the parameter</strong>: Since there could be infinite solutions, there is no guarantee which one the solver will find. Therefore small changes in the data could lead to large changes in the coefficients.</p></li>
+<li><p><strong>Numerical Stability</strong>: Sometimes the solver can’t find the solution.</p></li>
+</ol>
+<p>However, this does not affect the prediction: even though the coefficients are not unique, the prediction will be the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># append collinear columns</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># regression with X0 and X1=2*X0</span>
+<span class="n">lreg_sklearn</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;coefs: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">, intercept: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># regression with X0</span>
+<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;coefs: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">, intercept: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefs: [0.08181439 0.16362879], intercept: 0.381441215099847, score: 0.010597915310673334
+coefs: [0.40907196], intercept: 0.3814412150998469, score: 0.010597915310673223
+</pre></div>
+</div>
+</div>
+</div>
 <section id="notations">
-<h3>Notations<a class="headerlink" href="#notations" title="Link to this heading">#</a></h3>
+<h2>Notations<a class="headerlink" href="#notations" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Vectors</p></li>
 </ol>
@@ -583,6 +677,9 @@ v_2 \\
 \vdots \\
 v_n
 \end{bmatrix} \in \mathbb{R}^n\end{split}\]</div>
+<p>The norm of a vector <span class="math notranslate nohighlight">\(\mathbf{v} \in \mathbb{R}^n\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[||\mathbf{v}|| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}\]</div>
 <ol class="arabic simple" start="2">
 <li><p>Matrices</p></li>
 </ol>
@@ -651,7 +748,6 @@ a_{m1}v_1 + a_{m2}v_2 + \cdots + a_{mn}v_n
 <p>This is a linear combination of the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, weighted by the components of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -693,11 +789,11 @@ a_{m1}v_1 + a_{m2}v_2 + \cdots + a_{mn}v_n
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="polynomial_reg.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Polynomial Regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -718,12 +814,20 @@ a_{m1}v_1 + a_{m2}v_2 + \cdots + a_{mn}v_n
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multiple Linear Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-regression-with-the-penguing-dataset">Multiple linear regression with the penguing dataset</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
 </ul>
 </li>
 </ul>
+
   </nav></div>
 
 </div></div>

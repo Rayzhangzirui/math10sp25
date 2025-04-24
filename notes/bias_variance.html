@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,6 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/bias_variance';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="prev" title="Polynomial Regression" href="polynomial_reg.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,10 +164,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
@@ -184,6 +184,10 @@
 
 <li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bias-Variance Tradeoff</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -195,6 +199,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -365,9 +372,10 @@
 <p>Why <strong>expected value</strong>?</p>
 <p>There is randomness in the training data: we have a random sample from the population, and the model will fit these data differently each time we draw a new sample. Therefore, the model’s parameters are also random. We are interested in the average performance of the model over all possible training data.</p>
 <p>Suppose the true relationship between the input and output is <span class="math notranslate nohighlight">\(y = f(x)\)</span>. The fixed testing data is <span class="math notranslate nohighlight">\((x_0, y_0)\)</span>.
-We collect some data <span class="math notranslate nohighlight">\(D = \{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}\)</span>. Notice that D is some random sample from the population.
-We fit a model to the data, then our model depends on the training data we collected. We denote the fitted model as <span class="math notranslate nohighlight">\(\hat{f}(x;D)\)</span>.</p>
-<p>Then the expected value of the test error is:</p>
+We collect a training data set <span class="math notranslate nohighlight">\(D = \{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}\)</span>. <span class="math notranslate nohighlight">\(D\)</span> is a collection of random samples from the population.
+We fit a model to the data, then our model depends on the <span class="math notranslate nohighlight">\(D\)</span>.
+We denote the fitted model as <span class="math notranslate nohighlight">\(\hat{f}(x;D)\)</span>, and the prediction of the model on the <span class="math notranslate nohighlight">\(x_0\)</span> is <span class="math notranslate nohighlight">\(\hat{f}(x_0;D)\)</span>, which is random because it depends on <span class="math notranslate nohighlight">\(D\)</span></p>
+<p>Then the <strong>expected value of the test error</strong> is:</p>
 <!-- $$E_D[ y - \hat{f}(x;D) ]^2 = E_D[\hat{f}(x;D) - f(x)]^2 + Var_D[\hat{f}(x;D)]$$ -->
 <div class="math notranslate nohighlight">
 \[E_D[ (y_0 - \hat{f}(x_0;D))^2 ] = \underbrace{(E_D[\hat{f}(x_0;D)] - y_0)^2}_{\text{Bias}^2} + \underbrace{Var_D[\hat{f}(x_0;D)]}_{\text{Variance}} \]</div>
@@ -378,7 +386,7 @@ We fit a model to the data, then our model depends on the training data we colle
 </ol>
 <p>If we also consider the noise in the observation, that is, <span class="math notranslate nohighlight">\(y_0 = f(x_0) + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is the noise.
 Then there will be an additional term in the decomposition, which is called the <strong>irreducible error</strong>. This is the error that we cannot reduce no matter how complex the model is. This error might be due to the noise in the measurement, or other variables that affect the output that we are not measuring.</p>
-<p>In general, as we increase the number of tunable parameters in a model, such as the degree of the polynomial, the model becomes more powerful, as it can represent more complex relationships. Then given enough data, the model will be approaching the true relationship. It is said to have lower bias.</p>
+<p>In general, as we increase the number of tunable parameters in a model, such as the degree of the polynomial, the model becomes more flexible, as it can represent more complex relationships. Then given enough data, the model will be approaching the true relationship. It is said to have lower bias.</p>
 <p>However, we can only collect some limited samples of the whole population. The more flexible model is also better at fitting the noise in the training data.
 Suppose we encounter a different batch of training data, the model will fit these data differently and make drastically different predictions. It is said to have higher variance.</p>
 <p><img alt="tradeoff" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bias_and_variance_contributing_to_total_error.svg/2880px-Bias_and_variance_contributing_to_total_error.svg.png" /></p>
@@ -401,7 +409,7 @@ Suppose we encounter a different batch of training data, the model will fit thes
 
 <span class="n">x_gt</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="c1"># Training data</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">degree_max</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">num_trials</span> <span class="o">=</span> <span class="mi">1000</span>
 
@@ -459,14 +467,14 @@ Suppose we encounter a different batch of training data, the model will fit thes
     <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_hist</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">)</span>
     <span class="c1"># draw vertical line for the ground truth</span>
     <span class="n">ax_hist</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fgt</span><span class="p">(</span><span class="n">x_gt</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">)</span>
-    <span class="n">ax_hist</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Value at X=0&#39;</span><span class="p">)</span>
-    <span class="n">ax_hist</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+    <span class="n">ax_hist</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted f(0)&#39;</span><span class="p">)</span>
+    <span class="n">ax_hist</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
     <span class="n">ax_hist</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Histogram of Predictions at X=0 for Degree </span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     
     <span class="c1"># Add legend for mean and variance</span>
     <span class="n">mean_prediction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
     <span class="n">variance_prediction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-    <span class="n">ax_hist</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Mean: </span><span class="si">{</span><span class="n">mean_prediction</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Var: </span><span class="si">{</span><span class="n">variance_prediction</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">])</span>
+    <span class="n">ax_hist</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;Ground Truth f(0)&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39; Predicted f(0): mean </span><span class="si">{</span><span class="n">mean_prediction</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Var: </span><span class="si">{</span><span class="n">variance_prediction</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">])</span>
 
     <span class="n">expected_prediction</span> <span class="o">=</span> <span class="n">mean_prediction</span>
     <span class="n">bias_squared</span> <span class="o">=</span> <span class="p">(</span><span class="n">fgt</span><span class="p">(</span><span class="n">x_gt</span><span class="p">)</span> <span class="o">-</span> <span class="n">expected_prediction</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
@@ -481,28 +489,37 @@ Suppose we encounter a different batch of training data, the model will fit thes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/573357698ecd72b6eadfaef9f86922bf8fbc968d6031a6d0434ab46e49565b5c.png" src="../_images/573357698ecd72b6eadfaef9f86922bf8fbc968d6031a6d0434ab46e49565b5c.png" />
+<img alt="../_images/f1886a39d6bf98f2480a11af5c82e1f7685293c5ae93bd6882d29ac4eb9fed34.png" src="../_images/f1886a39d6bf98f2480a11af5c82e1f7685293c5ae93bd6882d29ac4eb9fed34.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">biases</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">variances</span><span class="p">)</span>   
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 
-<span class="c1"># Plot bias-variance decomposition</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">biases</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bias^2 at X=0&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">variances</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Variance at X=0&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="c1"># plt.plot(degrees, total_errors, label=&#39;Total Error at X=0&#39;, marker=&#39;o&#39;)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Model Complexity (Polynomial Degree)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bias-Variance Decomposition at X = 0&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">biases</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bias² at X=0&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">variances</span><span class="p">,</span> <span class="s1">&#39;s--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Variance at X=0&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Model Complexity (Polynomial Degree)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Bias² at X=0&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Variance at X=0&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
+
+<span class="c1"># combine legends from both axes</span>
+<span class="n">lines1</span><span class="p">,</span> <span class="n">labels1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">lines2</span><span class="p">,</span> <span class="n">labels2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines1</span> <span class="o">+</span> <span class="n">lines2</span><span class="p">,</span> <span class="n">labels1</span> <span class="o">+</span> <span class="n">labels2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bias–Variance Decomposition at X = 0&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8ab026bfd43c93f95b9a858e01d56585b579598756aa996f134969c9b7e9fb0e.png" src="../_images/8ab026bfd43c93f95b9a858e01d56585b579598756aa996f134969c9b7e9fb0e.png" />
+<img alt="../_images/1994bc81442b3513a252770ee4d0540ee2d2ee58161896e46b6769f15611ad43.png" src="../_images/1994bc81442b3513a252770ee4d0540ee2d2ee58161896e46b6769f15611ad43.png" />
 </div>
 </div>
 </section>
@@ -542,6 +559,24 @@ Suppose we encounter a different batch of training data, the model will fit thes
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="polynomial_reg.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Polynomial Regression</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lecture/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lectures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
