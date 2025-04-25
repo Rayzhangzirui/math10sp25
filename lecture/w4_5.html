@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Polynomial Regression &#8212; UCI Math 10, Spring 2025</title>
+    <title>Week 4, Fri, 4/25 &#8212; UCI Math 10, Spring 2025</title>
   
   
   
@@ -62,11 +62,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/polynomial_reg';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture/w4_5';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bias-Variance Tradeoff" href="bias_variance.html" />
-    <link rel="prev" title="Multiple Linear Regression" href="multi_linear_reg.html" />
+    <link rel="next" title="Homework" href="../homework/intro.html" />
+    <link rel="prev" title="Week 4, Wed, 4/23" href="w4_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -167,40 +167,42 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prob_stat.html">Probability and Statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.html">Pandas dataframe</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_linear_reg.html">Multiple Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Polynomial Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
 
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lectures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w1_5.html">Week 1, Fri, 4/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w2_1.html">Week 2, Mon, 4/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w2_3.html">Week 2, Wed, 4/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w2_5.html">Week 2, Fri, 4/11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w3_1.html">Week 3, Mon, 4/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w3_3.html">Week 3, Wed, 4/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w4_3.html">Week 4, Wed, 4/23</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Week 4, Fri, 4/25</a></li>
 
 </ul>
 </details></li>
@@ -209,7 +211,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 (Due 4/25/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -266,7 +268,7 @@
       
       
       
-      <li><a href="../_sources/notes/polynomial_reg.ipynb" target="_blank"
+      <li><a href="../_sources/lecture/w4_5.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -342,7 +344,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Polynomial Regression</h1>
+    <h1>Week 4, Fri, 4/25</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -352,9 +354,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation">Interpolation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-and-generalization">Overfitting and Generalization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Week 4, Fri, 4/25</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-the-coefficients">Interpretation of the coefficients</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression">Polynomial regression</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -365,8 +371,29 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="polynomial-regression">
-<h1>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="week-4-fri-4-25">
+<h1>Week 4, Fri, 4/25<a class="headerlink" href="#week-4-fri-4-25" title="Link to this heading">#</a></h1>
+<section id="interpretation-of-the-coefficients">
+<h2>Interpretation of the coefficients<a class="headerlink" href="#interpretation-of-the-coefficients" title="Link to this heading">#</a></h2>
+<p>The coefficient can be interpreted as “the change in the target variable for a one-unit change in the predictor variable, holding other predictors constant”.</p>
+<p><strong>Does the size of the coefficient mean “importance”?</strong></p>
+<p>This interpretation can make sense in some cases when the variables are of the same scale and “comparable”. For example, if Y is the house price, and X1 is the size of the living room in square feet, X2 is the size of the garage in square feet. Then maybe the coefficient of X1 is larger than X2, and we can say that the size of the living room has more impact on the house price than the size of the garage.</p>
+<p>Generally, the size of the coefficient is not a good indicator of the importance of the feature. The size of the coefficient is affected by the scale of the feature. If we change the unit of the feature, the coefficient will change accordingly. For example, if we change the unit of the feature from meters to centimeters, the coefficient will be 100 times larger. However, the importance of the feature does not change.</p>
+<p>But we can ask the following question:</p>
+<p><strong>If we exclude or include a feature from the model, how much does the model performance decrease or increase?</strong></p>
+<p>If the model performance decreases significantly when we exclude a feature, then we can consider the feature to be important in making predictions.</p>
+<p>We would like to find the smallest set of features that give good performance. By selecting only a few features, the model is also easier to interpret: For example, for medical diagnosis, we would like to use as few features as possible to make the diagnosis instead of doing all the lab tests available.</p>
+<p>Some methods to select the features include:</p>
+<ul class="simple">
+<li><p><strong>Best subset selection</strong>: Try all possible subsets of features and choose the one that gives the best performance.</p></li>
+<li><p><strong>Forward selection</strong>: Start with an empty set of features. Add the feature that gives the best performance. Continue adding features until the performance plateaus.</p></li>
+<li><p><strong>Backward selection</strong>: Start with all features. Remove the feature that gives the smallest decrease in performance. Continue removing features until removing any feature significantly decreases the performance.</p></li>
+</ul>
+<p>However, for the forward and backward selection, the result might depends on the order of adding/removing features. For example, suppose <span class="math notranslate nohighlight">\(Y = X_1 + X_2\)</span>. <span class="math notranslate nohighlight">\(X_3\)</span> is highly correlated with <span class="math notranslate nohighlight">\(X_2\)</span>. Then both (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>) and (<span class="math notranslate nohighlight">\(X_1\)</span>,<span class="math notranslate nohighlight">\(X_2\)</span>) are good models. If we start with all (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>), we might end up with (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>) or (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>) depending on the order of considering the features.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="polynomial-regression">
+<h1>Polynomial regression<a class="headerlink" href="#polynomial-regression" title="Link to this heading">#</a></h1>
 <p>Given an input <span class="math notranslate nohighlight">\(x\in\mathbb{R}\)</span>, we can create other features such as <span class="math notranslate nohighlight">\(x^2\)</span>, <span class="math notranslate nohighlight">\(x^3\)</span> … <span class="math notranslate nohighlight">\(x^p\)</span>, etc.</p>
 <p>We can fit a polynomial of degree <span class="math notranslate nohighlight">\(p\)</span> to the data:</p>
 <div class="math notranslate nohighlight">
@@ -374,21 +401,9 @@
 <p>This is sometimes called a polynomial regression, but it is still a linear regression: as we are seeking a linear combination of the polynomial features. The design matrix is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}X = \begin{bmatrix} 1 &amp; x_1 &amp; x_1^2 &amp; x_1^3 &amp; ... &amp; x_1^p \\ 1 &amp; x_2 &amp; x_2^2 &amp; x_2^3 &amp; ... &amp; x_2^p \\ ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... \\ 1 &amp; x_N &amp; x_N^2 &amp; x_N^3 &amp; ... &amp; x_N^p \end{bmatrix}\end{split}\]</div>
-<section id="interpolation">
-<h2>Interpolation<a class="headerlink" href="#interpolation" title="Link to this heading">#</a></h2>
 <p>Note that if we have <span class="math notranslate nohighlight">\((x_0, y_0)\)</span>, <span class="math notranslate nohighlight">\((x_1, y_1)\)</span>, …, <span class="math notranslate nohighlight">\((x_n, y_n)\)</span>, and the <span class="math notranslate nohighlight">\(x_i\)</span>’s are different, then there is always a polynomial of degree <span class="math notranslate nohighlight">\(n\)</span> that passes through all the points.
-In this case, the design matrix is a square invertible matrix, and therefore <span class="math notranslate nohighlight">\(X\beta = y\)</span> has a unique solution.</p>
-<p>An alternative way to see this is that, when <span class="math notranslate nohighlight">\(n = p\)</span>, we have <span class="math notranslate nohighlight">\(n+1\)</span> equations and <span class="math notranslate nohighlight">\(n+1\)</span> unknowns, and we can solve for the coefficients <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2, ..., \beta_p\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-f(x_0) &amp; = \beta_0 + \beta_1 x_0 + \beta_2 x_0^2 + ... + \beta_p x_0^p = y_0 \\
-f(x_1) &amp; = \beta_0 + \beta_1 x_1 + \beta_2 x_1^2 + ... + \beta_p x_1^p = y_1 \\
-f(x_2) &amp; = \beta_0 + \beta_1 x_2 + \beta_2 x_2^2 + ... + \beta_p x_2^p = y_2 \\
-&amp;... \\
-f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
-\end{align*}
-\end{split}\]</div>
+In this case, the design matrix is a square invertible matrix, and therefore <span class="math notranslate nohighlight">\(X\beta = y\)</span> has a unique solution.
+This is called interpolation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -407,11 +422,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
 
 <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-
-<span class="c1"># ground truth relation</span>
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
-
-<span class="n">Y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">lreg_sklearn</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
@@ -421,20 +432,15 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-
-
-<span class="n">x_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x_grid</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="s1">&#39;GT&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13bd6ea50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x135956c30&gt;
 </pre></div>
 </div>
-<img alt="../_images/c987d550361a138c19229b774a73379c75d2d65714769616dce99f3afcf69582.png" src="../_images/c987d550361a138c19229b774a73379c75d2d65714769616dce99f3afcf69582.png" />
+<img alt="../_images/fcea9bd2594770e88219e228896c76d801f8456df76c9ee13ed6228a2e06c059.png" src="../_images/fcea9bd2594770e88219e228896c76d801f8456df76c9ee13ed6228a2e06c059.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -448,14 +454,8 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
 <span class="n">x_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> 
 <span class="n">y_grid</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x_grid</span> <span class="o">+</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x_grid</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">x_grid</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="n">x_grid</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
-
-<span class="c1"># polynomial fit</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">)</span>
-
-<span class="c1"># dashed line for gt y = x</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x_grid</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="s1">&#39;GT&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -463,17 +463,15 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.1329286   6.40789176  3.50868941 -7.55811971] -0.36736931414942886
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13e933fe0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1359eea50&gt;
 </pre></div>
 </div>
-<img alt="../_images/d02157915f929b1cd00bd31f44d27d6b442bb30f009e9331269f1683eb2c19a8.png" src="../_images/d02157915f929b1cd00bd31f44d27d6b442bb30f009e9331269f1683eb2c19a8.png" />
+<img alt="../_images/705f6c3b77c8012b12443e4344ce582bc1d89ca92c35fd04e3f58ffbb35f205e.png" src="../_images/705f6c3b77c8012b12443e4344ce582bc1d89ca92c35fd04e3f58ffbb35f205e.png" />
 </div>
 </div>
-</section>
-<section id="overfitting-and-generalization">
-<h2>Overfitting and Generalization<a class="headerlink" href="#overfitting-and-generalization" title="Link to this heading">#</a></h2>
-<p>A model that perfectly fits the training data might seem ideal, but it can be misleading. This is known as overfitting—the model is capturing noise instead of the true underlying pattern. As a result, it performs poorly on new, unseen data. Imagine a self-driving car that memorizes the exact layout of one city block—it might drive flawlessly there, but fail completely in a new neighborhood.</p>
-<p>What we really want is generalization: the ability of a model to make accurate predictions on data it hasn’t seen before. To evaluate generalization, we split the data into a training set (to build the model) and a test set (to assess its performance on unseen data). A low training error with a high test error is a clear sign of overfitting.</p>
+<p>This polynomial can fit all the data! But is it a good fit?</p>
+<p>This is called overfitting. We can add more and more features to fit the data, but this might not generalize well to new data.</p>
+<p>To show this, we split the dataset into a training set and a test set. We fit the model on the training set and evaluate it on the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -486,7 +484,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
 
 
 <span class="c1"># maximum degree of the polynomial</span>
-<span class="n">degree</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">degree</span> <span class="o">=</span> <span class="mi">8</span>
 
 <span class="c1"># create a dataframe of all the polynomial features</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">x</span><span class="o">**</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">degree</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span>
@@ -518,7 +516,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13e8aac00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x135ac6540&gt;
 </pre></div>
 </div>
 <img alt="../_images/91143f271be567893fb1503353b4ee0b511d5f0334364a5f8f9be1ffbed3f7ee.png" src="../_images/91143f271be567893fb1503353b4ee0b511d5f0334364a5f8f9be1ffbed3f7ee.png" />
@@ -561,6 +559,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
       <th>x5</th>
       <th>x6</th>
       <th>x7</th>
+      <th>x8</th>
     </tr>
   </thead>
   <tbody>
@@ -574,6 +573,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
       <td>-1.000000</td>
       <td>1.000000</td>
       <td>-1.000000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>1</th>
@@ -585,6 +585,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
       <td>-0.902989</td>
       <td>0.884747</td>
       <td>-0.866874</td>
+      <td>0.849361</td>
     </tr>
     <tr>
       <th>2</th>
@@ -596,6 +597,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
       <td>-0.813658</td>
       <td>0.780783</td>
       <td>-0.749236</td>
+      <td>0.718964</td>
     </tr>
     <tr>
       <th>3</th>
@@ -607,6 +609,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
       <td>-0.731541</td>
       <td>0.687205</td>
       <td>-0.645557</td>
+      <td>0.606432</td>
     </tr>
     <tr>
       <th>4</th>
@@ -618,6 +621,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
       <td>-0.656192</td>
       <td>0.603166</td>
       <td>-0.554426</td>
+      <td>0.509624</td>
     </tr>
   </tbody>
 </table>
@@ -656,13 +660,13 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
     <span class="n">axs</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">],</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;degree = </span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">d</span>)
     <span class="c1"># show legend and MSE</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;train mse = </span><span class="si">{</span><span class="n">train_mse</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;test mse = </span><span class="si">{</span><span class="n">test_mse</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;train MSE = </span><span class="si">{</span><span class="n">train_mse</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;test MSE = </span><span class="si">{</span><span class="n">test_mse</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">])</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/54ccd00425f4a01d1a0a4f4f722113ab0d9c86519cfc8e3018eef57d111a578a.png" src="../_images/54ccd00425f4a01d1a0a4f4f722113ab0d9c86519cfc8e3018eef57d111a578a.png" />
+<img alt="../_images/4cd843afc4d739f7eabd0c5463e22b933f6e9785947da5dcfef85b19723e2c81.png" src="../_images/4cd843afc4d739f7eabd0c5463e22b933f6e9785947da5dcfef85b19723e2c81.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -671,20 +675,18 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">degree</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">test_mse</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">degree</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;degree&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Degree&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;MSE&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;MSE on train and test sets for different degrees&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;MSE on train and test sets for different degrees&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;MSE&#39;)
 </pre></div>
 </div>
-<img alt="../_images/94550ce0f0fb699b1e249a054d630df03c2e8b7c2cf1b244dd41985980ecc3cc.png" src="../_images/94550ce0f0fb699b1e249a054d630df03c2e8b7c2cf1b244dd41985980ecc3cc.png" />
+<img alt="../_images/f552babdc85e72bf8cea62e459cbbab226f169f2e1d01328345700ed583412da.png" src="../_images/f552babdc85e72bf8cea62e459cbbab226f169f2e1d01328345700ed583412da.png" />
 </div>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -700,7 +702,7 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
         },
         kernelOptions: {
             name: "python3",
-            path: "./notes"
+            path: "./lecture"
         },
         predefinedOutput: true
     }
@@ -718,20 +720,20 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="multi_linear_reg.html"
+       href="w4_3.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Multiple Linear Regression</p>
+        <p class="prev-next-title">Week 4, Wed, 4/23</p>
       </div>
     </a>
     <a class="right-next"
-       href="bias_variance.html"
+       href="../homework/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bias-Variance Tradeoff</p>
+        <p class="prev-next-title">Homework</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -752,9 +754,13 @@ f(x_n) &amp;= \beta_0 + \beta_1 x_n + \beta_2 x_n^2 + ... + \beta_p x_n^p = y_n
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation">Interpolation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-and-generalization">Overfitting and Generalization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Week 4, Fri, 4/25</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-the-coefficients">Interpretation of the coefficients</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression">Polynomial regression</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
