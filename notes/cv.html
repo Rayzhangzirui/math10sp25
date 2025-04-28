@@ -408,7 +408,7 @@ However, if we are doing both, we should have an consensus on which set is for m
 <span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">]</span>  
 
 <span class="c1"># Remove missing values based on the features and target</span>
-<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">features</span> <span class="o">+</span> <span class="n">target</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Remove missing values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Remove missing values</span>
 
 
 <span class="c1"># Initialize linear regression model</span>
