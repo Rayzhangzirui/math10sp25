@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/bias_variance';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="next" title="Cross Validation" href="cv.html" />
     <link rel="prev" title="Polynomial Regression" href="polynomial_reg.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,6 +188,8 @@
 <li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Bias-Variance Tradeoff</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -398,6 +400,7 @@ Suppose we encounter a different batch of training data, the model will fit thes
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
@@ -492,7 +495,7 @@ Suppose we encounter a different batch of training data, the model will fit thes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f1886a39d6bf98f2480a11af5c82e1f7685293c5ae93bd6882d29ac4eb9fed34.png" src="../_images/f1886a39d6bf98f2480a11af5c82e1f7685293c5ae93bd6882d29ac4eb9fed34.png" />
+<img alt="../_images/f211fb029155091abd98882caa9de2023303239030256f8e4f33ba8474092eb0.png" src="../_images/f211fb029155091abd98882caa9de2023303239030256f8e4f33ba8474092eb0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -522,7 +525,7 @@ Suppose we encounter a different batch of training data, the model will fit thes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1994bc81442b3513a252770ee4d0540ee2d2ee58161896e46b6769f15611ad43.png" src="../_images/1994bc81442b3513a252770ee4d0540ee2d2ee58161896e46b6769f15611ad43.png" />
+<img alt="../_images/8a5ee0258234ef336185b1f9e1fb11a614bcd5a85405ff400f41fa7e64a6bcb7.png" src="../_images/8a5ee0258234ef336185b1f9e1fb11a614bcd5a85405ff400f41fa7e64a6bcb7.png" />
 </div>
 </div>
 </section>
@@ -572,11 +575,11 @@ Suppose we encounter a different batch of training data, the model will fit thes
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="cv.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Cross Validation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
