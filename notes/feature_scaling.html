@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/feature_scaling';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="next" title="Regularization" href="regularization.html" />
     <link rel="prev" title="Cross Validation" href="cv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -190,6 +190,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regularization.html">Regularization</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -357,6 +358,8 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-scale-the-features">Why do we need to scale the features?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centering-and-fitting-the-intercept">Centering and fitting the intercept</a></li>
 </ul>
             </nav>
         </div>
@@ -379,6 +382,9 @@
 \[ \sqrt{\sum_{i=1}^d (x_i - y_i)^2} \]</div>
 <p>where <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> are the <span class="math notranslate nohighlight">\(i\)</span>-th feature/coordinate of the two data points. If the features are on different scales, then the distance will be dominated by the features with the largest scale.</p>
 <p>Even for linear regression, scaling might help with the interpretation of the coefficients. After standardization, all features are measured in standard deviations, so each coefficient represents the expected change in the target variable for a one standard deviation increase in the feature. This makes it possible to compare the magnitudes of the coefficients, as they’re all in the same units (standard deviations of the features).</p>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be the feature vector (one column of the design matrix) and <span class="math notranslate nohighlight">\(X'\)</span> to be the scaled feature vector.</p>
 <p>Here some scaling methods:</p>
 <ul class="simple">
@@ -448,6 +454,20 @@
 <img alt="../_images/e444d217067ee343b48467f694aa380a64f6edd24e639ada7f424bbeddbcf5d2.png" src="../_images/e444d217067ee343b48467f694aa380a64f6edd24e639ada7f424bbeddbcf5d2.png" />
 </div>
 </div>
+</section>
+<section id="centering-and-fitting-the-intercept">
+<h2>Centering and fitting the intercept<a class="headerlink" href="#centering-and-fitting-the-intercept" title="Link to this heading">#</a></h2>
+<p>In the single variable case, the optimal intercept is given by</p>
+<div class="math notranslate nohighlight">
+\[b^* = \bar{Y}  - w^*\bar{X}\]</div>
+<ul class="simple">
+<li><p>If we center X, then <span class="math notranslate nohighlight">\(\bar{X} = 0\)</span></p>
+<ul>
+<li><p>if we do not center Y, then <span class="math notranslate nohighlight">\(b^* = \bar{Y}\)</span>, that is, the intercept is the mean of Y</p></li>
+<li><p>if we center Y, then <span class="math notranslate nohighlight">\(b^* = 0\)</span>. We don’t need to find the intercepts. This can be done by using the <code class="docutils literal notranslate"><span class="pre">fit_intercept=False</span></code> option in the regression model.</p></li>
+</ul>
+</li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -467,34 +487,60 @@
 
 
 <span class="c1"># Fit model without scaling</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original Intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Without Centering X and Y&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Standardize the data</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">y_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    
+<span class="n">y_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
 
 <span class="c1"># Fit a linear regression model on the scaled data</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_scaled</span><span class="p">)</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_scaled</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scaled intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">standardizing both X and Y&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+
+<span class="n">model_no_intercept</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">model_no_intercept</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_scaled</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">model_no_intercept</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_scaled</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">standardizing both X and Y, fit_intercept=False&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model_no_intercept</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model_no_intercept</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Only standardizing X&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Y mean: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original Intercept: 388.8451587602731, slope: 86.79175964755551, R^2: 0.34745261128883764
-Scaled intercept: -3.9709566263291407e-16, slope: 0.5894511101769491, R^2: 0.34745261128883753
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Without Centering X and Y
+intercept: 388.85, slope: 86.79, R^2: 0.35
+
+standardizing both X and Y
+intercept: -0.00, slope: 0.59, R^2: 0.35
+
+standardizing both X and Y, fit_intercept=False
+intercept: 0.00, slope: 0.59, R^2: 0.35
+
+Only standardizing X
+intercept: 4207.06, slope: 473.92, R^2: 0.35
+Y mean: 4207.06
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Why is the intercept 0?</strong></p>
-<p>In the single variable case, the optimal intercept is given by</p>
-<div class="math notranslate nohighlight">
-\[b^* = \bar{Y}  - w^*\bar{X}\]</div>
-<p>After standardization, <span class="math notranslate nohighlight">\(\bar{X} = 0\)</span> and <span class="math notranslate nohighlight">\(\bar{Y} = 0\)</span>, so the optimal intercept is 0. The same is true for multiple linear regression.</p>
 </section>
 </section>
 
@@ -538,11 +584,11 @@ Scaled intercept: -3.9709566263291407e-16, slope: 0.5894511101769491, R^2: 0.347
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="regularization.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Regularization</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -564,6 +610,8 @@ Scaled intercept: -3.9709566263291407e-16, slope: 0.5894511101769491, R^2: 0.347
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-scale-the-features">Why do we need to scale the features?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centering-and-fitting-the-intercept">Centering and fitting the intercept</a></li>
 </ul>
   </nav></div>
 

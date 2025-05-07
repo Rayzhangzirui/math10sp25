@@ -65,6 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/regularization';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="prev" title="Feature Scaling" href="feature_scaling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,10 +164,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
@@ -190,6 +190,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Regularization</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -381,7 +382,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="regularization">
 <h1>Regularization<a class="headerlink" href="#regularization" title="Link to this heading">#</a></h1>
 <p>From the previous lectures, we know that more features do not always lead to better performance. Sometimes, adding more features can lead to overfitting.</p>
-<p>In this notebook, we will introduce another way to prevent overfitting: regularization. Regularization is a technique that discourages learning a more complex or flexible model, so as to prevent overfitting.</p>
+<p>In this notebook, we will introduce another way to prevent overfitting: <strong>regularization</strong>. Regularization is a technique to prevent overfitting by penalizing complex models.</p>
 <section id="ridge-regression">
 <h2>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Link to this heading">#</a></h2>
 <p>Assume a centered linear regression model where the data have been pre-processed so that the mean of each feature (and the target) is zero. This means we don’t need a separate intercept term, simplifying the model to:</p>
@@ -526,8 +527,8 @@ This is useful in practice because it can help us select a subset of the feature
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ce85a1ba44f4d53d44a1d15363c11348949b0af439356e55bbefa91b2ba9514e.png" src="../_images/ce85a1ba44f4d53d44a1d15363c11348949b0af439356e55bbefa91b2ba9514e.png" />
-<img alt="../_images/bd173e346548befd19f6129694d12b751a03c1134bea2a06501b8c01404ee9c5.png" src="../_images/bd173e346548befd19f6129694d12b751a03c1134bea2a06501b8c01404ee9c5.png" />
+<img alt="../_images/5583a902bd72771223e7714143f42e48e892dfa0230ed2274011311c7b1d6854.png" src="../_images/5583a902bd72771223e7714143f42e48e892dfa0230ed2274011311c7b1d6854.png" />
+<img alt="../_images/4b734b24594a5777794a1083a8f6891808a5dabf6965cc6ea7fc29d44d56a893.png" src="../_images/4b734b24594a5777794a1083a8f6891808a5dabf6965cc6ea7fc29d44d56a893.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -603,12 +604,12 @@ This is useful in practice because it can help us select a subset of the feature
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cfddd028cdae3924323d90db64f964a4d7a77365250f276fc2a8097d5ac9933c.png" src="../_images/cfddd028cdae3924323d90db64f964a4d7a77365250f276fc2a8097d5ac9933c.png" />
+<img alt="../_images/882aba94a1e592e0614049e3057beba458c1e0ed6fed6d14f2e853c52a81c46a.png" src="../_images/882aba94a1e592e0614049e3057beba458c1e0ed6fed6d14f2e853c52a81c46a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficient at min_test_error_alpha: [-0.00133414 -0.11633839  0.27727779  0.16477408 -0.01101457 -0.05313174
  -0.12380363  0.06682291  0.28140028  0.04766235]
 </pre></div>
 </div>
-<img alt="../_images/a975b3d516091d47f77ffa5d0967e3b0ef4c14224ee4f3ac1e3a27c06ec88631.png" src="../_images/a975b3d516091d47f77ffa5d0967e3b0ef4c14224ee4f3ac1e3a27c06ec88631.png" />
+<img alt="../_images/3596c54b2cd654690bb7b1c0d3cb00d27187acc8d3a4e46685ba5aba497ad9ff.png" src="../_images/3596c54b2cd654690bb7b1c0d3cb00d27187acc8d3a4e46685ba5aba497ad9ff.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -678,12 +679,12 @@ This is useful in practice because it can help us select a subset of the feature
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5fec29a7f5eed492d7e271d0b96b36eaee7ce0ebaaef673474be49e42928809d.png" src="../_images/5fec29a7f5eed492d7e271d0b96b36eaee7ce0ebaaef673474be49e42928809d.png" />
+<img alt="../_images/5bedc0f970401a22429584a5918b866b9a096d22322589c0c59a135c1331403a.png" src="../_images/5bedc0f970401a22429584a5918b866b9a096d22322589c0c59a135c1331403a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficient at min_test_error_alpha: [-0.         -0.11588826  0.33891449  0.16367789 -0.04436525 -0.
  -0.13020369  0.          0.37168991  0.        ]
 </pre></div>
 </div>
-<img alt="../_images/cf62f9b687df5f4719ec561d34451244db9a08104fc02273d8205c10ee3dd79b.png" src="../_images/cf62f9b687df5f4719ec561d34451244db9a08104fc02273d8205c10ee3dd79b.png" />
+<img alt="../_images/677974a8aaf348560938fb77061a45bafa3f5a68e6ec07562cc3d435c2b0b724.png" src="../_images/677974a8aaf348560938fb77061a45bafa3f5a68e6ec07562cc3d435c2b0b724.png" />
 </div>
 </div>
 <p>In ridge regression, the trajectories of the coefficients are smooth. As the regularization strength gradually decreases, the coefficients smoothly transition from 0 toward the values of the least squares solution, with all coefficients increasing together.</p>
@@ -740,6 +741,24 @@ This is useful in practice because it can help us select a subset of the feature
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="feature_scaling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Feature Scaling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lecture/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lectures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
