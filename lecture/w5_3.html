@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Feature Scaling &#8212; UCI Math 10, Spring 2025</title>
+    <title>Week 5, Wed, 4/30 &#8212; UCI Math 10, Spring 2025</title>
   
   
   
@@ -62,11 +62,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/feature_scaling';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture/w5_3';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Regularization" href="regularization.html" />
-    <link rel="prev" title="Cross Validation" href="cv.html" />
+    <link rel="next" title="Week 6, Wed, 5/7" href="w6_3.html" />
+    <link rel="prev" title="Week 5, Mon, 4/28" href="w5_1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -167,50 +167,50 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prob_stat.html">Probability and Statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.html">Pandas dataframe</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_linear_reg.html">Multiple Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-Variance Tradeoff</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Feature Scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lectures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w1_5.html">Week 1, Fri, 4/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w2_1.html">Week 2, Mon, 4/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w2_3.html">Week 2, Wed, 4/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w2_5.html">Week 2, Fri, 4/11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w3_1.html">Week 3, Mon, 4/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w3_3.html">Week 3, Wed, 4/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w4_3.html">Week 4, Wed, 4/23</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_5.html">Week 4, Fri, 4/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w4_5.html">Week 4, Fri, 4/25</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_1.html">Week 5, Mon, 4/28</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_3.html">Week 5, Wed, 4/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w5_1.html">Week 5, Mon, 4/28</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Week 5, Wed, 4/30</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w6_3.html">Week 6, Wed, 5/7</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -276,7 +276,7 @@
       
       
       
-      <li><a href="../_sources/notes/feature_scaling.ipynb" target="_blank"
+      <li><a href="../_sources/lecture/w5_3.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -352,7 +352,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Feature Scaling</h1>
+    <h1>Week 5, Wed, 4/30</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -362,10 +362,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Week 5, Wed, 4/30</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">Feature Scaling</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-scale-the-features">Why do we need to scale the features?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centering-and-fitting-the-intercept">Centering and fitting the intercept</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -376,7 +379,374 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="feature-scaling">
+  <section class="tex2jax_ignore mathjax_ignore" id="week-5-wed-4-30">
+<h1>Week 5, Wed, 4/30<a class="headerlink" href="#week-5-wed-4-30" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># kf = KFold(n_splits=5, shuffle=False, random_state=1)</span>
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="ow">in</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">train_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+    <span class="n">test_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+    <span class="c1"># print(f&quot;train:{train_idx}, test:{test_idx}&quot;)</span>
+    <span class="c1"># print(&quot;train df&quot;)</span>
+    <span class="c1"># print(train_df)</span>
+    <span class="c1"># print(&quot;test df&quot;)</span>
+    <span class="c1"># print(test_df)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>island</th>
+      <th>bill_length_mm</th>
+      <th>bill_depth_mm</th>
+      <th>flipper_length_mm</th>
+      <th>body_mass_g</th>
+      <th>sex</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.1</td>
+      <td>18.7</td>
+      <td>181.0</td>
+      <td>3750.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.5</td>
+      <td>17.4</td>
+      <td>186.0</td>
+      <td>3800.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>40.3</td>
+      <td>18.0</td>
+      <td>195.0</td>
+      <td>3250.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>36.7</td>
+      <td>19.3</td>
+      <td>193.0</td>
+      <td>3450.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.3</td>
+      <td>20.6</td>
+      <td>190.0</td>
+      <td>3650.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>338</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>47.2</td>
+      <td>13.7</td>
+      <td>214.0</td>
+      <td>4925.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>340</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>46.8</td>
+      <td>14.3</td>
+      <td>215.0</td>
+      <td>4850.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>341</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>50.4</td>
+      <td>15.7</td>
+      <td>222.0</td>
+      <td>5750.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>342</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>45.2</td>
+      <td>14.8</td>
+      <td>212.0</td>
+      <td>5200.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>343</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>49.9</td>
+      <td>16.1</td>
+      <td>213.0</td>
+      <td>5400.0</td>
+      <td>Male</td>
+    </tr>
+  </tbody>
+</table>
+<p>333 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the Penguins dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;penguins&#39;</span><span class="p">)</span>
+<span class="c1"># features = [&#39;bill_length_mm&#39;, &#39;bill_depth_mm&#39;,&#39;flipper_length_mm&#39;]</span>
+
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">]</span>  
+
+<span class="c1"># Remove missing values based on the features and target</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Remove missing values</span>
+
+
+<span class="c1"># Initialize linear regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Set up 5-fold cross-validation</span>
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Initialize a list to store the R^2 scores for each fold</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Manually perform cross-validation</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+
+    <span class="c1"># Split the data into training and test sets for this fold</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+    <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+
+    <span class="c1"># Fit the model to the training data</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># Predict on the test data</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the R^2 score and append to list</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+    <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Output the scores for each fold and the average score</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fold </span><span class="si">{</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2"> R^2 score:&quot;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average R^2 score:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold 1 R^2 score: 0.725084353204537
+Fold 2 R^2 score: 0.6993225273807328
+Fold 3 R^2 score: 0.7895360534716702
+Fold 4 R^2 score: 0.7782229609972657
+Fold 5 R^2 score: 0.7946029716861942
+Average R^2 score: 0.75735377334808
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+
+<span class="c1"># Initialize linear regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Set up 5-fold cross-validation</span>
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="c1"># Perform cross-validation</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="n">kf</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Output the scores for each fold</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R^2 scores for each fold:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average R^2 score:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R^2 scores for each fold: [0.6867769  0.72404235 0.73577659 0.629162   0.84087895 0.72894592
+ 0.79311648 0.755201   0.68530681 0.87319761]
+Average R^2 score: 0.7452404602770445
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="feature-scaling">
 <h1>Feature Scaling<a class="headerlink" href="#feature-scaling" title="Link to this heading">#</a></h1>
 <section id="why-do-we-need-to-scale-the-features">
 <h2>Why do we need to scale the features?<a class="headerlink" href="#why-do-we-need-to-scale-the-features" title="Link to this heading">#</a></h2>
@@ -387,9 +757,6 @@
 \[ \sqrt{\sum_{i=1}^d (x_i - y_i)^2} \]</div>
 <p>where <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> are the <span class="math notranslate nohighlight">\(i\)</span>-th feature/coordinate of the two data points. If the features are on different scales, then the distance will be dominated by the features with the largest scale.</p>
 <p>Even for linear regression, scaling might help with the interpretation of the coefficients. After standardization, all features are measured in standard deviations, so each coefficient represents the expected change in the target variable for a one standard deviation increase in the feature. This makes it possible to compare the magnitudes of the coefficients, as they’re all in the same units (standard deviations of the features).</p>
-</section>
-<section id="methods">
-<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be the feature vector (one column of the design matrix) and <span class="math notranslate nohighlight">\(X'\)</span> to be the scaled feature vector.</p>
 <p>Here some scaling methods:</p>
 <ul class="simple">
@@ -404,8 +771,6 @@
 \[ X' = \frac{X - \bar{X}}{\sigma_X} \]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{X}\)</span> is the sample mean of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(\sigma_X\)</span> is the sample standard deviation of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>These are linear transformations of the data. Sometimes we also want to transform the data non-linearly. For example, we might want to take the logarithm of the data if the data spans several orders of magnitude.</p>
-<p>The following code visualize the histogram of the numerical features in the penguins dataset. Notice that these linear transformations do not change the shape of the distribution of the data. The only change is the x-axis.</p>
-<p>If we use standardization, the unit of the data is “x standard deviations from the mean”. If we use min-max scaling, the unit of the data is “x percent of the range of the data”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -460,93 +825,6 @@
 </div>
 </div>
 </section>
-<section id="centering-and-fitting-the-intercept">
-<h2>Centering and fitting the intercept<a class="headerlink" href="#centering-and-fitting-the-intercept" title="Link to this heading">#</a></h2>
-<p>In the single variable case, the optimal intercept is given by</p>
-<div class="math notranslate nohighlight">
-\[b^* = \bar{Y}  - w^*\bar{X}\]</div>
-<ul class="simple">
-<li><p>If we center X, then <span class="math notranslate nohighlight">\(\bar{X} = 0\)</span></p>
-<ul>
-<li><p>if we do not center Y, then <span class="math notranslate nohighlight">\(b^* = \bar{Y}\)</span>, that is, the intercept is the mean of Y</p></li>
-<li><p>if we center Y, then <span class="math notranslate nohighlight">\(b^* = 0\)</span>. We don’t need to find the intercepts. This can be done by using the <code class="docutils literal notranslate"><span class="pre">fit_intercept=False</span></code> option in the regression model.</p></li>
-</ul>
-</li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;penguins&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Remove missing values</span>
-
-
-<span class="c1"># Selecting numerical features</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">]]</span>
-
-
-<span class="c1"># Fit model without scaling</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Without Centering X and Y&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Standardize the data</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">y_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-
-
-<span class="c1"># Fit a linear regression model on the scaled data</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_scaled</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_scaled</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">standardizing both X and Y&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
-
-<span class="n">model_no_intercept</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">model_no_intercept</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_scaled</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">model_no_intercept</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_scaled</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">standardizing both X and Y, fit_intercept=False&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model_no_intercept</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model_no_intercept</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Only standardizing X&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R^2: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Y mean: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Without Centering X and Y
-intercept: 388.85, slope: 86.79, R^2: 0.35
-
-standardizing both X and Y
-intercept: -0.00, slope: 0.59, R^2: 0.35
-
-standardizing both X and Y, fit_intercept=False
-intercept: 0.00, slope: 0.59, R^2: 0.35
-
-Only standardizing X
-intercept: 4207.06, slope: 473.92, R^2: 0.35
-Y mean: 4207.06
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -562,7 +840,7 @@ Y mean: 4207.06
         },
         kernelOptions: {
             name: "python3",
-            path: "./notes"
+            path: "./lecture"
         },
         predefinedOutput: true
     }
@@ -580,20 +858,20 @@ Y mean: 4207.06
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="cv.html"
+       href="w5_1.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Cross Validation</p>
+        <p class="prev-next-title">Week 5, Mon, 4/28</p>
       </div>
     </a>
     <a class="right-next"
-       href="regularization.html"
+       href="w6_3.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Regularization</p>
+        <p class="prev-next-title">Week 6, Wed, 5/7</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -614,10 +892,13 @@ Y mean: 4207.06
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Week 5, Wed, 4/30</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">Feature Scaling</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-scale-the-features">Why do we need to scale the features?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centering-and-fitting-the-intercept">Centering and fitting the intercept</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
