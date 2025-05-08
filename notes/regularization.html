@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/regularization';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="next" title="Gradient Descent" href="gradient_descent.html" />
     <link rel="prev" title="Feature Scaling" href="feature_scaling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,6 +191,8 @@
 <li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -207,14 +209,19 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w4_5.html">Week 4, Fri, 4/25</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_1.html">Week 5, Mon, 4/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_3.html">Week 5, Wed, 4/30</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -543,7 +550,7 @@ This is useful in practice because it can help us select a subset of the feature
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Range of alpha values for regularization, from 10^5 to 10^-5</span>
-<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
 
 <span class="c1"># Array to store coefficients</span>
 <span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
@@ -604,12 +611,13 @@ This is useful in practice because it can help us select a subset of the feature
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/882aba94a1e592e0614049e3057beba458c1e0ed6fed6d14f2e853c52a81c46a.png" src="../_images/882aba94a1e592e0614049e3057beba458c1e0ed6fed6d14f2e853c52a81c46a.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficient at min_test_error_alpha: [-0.00133414 -0.11633839  0.27727779  0.16477408 -0.01101457 -0.05313174
- -0.12380363  0.06682291  0.28140028  0.04766235]
+<img alt="../_images/b4c626b484ca801fb9138ef1ae53212e2c4908e75b60ab2e98c18548073a8eea.png" src="../_images/b4c626b484ca801fb9138ef1ae53212e2c4908e75b60ab2e98c18548073a8eea.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficient at min_test_error_alpha: [ 9.37153097e-05 -1.09163668e-01  2.65707502e-01  1.59578512e-01
+ -6.93877963e-03 -4.93132970e-02 -1.21053700e-01  6.85101498e-02
+  2.69306909e-01  5.15067721e-02]
 </pre></div>
 </div>
-<img alt="../_images/3596c54b2cd654690bb7b1c0d3cb00d27187acc8d3a4e46685ba5aba497ad9ff.png" src="../_images/3596c54b2cd654690bb7b1c0d3cb00d27187acc8d3a4e46685ba5aba497ad9ff.png" />
+<img alt="../_images/130d8e660d0dfc6fb5ae8a4d4af0893024cbe7fe1c17c7a931af4a2579cac987.png" src="../_images/130d8e660d0dfc6fb5ae8a4d4af0893024cbe7fe1c17c7a931af4a2579cac987.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -617,7 +625,7 @@ This is useful in practice because it can help us select a subset of the feature
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
 
 <span class="c1"># Range of alpha values for regularization, from 10^1 to 10^-5</span>
-<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
 
 <span class="c1"># Array to store coefficients</span>
 <span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
@@ -679,16 +687,16 @@ This is useful in practice because it can help us select a subset of the feature
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5bedc0f970401a22429584a5918b866b9a096d22322589c0c59a135c1331403a.png" src="../_images/5bedc0f970401a22429584a5918b866b9a096d22322589c0c59a135c1331403a.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficient at min_test_error_alpha: [-0.         -0.11588826  0.33891449  0.16367789 -0.04436525 -0.
- -0.13020369  0.          0.37168991  0.        ]
+<img alt="../_images/2c7e4a220339cf9856fa3bd6cf83358b71f84375eca487a0c961d160a86bf046.png" src="../_images/2c7e4a220339cf9856fa3bd6cf83358b71f84375eca487a0c961d160a86bf046.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficient at min_test_error_alpha: [-0.         -0.10841615  0.33611424  0.15834881 -0.03398622 -0.
+ -0.12795557  0.          0.36510404  0.        ]
 </pre></div>
 </div>
-<img alt="../_images/677974a8aaf348560938fb77061a45bafa3f5a68e6ec07562cc3d435c2b0b724.png" src="../_images/677974a8aaf348560938fb77061a45bafa3f5a68e6ec07562cc3d435c2b0b724.png" />
+<img alt="../_images/320d67692fa15c47bfb98d3b70443cefa7fdd4f493dd2bb38d546f6e0f4d74d8.png" src="../_images/320d67692fa15c47bfb98d3b70443cefa7fdd4f493dd2bb38d546f6e0f4d74d8.png" />
 </div>
 </div>
-<p>In ridge regression, the trajectories of the coefficients are smooth. As the regularization strength gradually decreases, the coefficients smoothly transition from 0 toward the values of the least squares solution, with all coefficients increasing together.</p>
-<p>In contrast, the trajectories of the coefficients in lasso regression are not smooth. As regularization weakens, many coefficients remain exactly at 0 until they abruptly increase to nonzero values, creating a “piecewise” effect. This behavior exemplifies lasso’s ability to promote sparsity by setting many coefficients precisely to zero rather than merely shrinking them.</p>
+<p>In ridge regression, as the regularization strength gradually decreases, the coefficients smoothly transition from 0 toward the values of the least squares solution, with all coefficients increasing together.</p>
+<p>In contrast, for Lasso, as regularization weakens, many coefficients remain exactly at 0 until they abruptly increase to nonzero values, creating a “piecewise” effect. This behavior exemplifies lasso’s ability to promote sparsity by setting many coefficients precisely to zero rather than merely shrinking them.</p>
 </section>
 <section id="some-takeaways">
 <h2>Some takeaways:<a class="headerlink" href="#some-takeaways" title="Link to this heading">#</a></h2>
@@ -751,11 +759,11 @@ This is useful in practice because it can help us select a subset of the feature
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="gradient_descent.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Gradient Descent</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
