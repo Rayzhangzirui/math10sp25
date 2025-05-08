@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -396,14 +396,10 @@
 <div class="math notranslate nohighlight">
 \[f(\mathbf{x}) = \sigma(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_p),\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is the sigmoid function, <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2, ..., \beta_p\)</span> are the parameters of the model, and <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_p\)</span> are the features of the input.</p>
-<p>The sigmoid function is defined as:
-$<span class="math notranslate nohighlight">\(\sigma(z) = \frac{1}{1 + e^{-z}}\)</span>$
-which maps any real number to the range (0, 1).</p>
-<p>Using vector notation, we can write the model as:</p>
+<p>The sigmoid function is defined as:</p>
 <div class="math notranslate nohighlight">
-\[f(x) = \sigma(\mathbf{\beta}^T \mathbf{x})\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{\beta} = [\beta_0, \beta_1, \beta_2, ..., \beta_p]\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x} = [1, x_1, x_2, ..., x_p]\)</span>.</p>
-<p>We can interpret the output of the model as the probability of the input belonging to class 1. If the output is greater than 0.5, we predict class 1, otherwise we predict class 0.</p>
+\[\sigma(z) = \frac{1}{1 + e^{-z}}\]</div>
+<p>which maps any real number to the range (0, 1).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualizing the sigmoid function</span>
@@ -430,6 +426,11 @@ which maps any real number to the range (0, 1).</p>
 <img alt="../_images/430a28a18b7dd323c232f844086908136f84e4a7dfe5d46804b89a2830fae976.png" src="../_images/430a28a18b7dd323c232f844086908136f84e4a7dfe5d46804b89a2830fae976.png" />
 </div>
 </div>
+<p>Using vector notation, we can write the model as:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \sigma(\mathbf{\beta}^T \mathbf{x})\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\beta} = [\beta_0, \beta_1, \beta_2, ..., \beta_p]\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x} = [1, x_1, x_2, ..., x_p]\)</span>.</p>
+<p>We can interpret the output of the model as the probability of the input belonging to class 1. If the output is greater than 0.5, we predict class 1, otherwise we predict class 0.</p>
 </section>
 <section id="binary-cross-entropy-loss">
 <h2>Binary Cross-Entropy Loss<a class="headerlink" href="#binary-cross-entropy-loss" title="Link to this heading">#</a></h2>
