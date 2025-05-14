@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/logistic_multiclass';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="next" title="Bias and Fairness" href="fairness.html" />
     <link rel="prev" title="Binary Classification with logistic regression" href="logistic_binary.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,6 +195,7 @@
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -215,6 +216,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w5_3.html">Week 5, Wed, 4/30</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_5.html">Week 6, Fri, 5/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_1.html">Week 7, Mon, 5/12</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -454,7 +457,8 @@ y_{ik} =
 \[
 L(\mathbf{W}) = -\sum_{i=1}^N \sum_{k=1}^K y_{ik}\log(f_k(\mathbf{x}_i; \mathbf{W}))
 \]</div>
-<p>The summation over <span class="math notranslate nohighlight">\(i\)</span> is adding up the error from each sample. For the summation over <span class="math notranslate nohighlight">\(k\)</span>, we are adding up the error from each class. By our definition of <span class="math notranslate nohighlight">\(y_{ik}\)</span>, only the term corresponding to the true class <span class="math notranslate nohighlight">\(y_i\)</span> contributes to the loss. For example, if there is 3 classes and <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> belong to class 2, then</p>
+<p>The summation over <span class="math notranslate nohighlight">\(i\)</span> is adding up the error from each sample. For the summation over <span class="math notranslate nohighlight">\(k\)</span>, we are adding up the error from each class. By our definition of <span class="math notranslate nohighlight">\(y_{ik}\)</span>, only the term corresponding to the true class <span class="math notranslate nohighlight">\(y_i\)</span> contributes to the loss.</p>
+<p>For example, if there are 3 classes and <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> belong to class 2, then the loss contributed by sample 1 is</p>
 <div class="math notranslate nohighlight">
 \[ - \sum_{k=1}^K y_{ik} \log(f_k(\mathbf{x}_i; \mathbf{W})) = -\log(f_2(\mathbf{x}_1; \mathbf{W}))\]</div>
 <p>where <span class="math notranslate nohighlight">\(f_2(\mathbf{x}_1; \mathbf{W})\)</span> is the predicted probability of <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> belonging to class 2. If it is close to 100%, then the loss contributed by sample 1 is close to 0. If <span class="math notranslate nohighlight">\(f_2(\mathbf{x}_1; \mathbf{W})\)</span> is close to 0%, then the contributed loss is large.</p>
@@ -663,11 +667,11 @@ Confusion Matrix:
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="fairness.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Bias and Fairness</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
