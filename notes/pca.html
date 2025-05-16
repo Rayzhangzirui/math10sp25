@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,6 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/pca';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nerual Network" href="intro_nn.html" />
+    <link rel="prev" title="Bias and Fairness" href="fairness.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,11 +164,11 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kaggle.html">Math 10 Kaggle Competition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
@@ -195,7 +195,12 @@
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="kmeans.html">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_nn.html">Nerual Network</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -225,8 +230,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -958,6 +964,24 @@ With the first 20 principal components, we can achieve a classification accuracy
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="fairness.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bias and Fairness</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="intro_nn.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Nerual Network</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

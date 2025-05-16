@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/fairness';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
-    <link rel="prev" title="Multiclass Classification with Logistic Regression" href="logistic_multiclass.html" />
+    <link rel="next" title="Dimensionality Reduction" href="pca.html" />
+    <link rel="prev" title="Clustering" href="kmeans.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -195,7 +195,12 @@
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="kmeans.html">Clustering</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_nn.html">Nerual Network</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -225,8 +230,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -370,6 +376,8 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-imbalance">Class Imbalance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling">Resampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reweighting">Reweighting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-classification">Fair Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-fairness">What is Fairness?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-fairness">Criteria for Fairness</a></li>
@@ -389,6 +397,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bias-and-fairness">
 <h1>Bias and Fairness<a class="headerlink" href="#bias-and-fairness" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://medium.com/&#64;aadityaubhat/humans-large-language-models-and-lucky-number-7-f09248400cc9">Humans, LLMs and Lucky Number 7</a></p>
 <p><a class="reference external" href="https://www.reuters.com/article/idUSKCN1MK0AG/">Amazon scraps secret AI recruiting tool that showed bias against women</a></p>
 <p><a class="reference external" href="https://www.nytimes.com/2023/05/22/technology/ai-photo-labels-google-apple.html">Google’s Photo App Still Can’t Find Gorillas. And Neither Can Apple’s.</a></p>
 <p><a class="reference external" href="https://www.theverge.com/2016/3/24/11297050/tay-microsoft-chatbot-racist">Twitter taught Microsoft’s AI chatbot to be a racist asshole in less than a day</a></p>
@@ -482,6 +491,9 @@
 <img alt="../_images/49194dd6e0690680962fc7cc3d9e765b1931c5fb3fe14e984dde0d7d7af6e83a.png" src="../_images/49194dd6e0690680962fc7cc3d9e765b1931c5fb3fe14e984dde0d7d7af6e83a.png" />
 </div>
 </div>
+</section>
+<section id="resampling">
+<h2>Resampling<a class="headerlink" href="#resampling" title="Link to this heading">#</a></h2>
 <p>One way to address this issue is to use a balanced dataset. We can do this by resampling the minority class (group B) to have the same number of samples as the majority class (group A).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -528,7 +540,9 @@
 <img alt="../_images/9949489f44d1d773c110090904c261182deb1b17fc4b05249307f381c08d47fe.png" src="../_images/9949489f44d1d773c110090904c261182deb1b17fc4b05249307f381c08d47fe.png" />
 </div>
 </div>
-<p>Another way is to reweight the data.</p>
+</section>
+<section id="reweighting">
+<h2>Reweighting<a class="headerlink" href="#reweighting" title="Link to this heading">#</a></h2>
 <p>In our loss function,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -545,8 +559,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign weights to mitigate bias</span>
-<span class="n">weight_A</span> <span class="o">=</span> <span class="n">n_B</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_A</span> <span class="o">+</span> <span class="n">n_B</span><span class="p">)</span> <span class="c1"># there is more of A, so we want to weight it less</span>
-<span class="n">weight_B</span> <span class="o">=</span> <span class="n">n_A</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_A</span> <span class="o">+</span> <span class="n">n_B</span><span class="p">)</span> <span class="c1"># there is less of B, so we want to weight it more</span>
+<span class="n">weight_A</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">n_A</span> <span class="c1"># there is more of A, so we want to weight it less</span>
+<span class="n">weight_B</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">n_B</span> <span class="c1"># there is less of B, so we want to weight it more</span>
 
 <span class="c1"># The weights are assigned based on the labels chosen such that</span>
 <span class="c1">#  number of A * weight_A = number of B * weight_B</span>
@@ -764,20 +778,20 @@ The confusion matrix in this context has the following interpretation:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="logistic_multiclass.html"
+       href="kmeans.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Multiclass Classification with Logistic Regression</p>
+        <p class="prev-next-title">Clustering</p>
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="pca.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Dimensionality Reduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -799,6 +813,8 @@ The confusion matrix in this context has the following interpretation:</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-imbalance">Class Imbalance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling">Resampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reweighting">Reweighting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-classification">Fair Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-fairness">What is Fairness?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-fairness">Criteria for Fairness</a></li>
