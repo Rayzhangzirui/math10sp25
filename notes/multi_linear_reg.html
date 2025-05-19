@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -197,6 +197,7 @@
 <li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nonlinear_dim.html">Nonlinear Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="kmeans.html">Clustering</a></li>
@@ -736,7 +737,30 @@ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \end{bmatrix} \in \mathbb{R}^{m \times n}\end{split}\]</div>
-<p>We can partition the matrix into rows of vectors:</p>
+<p>We can partition the matrix into rows of vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{A} =
+\begin{bmatrix}
+\mathbf{r}_1^T \\
+-\\
+\mathbf{r}_2^T \\
+-\\
+\vdots \\
+-\\
+\mathbf{r}_m^T
+\end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{r}_i \in \mathbb{R}^{n}\)</span> is a vector of the <span class="math notranslate nohighlight">\(i\)</span>-th row of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.
+( <span class="math notranslate nohighlight">\(r\)</span> stands for row)</p>
+<p>We can also partition the matrix into columns of vectors</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A} =
+\begin{bmatrix}
+\mathbf{c}_1 |&amp; \mathbf{c}_2 |&amp; \cdots &amp; |\mathbf{c}_n \end{bmatrix}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{c}_i \in \mathbb{R}^{m}\)</span> is a vector of the <span class="math notranslate nohighlight">\(i\)</span>-th column of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.
+( <span class="math notranslate nohighlight">\(c\)</span> stands for column)</p>
+<p>We can also partition the matrix into columns of vectors</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{A} =
 \begin{bmatrix}
@@ -744,8 +768,11 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \mathbf{a}_2^T \\
 \vdots \\
 \mathbf{a}_m^T
-\end{bmatrix} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{a}_i \in \mathbb{R}^{n}\)</span> is a vector of the <span class="math notranslate nohighlight">\(i\)</span>-th row of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{a}_1 
+\end{bmatrix}\end{split}\]</div>
 <p>We consider a vector as a matrix with one column.</p>
 <ol class="arabic simple" start="3">
 <li><p>Matrix Transpose</p></li>
@@ -783,11 +810,13 @@ a_{m1}v_1 + a_{m2}v_2 + \cdots + a_{mn}v_n
 \end{bmatrix} 
 =
 \begin{bmatrix}
-\mathbf{a}_{1}^T \mathbf{v} \\
-\mathbf{a}_{2}^T \mathbf{v} \\
+\mathbf{r}_{1}^T \mathbf{v} \\
+\mathbf{r}_{2}^T \mathbf{v} \\
 \vdots \\
-\mathbf{a}_{m}^T \mathbf{v}
+\mathbf{r}_{m}^T \mathbf{v}
 \end{bmatrix}
+=
+\mathbf{c}_1 v_1 + \mathbf{c}_2 v_2 + \cdots + \mathbf{c}_n v_n
 \in \mathbb{R}^m\end{split}\]</div>
 <p>This is a linear combination of the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, weighted by the components of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
 </section>
