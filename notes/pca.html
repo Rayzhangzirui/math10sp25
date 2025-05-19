@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/pca';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Nerual Network" href="intro_nn.html" />
+    <link rel="next" title="Nearest Neighbor Regression and Classification" href="knn.html" />
     <link rel="prev" title="Bias and Fairness" href="fairness.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,11 +195,11 @@
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="kmeans.html">Clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_nn.html">Nerual Network</a></li>
 </ul>
 </details></li>
@@ -386,7 +386,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-on-synthetic-2d-data">PCA on synthetic 2D data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-on-hand-written-digits">PCA on hand written digits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-pca">Application of PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-nonlinear-dimensionality-reduction">Example of Nonlinear Dimensionality Reduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-facial-expressions-dataset">Example 2: facial expressions dataset</a></li>
 </ul>
             </nav>
         </div>
@@ -423,11 +423,15 @@ is an orthonormal basis for the d-dimensional subspace, <span class="math notran
 <p>We arrive at the following optimization problem:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\min_{\substack{\boldsymbol{\mu}, \beta_1, \beta_2, ..., \beta_n,\\ V^T V = 1}} \sum_{k=1}^n ||\mathbf{x}_k - \boldsymbol{\mu} - V \beta_k||^2\end{split}\]</div>
-<p>We can partially optimize <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> and <span class="math notranslate nohighlight">\(\beta_k\)</span> to obtain</p>
-<div class="math notranslate nohighlight">
-\[\boldsymbol{\mu}^* = \bar{\mathbf{x}} = \frac{1}{n} \sum_{k=1}^n \mathbf{x}_k\]</div>
+<p>We can partially optimize <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> and <span class="math notranslate nohighlight">\(\beta_k\)</span> directly.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> is the mean of the data points
+$<span class="math notranslate nohighlight">\(\boldsymbol{\mu}^* = \bar{\mathbf{x}} = \frac{1}{n} \sum_{k=1}^n \mathbf{x}_k\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_k\)</span> is the projection of <span class="math notranslate nohighlight">\(\mathbf{x}_k - \boldsymbol{\mu}\)</span> onto the subspace spanned by <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[\beta_k^* = V^T (\mathbf{x}_k - \boldsymbol{\mu})\]</div>
+<p>To see this, suppose <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> is 0, then the i-th component of <span class="math notranslate nohighlight">\(\beta_k\)</span> is <span class="math notranslate nohighlight">\(\beta_k^{(i)} = \mathbf{v}_i^T \mathbf{x}_k\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> is the i-th column of <span class="math notranslate nohighlight">\(V\)</span>.</p>
 <p>Then we can rewrite the optimization problem as</p>
 <div class="math notranslate nohighlight">
 \[\min_{V^T V = 1} \sum_{k=1}^n ||\mathbf{x}_k - \bar{x} - V V^T (\mathbf{x}_k - \bar{x})||^2\]</div>
@@ -520,6 +524,29 @@ is an orthonormal basis for the d-dimensional subspace, <span class="math notran
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/cc425077d19ab9e244544eb2a1f96d0457fc98679a4a4e1ee1ead9982afeb43c.png" src="../_images/cc425077d19ab9e244544eb2a1f96d0457fc98679a4a4e1ee1ead9982afeb43c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualizing the data and the principal components</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">transformed_data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">transformed_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># axis equal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Transformed Data in PCA Space&#39;</span><span class="p">)</span>
+
+<span class="c1"># x and y axis labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PC1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PC2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;PC2&#39;)
+</pre></div>
+</div>
+<img alt="../_images/abda1c59711290b10969d23013c5612b8c7b968686d0816aa1c23fca8ae4b86b.png" src="../_images/abda1c59711290b10969d23013c5612b8c7b968686d0816aa1c23fca8ae4b86b.png" />
 </div>
 </div>
 <p>more <a class="reference external" href="https://setosa.io/ev/principal-component-analysis/">visualization</a></p>
@@ -723,7 +750,7 @@ With the first 20 principal components, we can achieve a classification accuracy
 <span class="n">accuracies</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># Maximum number of components to consider</span>
-<span class="n">max_components</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1"># As there are 64 features in the dataset</span>
+<span class="n">max_components</span> <span class="o">=</span> <span class="mi">21</span>   <span class="c1"># smaller than 64, which is the original dimension</span>
 
 
 <span class="n">list_of_comp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_components</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -758,71 +785,11 @@ With the first 20 principal components, we can achieve a classification accuracy
 </div>
 </div>
 </section>
-<section id="example-of-nonlinear-dimensionality-reduction">
-<h2>Example of Nonlinear Dimensionality Reduction<a class="headerlink" href="#example-of-nonlinear-dimensionality-reduction" title="Link to this heading">#</a></h2>
-<p>PCA is a linear method, and it may not work well for nonlinear data. One popular nonlinear method is t-distributed stochastic neighbor embedding (t-SNE).</p>
-<p>Intuitively, let <span class="math notranslate nohighlight">\(x_i\)</span> be a data point in high dimensional space, and <span class="math notranslate nohighlight">\(y_i\)</span> be the corresponding low dimensional representation. We want to adjust the location of <span class="math notranslate nohighlight">\(y_i\)</span> such that similar points (in terms of their high dimensional counterparts) are close to each other in the low dimensional space.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
-
-<span class="c1"># Apply t-SNE</span>
-<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/37b45939db02285e157ed6884805ece1d6deeef3710b9cc5c84f51aac0ef30ca.png" src="../_images/37b45939db02285e157ed6884805ece1d6deeef3710b9cc5c84f51aac0ef30ca.png" />
-</div>
-</div>
-<p>The 2D representation separates all the digits well. But some samples of the same digit are far apart, which is not ideal. Let’s see what happens to the two cluster of digit 1.</p>
-<p>From the visualization, we can see that there are two styles of digit 1.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> 
-<span class="n">digit</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">indices_of_digit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">digit</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Get all indices where the digit is 3</span>
-<span class="n">X_tsne_digit</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[</span><span class="n">indices_of_digit</span><span class="p">]</span>  <span class="c1"># Filter t-SNE results for 3s</span>
-
-<span class="c1"># Find the index of the minimum X1 value among all &#39;1&#39; digits</span>
-<span class="n">min_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">X_tsne_digit</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">actual_min_index</span> <span class="o">=</span> <span class="n">indices_of_digit</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span>  <span class="c1"># Get the actual index in the original dataset</span>
-
-<span class="n">max_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">X_tsne_digit</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">actual_max_index</span> <span class="o">=</span> <span class="n">indices_of_digit</span><span class="p">[</span><span class="n">max_index</span><span class="p">]</span>
-
-<span class="c1"># Extract the corresponding image</span>
-<span class="n">image_of_digit_min</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">actual_min_index</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1"># Reshape the flat vector back to 8x8</span>
-<span class="n">image_of_digit_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">actual_max_index</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-
-
-
-<span class="c1"># Visualize the image</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_of_digit_min</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Digit 1 with Min X1&#39;</span><span class="p">)</span>
-
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_of_digit_max</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Digit 1 with Max X1&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Digit 1 with Max X1&#39;)
-</pre></div>
-</div>
-<img alt="../_images/c730918c355137f257c4a9dbc7526d6e71e8a17b4968a361fdacb448ed5ab31a.png" src="../_images/c730918c355137f257c4a9dbc7526d6e71e8a17b4968a361fdacb448ed5ab31a.png" />
-</div>
-</div>
+<section id="example-2-facial-expressions-dataset">
+<h2>Example 2: facial expressions dataset<a class="headerlink" href="#example-2-facial-expressions-dataset" title="Link to this heading">#</a></h2>
+<p>Contains 400 images of 40 different people (10 images per person).
+Each image is 64x64 pixels, grayscale.
+The images show variations in facial expression, lighting, and pose.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -857,7 +824,7 @@ With the first 20 principal components, we can achieve a classification accuracy
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d4cfdf7be1adb260d9009ed7718b648d394fe4278bab8b8b09b83b7664cc224f.png" src="../_images/d4cfdf7be1adb260d9009ed7718b648d394fe4278bab8b8b09b83b7664cc224f.png" />
+<img alt="../_images/219aec572bb8df94c59ead606dc048664ff9b05c3b251948b9c2b7fe02624276.png" src="../_images/219aec572bb8df94c59ead606dc048664ff9b05c3b251948b9c2b7fe02624276.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -974,11 +941,11 @@ With the first 20 principal components, we can achieve a classification accuracy
       </div>
     </a>
     <a class="right-next"
-       href="intro_nn.html"
+       href="knn.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Nerual Network</p>
+        <p class="prev-next-title">Nearest Neighbor Regression and Classification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1010,7 +977,7 @@ With the first 20 principal components, we can achieve a classification accuracy
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-on-synthetic-2d-data">PCA on synthetic 2D data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-on-hand-written-digits">PCA on hand written digits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-pca">Application of PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-nonlinear-dimensionality-reduction">Example of Nonlinear Dimensionality Reduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-facial-expressions-dataset">Example 2: facial expressions dataset</a></li>
 </ul>
   </nav></div>
 

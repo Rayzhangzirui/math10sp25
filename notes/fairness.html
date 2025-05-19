@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Dimensionality Reduction" href="pca.html" />
-    <link rel="prev" title="Clustering" href="kmeans.html" />
+    <link rel="prev" title="Multiclass Classification with Logistic Regression" href="logistic_multiclass.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -195,11 +195,11 @@
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pca.html">Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="kmeans.html">Clustering</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bias and Fairness</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pca.html">Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_nn.html">Nerual Network</a></li>
 </ul>
 </details></li>
@@ -485,7 +485,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x177da5fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x17a1f25d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/49194dd6e0690680962fc7cc3d9e765b1931c5fb3fe14e984dde0d7d7af6e83a.png" src="../_images/49194dd6e0690680962fc7cc3d9e765b1931c5fb3fe14e984dde0d7d7af6e83a.png" />
@@ -595,7 +595,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ec44af626522434bec2ddee5bde71f08a22e3ad4c67848acf8f295a16a131afc.png" src="../_images/ec44af626522434bec2ddee5bde71f08a22e3ad4c67848acf8f295a16a131afc.png" />
+<img alt="../_images/2eba3b71ea97608e0b47ee6d96b4814641a0ab34203fb37910662c3d0eae3e8e.png" src="../_images/2eba3b71ea97608e0b47ee6d96b4814641a0ab34203fb37910662c3d0eae3e8e.png" />
 </div>
 </div>
 </section>
@@ -738,10 +738,10 @@ The confusion matrix in this context has the following interpretation:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x177ad83e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x179a91b50&gt;
 </pre></div>
 </div>
-<img alt="../_images/8bd46b1f59934c9fedcd85eea8386e503e826e1a5fa37a07744e4763a9d1fc24.png" src="../_images/8bd46b1f59934c9fedcd85eea8386e503e826e1a5fa37a07744e4763a9d1fc24.png" />
+<img alt="../_images/7cc8babf18042eed8231f30b0ec68d4eaa86d87b28ff172337ab7de3fa260c40.png" src="../_images/7cc8babf18042eed8231f30b0ec68d4eaa86d87b28ff172337ab7de3fa260c40.png" />
 </div>
 </div>
 </section>
@@ -778,12 +778,12 @@ The confusion matrix in this context has the following interpretation:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="kmeans.html"
+       href="logistic_multiclass.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Clustering</p>
+        <p class="prev-next-title">Multiclass Classification with Logistic Regression</p>
       </div>
     </a>
     <a class="right-next"
