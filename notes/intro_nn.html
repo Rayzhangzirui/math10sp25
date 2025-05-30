@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -197,9 +197,11 @@
 <li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nonlinear_dim.html">Nonlinear Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="kmeans.html">Clustering</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Nerual Network</a></li>
 </ul>
 </details></li>
@@ -223,6 +225,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w6_5.html">Week 6, Fri, 5/9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w7_1.html">Week 7, Mon, 5/12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_3.html">Week 7, Wed, 5/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_5.html">Week 7, Fri, 5/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_1.html">Week 8, Mon, 5/19</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -231,8 +236,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw7.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -352,7 +358,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -368,6 +376,14 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-network-cnn">Convolutional Neural Network (CNN)</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -381,6 +397,7 @@
 <h1>Nerual Network<a class="headerlink" href="#nerual-network" title="Link to this heading">#</a></h1>
 <p>A nerual network is a parametric model – just like linear regression and logistic regression, which maps input to output and depends on many parameters.
 But it is much more ``expressive’’ than linear models, as it can represent complex non-linear relationships between input and output.</p>
+<p><a class="reference external" href="https://medium.com/analytics-vidhya/neural-network-part1-inside-a-single-neuron-fee5e44f1e">visualizing single neuron</a></p>
 <p>For the feedforward neural network, also known as the multilayer perceptron (MLP), the model is a composition of linear transformations and non-linear activation functions.</p>
 <p>Mathematically, the model can be written as:</p>
 <div class="math notranslate nohighlight">
@@ -396,7 +413,6 @@ y &amp;= \sigma(W_{L} h_{L-1} + b_{L})
 <span class="math notranslate nohighlight">\(\sigma\)</span> is the activation function, and <span class="math notranslate nohighlight">\(L\)</span> is the number of layers.</p>
 <p>The typical workflow of training a neural network is similar to logistic regression: define the model, define the loss function, and optimize the loss function.</p>
 <p><a class="reference external" href="https://playground.tensorflow.org/">interative visualization of neural network</a>.</p>
-<p><a class="reference external" href="https://medium.com/analytics-vidhya/neural-network-part1-inside-a-single-neuron-fee5e44f1e">visualizing single neuron</a></p>
 <p>In the following, we will compare the performance of a neural network and a logistic regression model on the hand written digit classification task.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -425,67 +441,6 @@ y &amp;= \sigma(W_{L} h_{L-1} + b_{L})
 
 <span class="c1"># Train-test split</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># Approximately 10k test samples</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/Ray/opt/anaconda3/envs/math10/lib/python3.12/site-packages/torchvision/io/image.py:14: UserWarning: Failed to load image Python extension: &#39;dlopen(/Users/Ray/opt/anaconda3/envs/math10/lib/python3.12/site-packages/torchvision/image.so, 0x0006): Library not loaded: @rpath/libjpeg.9.dylib
-  Referenced from: &lt;367D4265-B20F-34BD-94EB-4F3EE47C385B&gt; /Users/Ray/opt/anaconda3/envs/math10/lib/python3.12/site-packages/torchvision/image.so
-  Reason: tried: &#39;/Users/Ray/opt/anaconda3/envs/math10/lib/python3.12/site-packages/torchvision/../../../libjpeg.9.dylib&#39; (no such file), &#39;/Users/Ray/opt/anaconda3/envs/math10/lib/python3.12/site-packages/torchvision/../../../libjpeg.9.dylib&#39; (no such file), &#39;/Users/Ray/opt/anaconda3/envs/math10/lib/python3.12/lib-dynload/../../libjpeg.9.dylib&#39; (no such file), &#39;/Users/Ray/opt/anaconda3/envs/math10/bin/../lib/libjpeg.9.dylib&#39; (no such file)&#39;If you don&#39;t plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
-  warn(
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Failed to download (trying next):
-HTTP Error 403: Forbidden
-
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/train-images-idx3-ubyte.gz to ./data/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
-Failed to download (trying next):
-HTTP Error 403: Forbidden
-
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz to ./data/MNIST/raw/train-labels-idx1-ubyte.gz
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
-Failed to download (trying next):
-HTTP Error 403: Forbidden
-
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
-Failed to download (trying next):
-HTTP Error 403: Forbidden
-
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
 </pre></div>
 </div>
 </div>
@@ -519,7 +474,7 @@ Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 
 <span class="c1"># Logistic Regression Model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;multinomial&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># Predict and evaluate</span>
@@ -530,10 +485,6 @@ Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/Ray/opt/anaconda3/envs/math10/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use &#39;multinomial&#39;. Leave it to its default value to avoid this warning.
-  warnings.warn(
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Logistic Regression Accuracy: 92.00%
 </pre></div>
 </div>
@@ -635,22 +586,102 @@ Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, loss: 1.5210, test accuracy: 93.30%
-Epoch 2, loss: 1.5334, test accuracy: 95.08%
-Epoch 3, loss: 1.4922, test accuracy: 95.44%
-Epoch 4, loss: 1.4637, test accuracy: 96.02%
-Epoch 5, loss: 1.5013, test accuracy: 96.11%
-Epoch 6, loss: 1.4928, test accuracy: 96.21%
-Epoch 7, loss: 1.4648, test accuracy: 96.36%
-Epoch 8, loss: 1.4619, test accuracy: 96.59%
-Epoch 9, loss: 1.4840, test accuracy: 96.24%
-Epoch 10, loss: 1.4612, test accuracy: 96.57%
-Test Accuracy: 96.57%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, loss: 1.5925, test accuracy: 92.60%
+Epoch 2, loss: 1.5329, test accuracy: 94.49%
+Epoch 3, loss: 1.5575, test accuracy: 95.32%
+Epoch 4, loss: 1.5678, test accuracy: 95.59%
+Epoch 5, loss: 1.5258, test accuracy: 95.68%
+Epoch 6, loss: 1.4619, test accuracy: 96.00%
+Epoch 7, loss: 1.4678, test accuracy: 95.98%
+Epoch 8, loss: 1.4881, test accuracy: 96.30%
+Epoch 9, loss: 1.4665, test accuracy: 96.67%
+Epoch 10, loss: 1.4612, test accuracy: 96.41%
+Test Accuracy: 96.41%
 </pre></div>
 </div>
 </div>
 </div>
+<section id="convolutional-neural-network-cnn">
+<h2>Convolutional Neural Network (CNN)<a class="headerlink" href="#convolutional-neural-network-cnn" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://poloclub.github.io/cnn-explainer/">Convolutional Neural Network</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a smaller and efficient CNN for MNIST</span>
+<span class="k">class</span> <span class="nc">SimpleCNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SimpleCNN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Use fewer filters and a single convolutional block</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv_layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># 8 filters instead of 16</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># 16 filters instead of 32</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>  <span class="c1"># Smaller fully connected layer</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv_layers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_layers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">prob</span>
+
+<span class="n">cnn_model</span> <span class="o">=</span> <span class="n">SimpleCNN</span><span class="p">()</span>
+<span class="n">cnn_criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">cnn_optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">cnn_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">evaluate_cnn</span><span class="p">(</span><span class="n">loader</span><span class="p">):</span>
+    <span class="n">cnn_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">total</span><span class="p">,</span> <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">cnn_model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+<span class="c1"># Train the CNN</span>
+<span class="n">n_epoch</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epoch</span><span class="p">):</span>
+    <span class="n">cnn_model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">cnn_model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">cnn_criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">cnn_optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">cnn_optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">evaluate_cnn</span><span class="p">(</span><span class="n">test_loader</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;CNN Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">, loss: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">, test accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+
+<span class="n">cnn_final_accuracy</span> <span class="o">=</span> <span class="n">evaluate_cnn</span><span class="p">(</span><span class="n">test_loader</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;CNN Test Accuracy: </span><span class="si">{</span><span class="n">cnn_final_accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CNN Epoch 1, loss: 1.5538, test accuracy: 85.76%
+CNN Epoch 2, loss: 1.5838, test accuracy: 95.99%
+CNN Epoch 2, loss: 1.5838, test accuracy: 95.99%
+CNN Epoch 3, loss: 1.4915, test accuracy: 96.51%
+CNN Epoch 3, loss: 1.4915, test accuracy: 96.51%
+CNN Epoch 4, loss: 1.4614, test accuracy: 97.12%
+CNN Epoch 4, loss: 1.4614, test accuracy: 97.12%
+CNN Epoch 5, loss: 1.5010, test accuracy: 97.32%
+CNN Epoch 5, loss: 1.5010, test accuracy: 97.32%
+CNN Test Accuracy: 97.32%
+CNN Test Accuracy: 97.32%
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -707,6 +738,22 @@ Test Accuracy: 96.57%
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-network-cnn">Convolutional Neural Network (CNN)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

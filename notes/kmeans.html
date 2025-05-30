@@ -238,7 +238,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 Solution (Due 6/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -490,7 +490,7 @@ where <span class="math notranslate nohighlight">\(S_i \cap S_j = \emptyset\)</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ad72e89222e062234681e49bf013a7e1f056c7cd80d087ac57f40e3829a1b945.png" src="../_images/ad72e89222e062234681e49bf013a7e1f056c7cd80d087ac57f40e3829a1b945.png" />
+<img alt="../_images/83a8106e920e10939104f8615b94a6d794149a6f068645124fca3f2bbeeb026e.png" src="../_images/83a8106e920e10939104f8615b94a6d794149a6f068645124fca3f2bbeeb026e.png" />
 </div>
 </div>
 <p><strong>How to choose the best k value?</strong></p>
@@ -524,7 +524,7 @@ where <span class="math notranslate nohighlight">\(S_i \cap S_j = \emptyset\)</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bab08d13739f776d44d3ba6111f80a8e820e6d9b58f7f3469a27a6a473ed6062.png" src="../_images/bab08d13739f776d44d3ba6111f80a8e820e6d9b58f7f3469a27a6a473ed6062.png" />
+<img alt="../_images/a0b2193a8958584bd7bfe21e1834d43734caa22143980283ae0da6d76ac4b684.png" src="../_images/a0b2193a8958584bd7bfe21e1834d43734caa22143980283ae0da6d76ac4b684.png" />
 </div>
 </div>
 </section>
@@ -555,7 +555,7 @@ where <span class="math notranslate nohighlight">\(S_i \cap S_j = \emptyset\)</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x17d31a240&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x31c0b9ee0&gt;
 </pre></div>
 </div>
 <img alt="../_images/73ba63a7abf3485d4bb19c5ebaebf2e530e0e40aa6716b2447402ba81cef787a.png" src="../_images/73ba63a7abf3485d4bb19c5ebaebf2e530e0e40aa6716b2447402ba81cef787a.png" />
@@ -592,25 +592,24 @@ where <span class="math notranslate nohighlight">\(S_i \cap S_j = \emptyset\)</s
 </div>
 </div>
 <p>Imagine walking on this graph. Then the distance between two points can be defined as the shortest path between them.</p>
-<p>We can define the unnormalized graph Laplacian as
-$<span class="math notranslate nohighlight">\( L = D - A \)</span>$</p>
+<p>We can define the unnormalized graph Laplacian as</p>
+<div class="math notranslate nohighlight">
+\[ L = D - A \]</div>
 <p>where <span class="math notranslate nohighlight">\(D\)</span> is the degree matrix (a diagonal matrix where <span class="math notranslate nohighlight">\(D_{ii}\)</span> is the degree of node <span class="math notranslate nohighlight">\(i\)</span>) and <span class="math notranslate nohighlight">\(A\)</span> is the adjacency matrix (where <span class="math notranslate nohighlight">\(A_{ij}\)</span> is the weight of the edge between nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>). The eigenvector of the graph Laplacian is can be a powerful feature. The first eigenvector (corresponding to the smallest eigenvalue) is constant, and the second eigenvector can be used to partition the graph into two parts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute UNnormalized Laplacian</span>
-<span class="n">L</span> <span class="o">=</span> <span class="n">csgraph</span><span class="o">.</span><span class="n">laplacian</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">csgraph</span><span class="o">.</span><span class="n">laplacian</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Compute the first few eigenvectors (smallest eigenvalues)</span>
 <span class="n">vals</span><span class="p">,</span> <span class="n">vecs</span> <span class="o">=</span> <span class="n">eigh</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
 
-<span class="c1"># Show the first 10 eigenvalues</span>
-<span class="c1"># print(&#39;First 10 eigenvalues:&#39;, np.round(vals[:10], 4))</span>
 
 <span class="c1"># Find global min/max for the first three nontrivial eigenvectors</span>
 <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">vecs</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">vecs</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
 
-<span class="c1"># 3. Plot the data colored by the first few nontrivial eigenvectors, using the same color scale</span>
+<span class="c1"># Plot the data colored by the first few nontrivial eigenvectors, using the same color scale</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;True labels&#39;</span><span class="p">)</span>
@@ -626,10 +625,7 @@ $<span class="math notranslate nohighlight">\( L = D - A \)</span>$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First 10 eigenvalues: [0.     0.0061 0.0204 0.0209 0.0253 0.03   0.0786 0.0807 0.0831 0.0899]
-</pre></div>
-</div>
-<img alt="../_images/88407f6ae6738dc10375429e3afc37433e3de908a2e9ecedcf12f8c084e0bea7.png" src="../_images/88407f6ae6738dc10375429e3afc37433e3de908a2e9ecedcf12f8c084e0bea7.png" />
+<img alt="../_images/a69cec84c286064ca715cd56053c2aa556591d3212707fe4ca33e0852acba49b.png" src="../_images/a69cec84c286064ca715cd56053c2aa556591d3212707fe4ca33e0852acba49b.png" />
 </div>
 </div>
 <p>In spectral clustering, we use the eigenvectors of the graph Laplacian to perform clustering. The eigenvectors of the graph Laplacian can be used to embed the data points into a lower-dimensional space, where we can then apply K-means clustering.</p>
