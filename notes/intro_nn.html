@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -395,24 +395,76 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="nerual-network">
 <h1>Nerual Network<a class="headerlink" href="#nerual-network" title="Link to this heading">#</a></h1>
-<p>A nerual network is a parametric model – just like linear regression and logistic regression, which maps input to output and depends on many parameters.
-But it is much more ``expressive’’ than linear models, as it can represent complex non-linear relationships between input and output.</p>
+<p>A neural network is a parametric model – just like linear regression and logistic regression, which maps input to output and depends on many parameters.
+But it is much more “expressive” than linear models, as it can represent complex non-linear relationships between input and output.</p>
 <p><a class="reference external" href="https://medium.com/analytics-vidhya/neural-network-part1-inside-a-single-neuron-fee5e44f1e">visualizing single neuron</a></p>
 <p>For the feedforward neural network, also known as the multilayer perceptron (MLP), the model is a composition of linear transformations and non-linear activation functions.</p>
-<p>Mathematically, the model can be written as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-h_1 &amp;= \sigma(W_1 x + b_1) \\
-h_2 &amp;= \sigma(W_2 h_1 + b_2) \\
-\vdots \\
-y &amp;= \sigma(W_{L} h_{L-1} + b_{L})
-\end{aligned}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> is the input in <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>,<span class="math notranslate nohighlight">\(y\)</span> is the output, <span class="math notranslate nohighlight">\(W_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> are the <code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">bias</span></code> of the affine transformation in layer i,
-<span class="math notranslate nohighlight">\(\sigma\)</span> is the activation function, and <span class="math notranslate nohighlight">\(L\)</span> is the number of layers.</p>
 <p>The typical workflow of training a neural network is similar to logistic regression: define the model, define the loss function, and optimize the loss function.</p>
 <p><a class="reference external" href="https://playground.tensorflow.org/">interative visualization of neural network</a>.</p>
+<p>Each neuron computes a weighted sum of its inputs, adds a bias, and applies a non-linear activation function. This allows neural networks to model complex, non-linear relationships between inputs and outputs.</p>
+<p><strong>1. Mathematical expression for a single neuron:</strong></p>
+<p>Given input vector <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^d\)</span>, weights <span class="math notranslate nohighlight">\(\mathbf{w} \in \mathbb{R}^d\)</span>, and bias <span class="math notranslate nohighlight">\(b \in \mathbb{R}\)</span>, the output <span class="math notranslate nohighlight">\(y\)</span> of a single neuron is:
+$<span class="math notranslate nohighlight">\(
+y = \sigma(\mathbf{w}^T \mathbf{x} + b)
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\sigma$ is an activation function (e.g., sigmoid, tanh, ReLU).</p>
+<p><strong>In scalar form:</strong><br />
+If <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, ..., x_d]\)</span>, <span class="math notranslate nohighlight">\(\mathbf{w} = [w_1, w_2, ..., w_d]\)</span>, then
+$<span class="math notranslate nohighlight">\(
+y = \sigma\left(\sum_{j=1}^d w_j x_j + b\right)
+\)</span><span class="math notranslate nohighlight">\(
+That is, each input \)</span>x_j<span class="math notranslate nohighlight">\( is multiplied by its weight \)</span>w_j<span class="math notranslate nohighlight">\(, summed, added to bias \)</span>b$, and passed through the activation function.</p>
+<p><strong>2. Neural network with 2D input, 1 hidden layer (3 neurons), and 1D output:</strong>
+As an example, we consider a neural network with 2D input, one hidden layer with 3 neurons, and a single output neuron. The architecture can be described as follows:</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2]\)</span>. For each hidden neuron <span class="math notranslate nohighlight">\(i=1,2,3\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+h_1 = \sigma(w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+h_2 = \sigma(w_{21}^{(1)} x_1 + w_{22}^{(1)} x_2 + b_2^{(1)})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+h_3 = \sigma(w_{31}^{(1)} x_1 + w_{32}^{(1)} x_2 + b_3^{(1)})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_{ij}^{(1)}\)</span> are the weights from input neuron <span class="math notranslate nohighlight">\(j\)</span> to hidden neuron <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(b_i^{(1)}\)</span> is the bias for hidden neuron <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>The output neuron computes:
+$<span class="math notranslate nohighlight">\(
+y = \sigma(w_1^{(2)} h_1 + w_2^{(2)} h_2 + w_3^{(2)} h_3 + b^{(2)})
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>w_j^{(2)}<span class="math notranslate nohighlight">\( are the weights from hidden neuron \)</span>j<span class="math notranslate nohighlight">\( to the output, and \)</span>b^{(2)}$ is the output bias.</p>
+<p><strong>In matrix form:</strong></p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^2\)</span> be the input. The hidden layer has 3 neurons:
+$<span class="math notranslate nohighlight">\(
+\mathbf{h} = \sigma( W^{(1)} \mathbf{x} + \mathbf{b}^{(1)} )
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>W^{(1)} \in \mathbb{R}^{3 \times 2}<span class="math notranslate nohighlight">\(, \)</span>\mathbf{b}^{(1)} \in \mathbb{R}^3<span class="math notranslate nohighlight">\(, \)</span>\mathbf{h} \in \mathbb{R}^3$.</p>
+<p>The output layer is:
+$<span class="math notranslate nohighlight">\(
+y = \sigma( W^{(2)} \mathbf{h} + b^{(2)} )
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>W^{(2)} \in \mathbb{R}^{1 \times 3}<span class="math notranslate nohighlight">\(, \)</span>b^{(2)} \in \mathbb{R}$.</p>
+<p>Let <span class="math notranslate nohighlight">\(\theta = \{ W^{(1)}, \mathbf{b}^{(1)}, W^{(2)}, b^{(2)} \}\)</span> be all weights and biases. The neural network defines a function <span class="math notranslate nohighlight">\(f(\mathbf{x}; \theta)\)</span>: it maps input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to output <span class="math notranslate nohighlight">\(y\)</span>, and it depends on the parameters <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<p><strong>3. Optimization problem:</strong></p>
+<p>For regression, given a dataset <span class="math notranslate nohighlight">\(\{ (\mathbf{x}_i, y_i) \}_{i=1}^N\)</span>. The goal is to find parameters <span class="math notranslate nohighlight">\(\theta\)</span> that minimize the loss (e.g., mean squared error for regression):</p>
+<div class="math notranslate nohighlight">
+\[
+\min_{\theta} L(\theta) = \frac{1}{N} \sum_{i=1}^N \big( f(\mathbf{x}_i; \theta),\ y_i \big)^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(L\)</span> is the loss function (e.g., cross-entropy for classification, squared error for regression).</p>
+<p><strong>Regularization:</strong></p>
+<p>As in ridge regression, we can add a regularization term to the loss function to prevent overfitting:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\theta) = \frac{1}{N} \sum_{i=1}^N \big( f(\mathbf{x}_i; \theta) - y_i \big)^2 + \lambda R(\theta)\]</div>
+<p>where <span class="math notranslate nohighlight">\(R(\theta)\)</span> is a regularization term (e.g., <span class="math notranslate nohighlight">\(R(\theta) = ||\theta||^2\)</span> for L2 regularization), and <span class="math notranslate nohighlight">\(\lambda\)</span> is a hyperparameter controlling the strength of regularization.</p>
+<p><strong>4. Training process:</strong></p>
+<p>The problem is typically solved using gradient descent.</p>
+<div class="math notranslate nohighlight">
+\[\theta \leftarrow \theta - \alpha \nabla_\theta J(\theta)\]</div>
+<p>However, in practice, we can not load the entire dataset into memory. Instead, we use mini-batch gradient descent, which updates the model using a small random subset of the data (a mini-batch) at each iteration.</p>
 <p>In the following, we will compare the performance of a neural network and a logistic regression model on the hand written digit classification task.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
