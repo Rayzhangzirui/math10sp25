@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -381,6 +381,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-expression-for-a-single-neuron">Mathematical expression for a single neuron:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-expression-for-a-neural-network">Mathematical expression for a neural network:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-problem">Optimization problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-network-cnn">Convolutional Neural Network (CNN)</a></li>
 </ul>
             </nav>
@@ -402,69 +407,80 @@ But it is much more “expressive” than linear models, as it can represent com
 <p>The typical workflow of training a neural network is similar to logistic regression: define the model, define the loss function, and optimize the loss function.</p>
 <p><a class="reference external" href="https://playground.tensorflow.org/">interative visualization of neural network</a>.</p>
 <p>Each neuron computes a weighted sum of its inputs, adds a bias, and applies a non-linear activation function. This allows neural networks to model complex, non-linear relationships between inputs and outputs.</p>
-<p><strong>1. Mathematical expression for a single neuron:</strong></p>
-<p>Given input vector <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^d\)</span>, weights <span class="math notranslate nohighlight">\(\mathbf{w} \in \mathbb{R}^d\)</span>, and bias <span class="math notranslate nohighlight">\(b \in \mathbb{R}\)</span>, the output <span class="math notranslate nohighlight">\(y\)</span> of a single neuron is:
-$<span class="math notranslate nohighlight">\(
+<section id="mathematical-expression-for-a-single-neuron">
+<h2>Mathematical expression for a single neuron:<a class="headerlink" href="#mathematical-expression-for-a-single-neuron" title="Link to this heading">#</a></h2>
+<p>Given input vector <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^d\)</span>, weights <span class="math notranslate nohighlight">\(\mathbf{w} \in \mathbb{R}^d\)</span>, and bias <span class="math notranslate nohighlight">\(b \in \mathbb{R}\)</span>, the output <span class="math notranslate nohighlight">\(y\)</span> of a single neuron is:</p>
+<div class="math notranslate nohighlight">
+\[
 y = \sigma(\mathbf{w}^T \mathbf{x} + b)
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\sigma$ is an activation function (e.g., sigmoid, tanh, ReLU).</p>
-<p><strong>In scalar form:</strong><br />
-If <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, ..., x_d]\)</span>, <span class="math notranslate nohighlight">\(\mathbf{w} = [w_1, w_2, ..., w_d]\)</span>, then
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is an activation function (e.g., sigmoid, tanh, ReLU).</p>
+<p>In scalar form:<br />
+If <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, ..., x_d]\)</span>, <span class="math notranslate nohighlight">\(\mathbf{w} = [w_1, w_2, ..., w_d]\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
 y = \sigma\left(\sum_{j=1}^d w_j x_j + b\right)
-\)</span><span class="math notranslate nohighlight">\(
-That is, each input \)</span>x_j<span class="math notranslate nohighlight">\( is multiplied by its weight \)</span>w_j<span class="math notranslate nohighlight">\(, summed, added to bias \)</span>b$, and passed through the activation function.</p>
-<p><strong>2. Neural network with 2D input, 1 hidden layer (3 neurons), and 1D output:</strong>
-As an example, we consider a neural network with 2D input, one hidden layer with 3 neurons, and a single output neuron. The architecture can be described as follows:</p>
-<p>Let <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2]\)</span>. For each hidden neuron <span class="math notranslate nohighlight">\(i=1,2,3\)</span>:</p>
+\]</div>
+<p>That is, each input <span class="math notranslate nohighlight">\(x_j\)</span> is multiplied by its weight <span class="math notranslate nohighlight">\(w_j\)</span>, summed, added to bias <span class="math notranslate nohighlight">\(b\)</span>, and passed through the activation function.</p>
+</section>
+<section id="mathematical-expression-for-a-neural-network">
+<h2>Mathematical expression for a neural network:<a class="headerlink" href="#mathematical-expression-for-a-neural-network" title="Link to this heading">#</a></h2>
+<p>As an example, we consider a neural network with 2D input, one hidden layer with 3 neurons, and a single output neuron. The architecture can be described as follows:</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2]\)</span>. For each hidden neuron:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+h_1 &amp;= \sigma(w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)}) \\
+h_2 &amp;= \sigma(w_{21}^{(1)} x_1 + w_{22}^{(1)} x_2 + b_2^{(1)}) \\
+h_3 &amp;= \sigma(w_{31}^{(1)} x_1 + w_{32}^{(1)} x_2 + b_3^{(1)})
+\end{aligned}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(h_i\)</span> are the outputs of the hidden neurons, <span class="math notranslate nohighlight">\(w_{ij}^{(1)}\)</span> are the weights from input neuron <span class="math notranslate nohighlight">\(j\)</span> to hidden neuron <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(b_i^{(1)}\)</span> is the bias for hidden neuron <span class="math notranslate nohighlight">\(i\)</span>, for <span class="math notranslate nohighlight">\(i = 1, 2, 3\)</span> and <span class="math notranslate nohighlight">\(j = 1, 2\)</span>.</p>
+<p>The output neuron computes</p>
 <div class="math notranslate nohighlight">
 \[
-h_1 = \sigma(w_{11}^{(1)} x_1 + w_{12}^{(1)} x_2 + b_1^{(1)})
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-h_2 = \sigma(w_{21}^{(1)} x_1 + w_{22}^{(1)} x_2 + b_2^{(1)})
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-h_3 = \sigma(w_{31}^{(1)} x_1 + w_{32}^{(1)} x_2 + b_3^{(1)})
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(w_{ij}^{(1)}\)</span> are the weights from input neuron <span class="math notranslate nohighlight">\(j\)</span> to hidden neuron <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(b_i^{(1)}\)</span> is the bias for hidden neuron <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>The output neuron computes:
-$<span class="math notranslate nohighlight">\(
 y = \sigma(w_1^{(2)} h_1 + w_2^{(2)} h_2 + w_3^{(2)} h_3 + b^{(2)})
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>w_j^{(2)}<span class="math notranslate nohighlight">\( are the weights from hidden neuron \)</span>j<span class="math notranslate nohighlight">\( to the output, and \)</span>b^{(2)}$ is the output bias.</p>
-<p><strong>In matrix form:</strong></p>
-<p>Let <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^2\)</span> be the input. The hidden layer has 3 neurons:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_j^{(2)}\)</span> are the weights from hidden neuron <span class="math notranslate nohighlight">\(j\)</span> to the output, and <span class="math notranslate nohighlight">\(b^{(2)}\)</span> is the output bias.</p>
+<p>In matrix form, the outputs from the hidden layer is a vector <span class="math notranslate nohighlight">\(\mathbf{h} \in \mathbb{R}^3\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf{h} = \sigma( W^{(1)} \mathbf{x} + \mathbf{b}^{(1)} )
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>W^{(1)} \in \mathbb{R}^{3 \times 2}<span class="math notranslate nohighlight">\(, \)</span>\mathbf{b}^{(1)} \in \mathbb{R}^3<span class="math notranslate nohighlight">\(, \)</span>\mathbf{h} \in \mathbb{R}^3$.</p>
-<p>The output layer is:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(W^{(1)} \in \mathbb{R}^{3 \times 2}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}^{(1)} \in \mathbb{R}^3\)</span>, <span class="math notranslate nohighlight">\(\mathbf{h} \in \mathbb{R}^3\)</span>.</p>
+<p>The output layer is:</p>
+<div class="math notranslate nohighlight">
+\[
 y = \sigma( W^{(2)} \mathbf{h} + b^{(2)} )
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>W^{(2)} \in \mathbb{R}^{1 \times 3}<span class="math notranslate nohighlight">\(, \)</span>b^{(2)} \in \mathbb{R}$.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(W^{(2)} \in \mathbb{R}^{1 \times 3}\)</span>, <span class="math notranslate nohighlight">\(b^{(2)} \in \mathbb{R}\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(\theta = \{ W^{(1)}, \mathbf{b}^{(1)}, W^{(2)}, b^{(2)} \}\)</span> be all weights and biases. The neural network defines a function <span class="math notranslate nohighlight">\(f(\mathbf{x}; \theta)\)</span>: it maps input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to output <span class="math notranslate nohighlight">\(y\)</span>, and it depends on the parameters <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
-<p><strong>3. Optimization problem:</strong></p>
+</section>
+<section id="optimization-problem">
+<h2>Optimization problem<a class="headerlink" href="#optimization-problem" title="Link to this heading">#</a></h2>
 <p>For regression, given a dataset <span class="math notranslate nohighlight">\(\{ (\mathbf{x}_i, y_i) \}_{i=1}^N\)</span>. The goal is to find parameters <span class="math notranslate nohighlight">\(\theta\)</span> that minimize the loss (e.g., mean squared error for regression):</p>
 <div class="math notranslate nohighlight">
 \[
 \min_{\theta} L(\theta) = \frac{1}{N} \sum_{i=1}^N \big( f(\mathbf{x}_i; \theta),\ y_i \big)^2
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(L\)</span> is the loss function (e.g., cross-entropy for classification, squared error for regression).</p>
-<p><strong>Regularization:</strong></p>
+</section>
+<section id="regularization">
+<h2>Regularization<a class="headerlink" href="#regularization" title="Link to this heading">#</a></h2>
 <p>As in ridge regression, we can add a regularization term to the loss function to prevent overfitting:</p>
 <div class="math notranslate nohighlight">
 \[
-L(\theta) = \frac{1}{N} \sum_{i=1}^N \big( f(\mathbf{x}_i; \theta) - y_i \big)^2 + \lambda R(\theta)\]</div>
+L(\theta) = \frac{1}{N} \sum_{i=1}^N \big( f(\mathbf{x}_i; \theta) - y_i \big)^2 + \lambda R(\theta)
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(R(\theta)\)</span> is a regularization term (e.g., <span class="math notranslate nohighlight">\(R(\theta) = ||\theta||^2\)</span> for L2 regularization), and <span class="math notranslate nohighlight">\(\lambda\)</span> is a hyperparameter controlling the strength of regularization.</p>
-<p><strong>4. Training process:</strong></p>
+</section>
+<section id="training">
+<h2>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h2>
 <p>The problem is typically solved using gradient descent.</p>
 <div class="math notranslate nohighlight">
 \[\theta \leftarrow \theta - \alpha \nabla_\theta J(\theta)\]</div>
-<p>However, in practice, we can not load the entire dataset into memory. Instead, we use mini-batch gradient descent, which updates the model using a small random subset of the data (a mini-batch) at each iteration.</p>
+<p>However, in practice, we can not load the entire dataset into memory.</p>
+<p>Instead, we use mini-batch gradient descent, which updates the model using a small random subset of the data (a mini-batch) at each iteration.</p>
 <p>In the following, we will compare the performance of a neural network and a logistic regression model on the hand written digit classification task.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,6 +669,7 @@ Test Accuracy: 96.41%
 </div>
 </div>
 </div>
+</section>
 <section id="convolutional-neural-network-cnn">
 <h2>Convolutional Neural Network (CNN)<a class="headerlink" href="#convolutional-neural-network-cnn" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://poloclub.github.io/cnn-explainer/">Convolutional Neural Network</a></p>
@@ -801,6 +818,11 @@ CNN Test Accuracy: 97.32%
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-expression-for-a-single-neuron">Mathematical expression for a single neuron:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-expression-for-a-neural-network">Mathematical expression for a neural network:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-problem">Optimization problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-network-cnn">Convolutional Neural Network (CNN)</a></li>
 </ul>
   </nav></div>
