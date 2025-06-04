@@ -1,0 +1,725 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>LLMs &#8212; UCI Math 10, Spring 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/llm';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LLM Demo" href="llm_demo.html" />
+    <link rel="prev" title="Nerual Network" href="intro_nn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Spring 2025</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Spring 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kaggle.html">Math 10 Kaggle Competition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nonlinear_dim.html">Nonlinear Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="kmeans.html">Clustering</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">LLMs</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="llm_demo.html">LLM Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_5.html">Week 4, Fri, 4/25</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_1.html">Week 5, Mon, 4/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_3.html">Week 5, Wed, 4/30</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_5.html">Week 6, Fri, 5/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_1.html">Week 7, Mon, 5/12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_3.html">Week 7, Wed, 5/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_5.html">Week 7, Fri, 5/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_1.html">Week 8, Mon, 5/19</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/llm.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>LLMs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LLMs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-next-token-prediction">Training: Next Token Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-generating-text">Inference: Generating Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning-sft">Supervised Fine-Tuning (SFT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallucination">Hallucination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-tools">Using tools</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-from-human-feedback-rlhf">Reinforcement Learning from Human Feedback (RLHF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reasoning-model">Reasoning Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="llms">
+<h1>LLMs<a class="headerlink" href="#llms" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Module Overview:</strong>
+This module introduces Large Language Models (LLMs). We focus on connecting LLM concepts to supervised learning and reinforcement learning, and highlight practical implications for using LLMs effectively.</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=7xTGNNLPyMI">Deep Dive into LLMs like ChatGPT &#64;AndrejKarpathy</a>
+<a class="reference external" href="https://www.youtube.com/watch?v=LPZh9BOjkQs">Large Language Models explained briefly &#64;3blue1brown</a>
+<a class="reference external" href="https://huggingface.co/learn/llm-course/en/chapter12/2">Introduction to Reinforcement Learning and its Role in LLMs</a></p>
+</section>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#data-preparation"><span class="xref myst">Data Preparation</span></a></p></li>
+<li><p><a class="reference internal" href="#tokenization"><span class="xref myst">Tokenization</span></a></p></li>
+<li><p><a class="reference internal" href="#training-next-token-prediction"><span class="xref myst">Training: Next Token Prediction</span></a></p></li>
+<li><p><a class="reference internal" href="#inference-generating-text"><span class="xref myst">Inference: Generating Text</span></a></p></li>
+<li><p><a class="reference internal" href="#supervised-fine-tuning"><span class="xref myst">Supervised Fine-Tuning</span></a></p></li>
+<li><p><a class="reference internal" href="#hallucination"><span class="xref myst">Hallucination</span></a></p></li>
+<li><p><a class="reference internal" href="#using-tools"><span class="xref myst">Using tools</span></a></p></li>
+<li><p><a class="reference internal" href="#counting-and-arithmetic"><span class="xref myst">Counting and Arithmetic</span></a></p></li>
+<li><p><a class="reference internal" href="#reinforcement-learning"><span class="xref myst">Reinforcement Learning</span></a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="data-preparation">
+<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
+<p>The journey of building an LLM begins with data. An example is the <a class="reference external" href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">FineWeb dataset</a>, which contains a vast amount of text data.</p>
+<blockquote>
+<div><p><strong>Practical implication:</strong>
+The quality and diversity of your dataset directly affect what the model can learn and how well it generalizes.</p>
+</div></blockquote>
+</section>
+<section id="tokenization">
+<h2>Tokenization<a class="headerlink" href="#tokenization" title="Link to this heading">#</a></h2>
+<p>Computers see 0s and 1s. For example, each char is represented by a number in the ASCII table, e.g. ‘a’ is 97, ‘b’ is 98, etc.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;How are you&quot;</span>
+<span class="n">int_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">int_sequence</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>“How are you” would be represented as: [72, 111, 119, 32, 97, 114, 101, 32, 121, 111, 117]</p>
+<p>Therefore, this huge amount of text data is actually a sequence of numbers.</p>
+<p>However, working with raw characters is inefficient. If a sequence of numbers occurs frequently, it is better to represent it with a single “ID” instead of multiple numbers. This process is known as <strong>tokenization</strong>.</p>
+<p>For example, the sequence “72, 111, 119” occurs frequently, so it can be represented as a single token, let’s say 4438.</p>
+<p>You can see how tokenizer works <a class="reference external" href="https://tiktokenizer.vercel.app/?model=cl100k_base">here</a>. (<code class="docutils literal notranslate"><span class="pre">cl100k_base</span></code> is a tokenizer used by OpenAI models.) “How are you” would be represented as a sequence of tokens, such as <code class="docutils literal notranslate"><span class="pre">[4438,</span> <span class="pre">527,</span> <span class="pre">499]</span></code>. As another example, “ubiquitous” is actually broken into 3 tokens <code class="docutils literal notranslate"><span class="pre">[392,</span> <span class="pre">5118,</span> <span class="pre">5085]</span></code>.</p>
+<p>The vocabulary is the set of all tokens that the model can understand. For instance, the vocabulary for the <code class="docutils literal notranslate"><span class="pre">cl100k_base</span></code> tokenizer includes around 100,000 tokens.</p>
+<blockquote>
+<div><p><strong>Connection:</strong>
+Tokenization is a form of feature engineering, similar to how you might encode categorical variables in supervised learning.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Practical implication:</strong>
+Understanding tokenization you anticipate model limitations (e.g., #counting-and-arithmetic).</p>
+</div></blockquote>
+</section>
+<section id="training-next-token-prediction">
+<h2>Training: Next Token Prediction<a class="headerlink" href="#training-next-token-prediction" title="Link to this heading">#</a></h2>
+<p>One way to train a LLM is <strong>next token prediction</strong>: the model take a sequence of tokens as input and predicts the next token in the sequence.</p>
+<p><img alt="training" src="notes/fig_training.png" /></p>
+<p><strong>Connection:</strong>
+Training an LLM for next token prediction is fundamentally a supervised learning problem, just like classification. The model is given an input sequence (features) and learns to predict the next token (label) from a fixed vocabulary—each token is a possible class. LLMs are parametric models (large neural networks) with millions or billions of parameters. The final layer is a softmax, which outputs probabilities for each possible next token. Training uses gradient descent to minimize the cross-entropy loss between the predicted probabilities and the actual next token, exactly as in standard neural network classification tasks.</p>
+<blockquote>
+<div><p><strong>Practical implication:</strong>
+Understanding this connection helps you see why LLMs can generalize well to new text, but also why they may make mistakes similar to other supervised models (e.g., overfitting, bias from training data).</p>
+</div></blockquote>
+</section>
+<section id="inference-generating-text">
+<h2>Inference: Generating Text<a class="headerlink" href="#inference-generating-text" title="Link to this heading">#</a></h2>
+<p>During inference, the model generates text based on a given context window (a fixed-length sequence of previous tokens).</p>
+<blockquote>
+<div><p><strong>Practical implication:</strong>
+This is a stochastic process. Some vendor provide a option “balance”, “creative”, or “precise” to control the randomness of the output. For “precise”, we might prefer to sample the most likely next token, while for “creative”, we might sample from a wider range of possibilities.</p>
+</div></blockquote>
+<p><strong>Context Window</strong>
+The context window size is the maximum number of tokens the model can consider at once. For example, GPT-4 has a context window size of 128k tokens. This is like the working memory of the model.</p>
+<blockquote>
+<div><p><strong>Practical implication:</strong></p>
+<ul class="simple">
+<li><p>Starting a new chat resets the context and refresh the model’s memory. This is useful for keeping conversations coherent and relevant.</p></li>
+<li><p>You can add files to the context window, such as PDFs or text documents. They are tokenized and included in the context window, allowing the model to reference their content when generating responses.</p></li>
+<li><p>If you have very long conversation, the model may not be able to remember everything, leading to potential loss of context or coherence in the generated text.</p></li>
+</ul>
+</div></blockquote>
+<p>For a visual explanation, see this <a class="reference external" href="https://www.youtube.com/watch?v=wjZofJX0v4M&amp;amp;t=183s">video demonstration</a>.</p>
+<p><strong>Knowledge Cutoff</strong>
+LLMs are trained on data up to a certain point in time, known as the knowledge cutoff. This means it does not have information about events or developments that occurred after that date.</p>
+<blockquote>
+<div><p><strong>Practical implication:</strong>
+If you ask about recent events, the model may not provide accurate or up-to-date information. See #tool-usage for how to handle this limitation.</p>
+</div></blockquote>
+</section>
+<section id="supervised-fine-tuning-sft">
+<h2>Supervised Fine-Tuning (SFT)<a class="headerlink" href="#supervised-fine-tuning-sft" title="Link to this heading">#</a></h2>
+<p>After pretraining, LLMs are often fine-tuned on specific datasets, such as user-assistant conversations. For example, the <a class="reference external" href="https://huggingface.co/datasets/OpenAssistant/oasst1/viewer/default/train?row=0&amp;amp;views%5B%5D=train">OpenAssistant oasst1 dataset</a> contains dialogues that help models learn to follow instructions and provide helpful responses.</p>
+<p>See <a class="reference external" href="https://tiktokenizer.vercel.app/?model=gpt-4o">example</a> for how to tokenize a conversation. This can be achieved by introducing special tokens like <code class="docutils literal notranslate"><span class="pre">&lt;|im_start|&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;|im_end|&gt;</span></code> to denote the beginning and end of user messages.</p>
+<blockquote>
+<div><p><strong>Practical implication:</strong>
+Different models went thorough different SFT, leading to different “personalities” or “styles”.</p>
+</div></blockquote>
+<p><strong>Open Source Models</strong>
+When a model is open source, it usually means that the model weights and architecture are publicly available. But usually, the training data and the training process are not disclosed.</p>
+<p>Hugging Face is a popular platform for sharing and using open-source models. You can also play with models on your local machine using LM Studio. Usually, the pre-trained model is named “base model”, and the SFT model is named “instructed model”.</p>
+</section>
+<section id="hallucination">
+<h2>Hallucination<a class="headerlink" href="#hallucination" title="Link to this heading">#</a></h2>
+<p>Pre-trained models can always generate the next token. Even with text like “what happened in 2099”, it still tries to complete it can generate a plausible-sounding response, even though it has no knowledge of the future. Early LLMs, like GPT-2, were known for this behavior, which is often referred to as “hallucination.”</p>
+<p>To mitigate hallucination, one approach is to include “I don’t know” in the conversation dataset. This helps the model learn to recognize when it does not have enough information to provide a meaningful answer.</p>
+</section>
+<section id="using-tools">
+<h2>Using tools<a class="headerlink" href="#using-tools" title="Link to this heading">#</a></h2>
+<p>When an LLM needs to answer a question that requires up-to-date or external information, it can use tools to enhance its response. The process works as follows: First, the model detects that the user’s query is beyond its knowledge cutoff or requires real-time data, such as current events or calculations. Next, the LLM formulates a structured request for the appropriate tool, such as a web search, database lookup, or calculator. The tool then executes the request and returns the result to the LLM. Finally, the LLM integrates this new information into its context window and uses it to generate a more accurate and informed response for the user.</p>
+<p>Here’s an example that illustrates this process (performed on 6/2/2025):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>User: How many times did Oklahoma City Thunder went into NBA finals?
+
+ChatGPT 4o: As of June 2025, the Oklahoma City Thunder have reached the NBA Finals twice since relocating from Seattle in 2008. Their first appearance was in 2012, where they lost to the Miami Heat in five games. Their second appearance is in the ongoing 2025 NBA Finals against the Indiana Pacers, with the series set to begin on June 5. [Link to wikipedia]
+</pre></div>
+</div>
+<p>Here, the model used a web search tool to find the latest information about the Oklahoma City Thunder’s NBA Finals appearances, which is beyond its knowledge cutoff.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>User: How many times did Oklahoma City Thunder went into NBA finals? Don&#39;t search. Answer immediately.
+
+ChatGPT 4o: The Oklahoma City Thunder have made one NBA Finals appearance — in 2012, where they lost to the Miami Heat.
+</pre></div>
+</div>
+<p>Here, I instructed the model not to search, therefore the answer is not up-to-date.</p>
+<blockquote>
+<div><p><strong>Practical implication:</strong>
+Once we know how LLM works, we can understand why it sometimes struggles with counting and arithmetic.</p>
+<ul class="simple">
+<li><p>LLM is doing next token prediction, which is not calculations.</p></li>
+<li><p>Large numbers or long words can be tokenized into multiple tokens. LLMs do not “see” the input as humans do, but as a sequence of tokens that may not align with the intended units (words, numbers, etc.)</p></li>
+</ul>
+</div></blockquote>
+<p>But they can use tools like calculators or code interpreters to perform precise calculations. For example, if you ask a model to  “What is 123456789 * 987654321”, it might use a calculator tool to provide the correct answer.
+But if you say “What is 123456789 * 987654321, answer immediately”, the model might struggle to give the correct answer because it is not designed for precise arithmetic calculations.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning">
+<h1>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h1>
+<section id="alignment">
+<h2>Alignment<a class="headerlink" href="#alignment" title="Link to this heading">#</a></h2>
+<p>After Pre-training and Supervised Fine-Tuning, we have a useful chatbot that are fluent in conversation.</p>
+<p>However, it may still produce harmful or biased responses, or not align with human values. <strong>Reinforcement Learning (RL)</strong> is used to further improve the model’s behavior by aligning it with human preferences and values.</p>
+<p>Agent: LLM</p>
+<p>Environment: The environment provides feedback to the agent based on its actions.</p>
+<p>Actions: The model’s responses to user queries.</p>
+<p>Rewards: Numerical feedback from the environment, indicating how well the model’s responses align with human preferences</p>
+<section id="reinforcement-learning-from-human-feedback-rlhf">
+<h3>Reinforcement Learning from Human Feedback (RLHF)<a class="headerlink" href="#reinforcement-learning-from-human-feedback-rlhf" title="Link to this heading">#</a></h3>
+<p>A very popular technique for aligning language models is Reinforcement Learning from Human Feedback (RLHF). In RLHF, we use human feedback as a proxy for the “reward” signal in RL. Here’s how it works:</p>
+<p>Get Human Preferences: We might ask humans to compare different responses generated by the LLM for the same input prompt and tell us which response they prefer. For example, we might show a human two different answers to the question “What is the capital of France?” and ask them “Which answer is better?“.</p>
+<p>Train a Reward Model: We use this human preference data to train a separate model called a reward model. This reward model learns to predict what kind of responses humans will prefer. It learns to score responses based on helpfulness, harmlessness, and alignment with human preferences.</p>
+<p>Fine-tune the LLM with RL: Now we use the reward model as the environment for our LLM agent. The LLM generates responses (actions), and the reward model scores these responses (provides rewards). In essence, we’re training the LLM to produce text that our reward model (which learned from human preferences) thinks is good.</p>
+</section>
+<section id="reasoning-model">
+<h3>Reasoning Model<a class="headerlink" href="#reasoning-model" title="Link to this heading">#</a></h3>
+<p>Another place where RL is useful is in improving the model’s reasoning capabilities.</p>
+<p>For example, if a model is asked to solve a math problem, it might generate a series of steps leading to the answer. If these steps are correct, the model receives a positive reward;. Over time, the model learns to produce more accurate and logical reasoning paths.</p>
+<p>Example of reasoning model/thinking model: <a class="reference external" href="https://arxiv.org/abs/2501.12948">DeepSeek-R1</a>, OpenAI o3 and o4-mini, Gemini-2.5 Pro, etc.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro_nn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Nerual Network</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="llm_demo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LLM Demo</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LLMs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-next-token-prediction">Training: Next Token Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-generating-text">Inference: Generating Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning-sft">Supervised Fine-Tuning (SFT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallucination">Hallucination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-tools">Using tools</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-from-human-feedback-rlhf">Reinforcement Learning from Human Feedback (RLHF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reasoning-model">Reasoning Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ray Zirui Zhang 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
