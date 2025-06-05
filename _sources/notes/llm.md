@@ -161,10 +161,10 @@ But they can use tools like calculators or code interpreters to perform precise 
 But if you say "What is 123456789 * 987654321, answer immediately", the model might struggle to give the correct answer because it is not designed for precise arithmetic calculations.
 
 
-# Reinforcement Learning
+## Reinforcement Learning
 
 
-## Alignment
+### Alignment
 
 After Pre-training and Supervised Fine-Tuning, we have a useful chatbot that are fluent in conversation.
 

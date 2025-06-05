@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -202,7 +202,6 @@
 
 <li class="toctree-l2"><a class="reference internal" href="intro_nn.html">Nerual Network</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">LLMs</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="llm_demo.html">LLM Demo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gan.html">Generative Models</a></li>
 </ul>
@@ -230,6 +229,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w7_3.html">Week 7, Wed, 5/15</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w7_5.html">Week 7, Fri, 5/16</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/w8_1.html">Week 8, Mon, 5/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_3.html">Week 8, Mon, 5/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_5.html">Week 8, Fri, 5/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_3.html">Week 9, Wed, 5/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_5.html">Week 9, Fri, 5/30</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -240,7 +243,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8_sol.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -383,7 +386,6 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LLMs</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
@@ -393,18 +395,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning-sft">Supervised Fine-Tuning (SFT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallucination">Hallucination</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-tools">Using tools</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-from-human-feedback-rlhf">Reinforcement Learning from Human Feedback (RLHF)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reasoning-model">Reasoning Model</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -555,17 +552,17 @@ Once we know how LLM works, we can understand why it sometimes struggles with co
 <p>But they can use tools like calculators or code interpreters to perform precise calculations. For example, if you ask a model to  “What is 123456789 * 987654321”, it might use a calculator tool to provide the correct answer.
 But if you say “What is 123456789 * 987654321, answer immediately”, the model might struggle to give the correct answer because it is not designed for precise arithmetic calculations.</p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning">
-<h1>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h1>
+<section id="reinforcement-learning">
+<h2>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h2>
 <section id="alignment">
-<h2>Alignment<a class="headerlink" href="#alignment" title="Link to this heading">#</a></h2>
+<h3>Alignment<a class="headerlink" href="#alignment" title="Link to this heading">#</a></h3>
 <p>After Pre-training and Supervised Fine-Tuning, we have a useful chatbot that are fluent in conversation.</p>
 <p>However, it may still produce harmful or biased responses, or not align with human values. <strong>Reinforcement Learning (RL)</strong> is used to further improve the model’s behavior by aligning it with human preferences and values.</p>
 <p>Agent: LLM</p>
 <p>Environment: The environment provides feedback to the agent based on its actions.</p>
 <p>Actions: The model’s responses to user queries.</p>
 <p>Rewards: Numerical feedback from the environment, indicating how well the model’s responses align with human preferences</p>
+</section>
 <section id="reinforcement-learning-from-human-feedback-rlhf">
 <h3>Reinforcement Learning from Human Feedback (RLHF)<a class="headerlink" href="#reinforcement-learning-from-human-feedback-rlhf" title="Link to this heading">#</a></h3>
 <p>A very popular technique for aligning language models is Reinforcement Learning from Human Feedback (RLHF). In RLHF, we use human feedback as a proxy for the “reward” signal in RL. Here’s how it works:</p>
@@ -647,7 +644,6 @@ But if you say “What is 123456789 * 987654321, answer immediately”, the mode
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LLMs</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
@@ -657,18 +653,13 @@ But if you say “What is 123456789 * 987654321, answer immediately”, the mode
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning-sft">Supervised Fine-Tuning (SFT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallucination">Hallucination</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-tools">Using tools</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-from-human-feedback-rlhf">Reinforcement Learning from Human Feedback (RLHF)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reasoning-model">Reasoning Model</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
