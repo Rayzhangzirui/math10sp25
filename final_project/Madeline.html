@@ -1,0 +1,1585 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fraud Detection &#8212; UCI Math 10, Spring 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_project/Madeline';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Winning Attributes in the League of Legends Worlds 2024 Championship" href="Matt.html" />
+    <link rel="prev" title="Analysis of the Winners of the Tour de France" href="Kelvin.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Spring 2025</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Spring 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kaggle.html">Math 10 Kaggle Competition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/nonlinear_dim.html">Nonlinear Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/kmeans.html">Clustering</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/llm.html">LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/llm_demo.html">LLM Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_5.html">Week 4, Fri, 4/25</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_1.html">Week 5, Mon, 4/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_3.html">Week 5, Wed, 4/30</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_5.html">Week 6, Fri, 5/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_1.html">Week 7, Mon, 5/12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_3.html">Week 7, Wed, 5/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_5.html">Week 7, Fri, 5/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_1.html">Week 8, Mon, 5/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_3.html">Week 8, Wed, 5/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_5.html">Week 8, Fri, 5/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_3.html">Week 9, Wed, 5/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_5.html">Week 9, Fri, 5/30</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8_sol.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Final Project</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Abigail.html">Predicting Titanic Survival Using Multiple Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Achyuta.html">Predicting Emergency Department Disposition (Admitted vs Not Admitted) Using Clinical and Socioeconomic Indicators</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Daeseo.html">IMDB Review Predictor</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Daniel.html">Tumor Diagnosis Classification: Breast Cancer Wisconsin</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Elijah.html">Automatic loan verification</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Eugene.html">Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Federica.html">Data Analysis of Instagram Influencer Metrics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Haoyu.html">SMCI Stock Predictor Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hongrui.html">IONQ in Focus: Predicting the Future of Quantum Tech Stocks</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Jerry.html">Math 10 Final Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kelvin.html">Analysis of the Winners of the Tour de France</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Fraud Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Matt.html">Winning Attributes in the League of Legends Worlds 2024 Championship</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Nishant.html"><strong>Cancer Classification using Gene Expression</strong></a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Oliver.html">Forecasting IPO First‑Day Returns – Investment‑Banking Valuation Project</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Rishabh.html">HOUSE PRICES PREDICTOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sandy.html">Predicting Pop Mart’s Stock Price Based on Google Trends</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Scott.html">Predicting various tickers from yfinance</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_project/Madeline.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fraud Detection</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stratified-sample">Stratified Sample</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addressing-the-minority-class">Addressing the minority class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-we-can-try-k-nearest-neighbors">Now we can try K nearest neighbors.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-each-feature-and-the-target-value">Visualization of each feature and the target value.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-decision-tree">Interpreting the decision tree.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fraud-detection">
+<h1>Fraud Detection<a class="headerlink" href="#fraud-detection" title="Link to this heading">#</a></h1>
+<p>Author: Madeline Chu</p>
+<p>Course Project, UC Irvine, Math 10, Spring 25</p>
+<p>I would like to post my notebook on the course’s website. Yes</p>
+<p><a class="reference external" href="https://www.kaggle.com/datasets/aryan208/financial-transactions-dataset-for-fraud-detection/data">https://www.kaggle.com/datasets/aryan208/financial-transactions-dataset-for-fraud-detection/data</a></p>
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">graphviz</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">graphviz</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">export_graphviz</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stratified-sample">
+<h2>Stratified Sample<a class="headerlink" href="#stratified-sample" title="Link to this heading">#</a></h2>
+<p>The original data contained 5 million samples of financial transactions. I will be using a sample size of 5000.</p>
+<p>I am stratifying the data by whether the activity is fraud or not, this will ensure that I have enough cases of financial fraud so I can analyze the relationship between the fraud and features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is all code that I used to stratify the sample.</span>
+
+<span class="c1"># Load the data set</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/madelinechu/Downloads/financial_fraud_detection_dataset.csv&#39;</span><span class="p">)</span>
+
+<span class="c1">#change the NaN values from fraudtype to &#39;Not Fraud&#39; so they don&#39;t get dropped</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;fraud_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fraud_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Not Fraud&#39;</span><span class="p">)</span>
+
+<span class="c1">#cleaning and reindexing so I can create a stratified sample</span>
+<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#create an index for the column</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s1">&#39;is_fraud&#39;</span>
+
+<span class="c1"># Stratified sampling, these lines are from Chatgpt.</span>
+<span class="n">splitter</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">sample_index</span> <span class="ow">in</span> <span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">df_clean</span><span class="p">,</span> <span class="n">df_clean</span><span class="p">[</span><span class="n">target_col</span><span class="p">]):</span>
+    <span class="n">stratified_sample</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample_index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use 3000 of the collected data</span>
+<span class="n">stratified_sample</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Users/madelinechu/Downloads/stratified_fraud_sample_5000.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Show sample</span>
+<span class="n">stratified_sample</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>transaction_id</th>
+      <th>timestamp</th>
+      <th>sender_account</th>
+      <th>receiver_account</th>
+      <th>amount</th>
+      <th>transaction_type</th>
+      <th>merchant_category</th>
+      <th>location</th>
+      <th>device_used</th>
+      <th>is_fraud</th>
+      <th>fraud_type</th>
+      <th>time_since_last_transaction</th>
+      <th>spending_deviation_score</th>
+      <th>velocity_score</th>
+      <th>geo_anomaly_score</th>
+      <th>payment_channel</th>
+      <th>ip_address</th>
+      <th>device_hash</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2185037</th>
+      <td>T3154711</td>
+      <td>2023-03-30T07:15:17.369205</td>
+      <td>ACC247896</td>
+      <td>ACC799578</td>
+      <td>224.51</td>
+      <td>withdrawal</td>
+      <td>utilities</td>
+      <td>Dubai</td>
+      <td>mobile</td>
+      <td>False</td>
+      <td>Not Fraud</td>
+      <td>-3339.180043</td>
+      <td>0.79</td>
+      <td>8</td>
+      <td>0.49</td>
+      <td>card</td>
+      <td>188.113.95.154</td>
+      <td>D2057361</td>
+    </tr>
+    <tr>
+      <th>2482596</th>
+      <td>T3461026</td>
+      <td>2023-10-02T00:28:00.955486</td>
+      <td>ACC460461</td>
+      <td>ACC454022</td>
+      <td>16.83</td>
+      <td>payment</td>
+      <td>grocery</td>
+      <td>Berlin</td>
+      <td>mobile</td>
+      <td>False</td>
+      <td>Not Fraud</td>
+      <td>2234.889287</td>
+      <td>0.80</td>
+      <td>18</td>
+      <td>0.06</td>
+      <td>card</td>
+      <td>203.60.84.46</td>
+      <td>D4574144</td>
+    </tr>
+    <tr>
+      <th>181111</th>
+      <td>T737613</td>
+      <td>2023-10-10T18:10:04.452613</td>
+      <td>ACC169410</td>
+      <td>ACC432109</td>
+      <td>89.04</td>
+      <td>payment</td>
+      <td>other</td>
+      <td>Toronto</td>
+      <td>web</td>
+      <td>False</td>
+      <td>Not Fraud</td>
+      <td>-794.250890</td>
+      <td>-0.36</td>
+      <td>8</td>
+      <td>0.32</td>
+      <td>card</td>
+      <td>152.29.53.109</td>
+      <td>D6762473</td>
+    </tr>
+    <tr>
+      <th>3571094</th>
+      <td>T4564845</td>
+      <td>2023-09-22T20:53:07.315571</td>
+      <td>ACC492144</td>
+      <td>ACC410595</td>
+      <td>4.12</td>
+      <td>transfer</td>
+      <td>grocery</td>
+      <td>Dubai</td>
+      <td>web</td>
+      <td>True</td>
+      <td>card_not_present</td>
+      <td>3705.568076</td>
+      <td>0.28</td>
+      <td>11</td>
+      <td>0.18</td>
+      <td>ACH</td>
+      <td>230.161.113.129</td>
+      <td>D8221144</td>
+    </tr>
+    <tr>
+      <th>972296</th>
+      <td>T1842120</td>
+      <td>2023-04-30T08:12:58.062014</td>
+      <td>ACC339542</td>
+      <td>ACC130395</td>
+      <td>393.32</td>
+      <td>withdrawal</td>
+      <td>travel</td>
+      <td>Sydney</td>
+      <td>mobile</td>
+      <td>False</td>
+      <td>Not Fraud</td>
+      <td>-4001.069331</td>
+      <td>1.89</td>
+      <td>15</td>
+      <td>0.03</td>
+      <td>ACH</td>
+      <td>13.91.200.205</td>
+      <td>D9433689</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
+<p><strong>Transaction ID</strong> - ID number for each transaction.
+<br></p>
+<p><strong>Timestamp</strong> - Time which the transaction took place. In ISO format.
+<br></p>
+<p><strong>Sender Account</strong> - Account number of the sender.
+<br></p>
+<p><strong>Receiver Account</strong> - Account number of the receiver.
+<br></p>
+<p><strong>Amount</strong> - Amount involved in the transaction.
+<br></p>
+<p><strong>Transaction Type</strong> - Type of transaction: deposit, withdrawal, transfer, or payment.
+<br></p>
+<p><strong>Merchant Category</strong> - Type of business the payment was involved in. (retail, traveling, etc.)
+<br></p>
+<p><strong>Location</strong> - City the transaction happened.
+<br></p>
+<p><strong>Device Used</strong> - Type of device. (mobile, POS, ATM, etc.)
+<br></p>
+<p><strong>Is it Fraud?</strong> - Was it fraud, in booleans.
+<br></p>
+<p><strong>Fraud Type</strong> - Type of fraud. (Hacker, money laundering, account takeover, etc.)
+<br></p>
+<p><strong>Time Since Last Transaction</strong> - Time in hours between transactions.
+<br></p>
+<p><strong>Spending Deviation Score</strong> - Deviation from a gaussian distribution.
+<br></p>
+<p><strong>Velocity Score</strong> - Not the time but how many transactions made in a short period of time.
+<br></p>
+<p><strong>Geo Anomaly Score</strong> - Measure of how unusual the transaction was.
+<br></p>
+<p><strong>Payment Channel</strong> - Channel used: card, wire transfer, etc.
+<br></p>
+<p><strong>IP Address</strong> - IP addresses of the transaction.
+<br></p>
+<p><strong>Device Hash</strong> - A unique way of identification on a device.
+<br></p>
+</section>
+<section id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
+<p>I will start by taking all my categorical data and turning it into numerical data. After doing some research, I was choosing between one-hot encode or target encoding however I ultimately wanted to the number of columns to a minimum so I will be applying the target encode method to my dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#the indices of the columns that are categorical</span>
+<span class="n">encode_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;transaction_type&#39;</span><span class="p">,</span> <span class="s1">&#39;merchant_category&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;device_used&#39;</span><span class="p">,</span> <span class="s1">&#39;payment_channel&#39;</span><span class="p">]</span>
+
+<span class="c1">#Changing the date time format and only taking out the hour of the day the transaction was made. </span>
+<span class="c1">#The decision was that I felt like hour of the day would most likely hold the most information with regards to being fraud/not-fraud.</span>
+<span class="n">stratified_sample</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ISO8601&#39;</span><span class="p">,</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#code fixed by chatgpt</span>
+<span class="n">stratified_sample</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stratified_sample</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+
+<span class="c1">#splitting the data, (df is used but it is on the stratified sample)</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">stratified_sample</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">stratified_sample</span><span class="p">[</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">],</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">stratified_sample</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>transaction_id</th>
+      <th>timestamp</th>
+      <th>sender_account</th>
+      <th>receiver_account</th>
+      <th>amount</th>
+      <th>transaction_type</th>
+      <th>merchant_category</th>
+      <th>location</th>
+      <th>device_used</th>
+      <th>is_fraud</th>
+      <th>fraud_type</th>
+      <th>time_since_last_transaction</th>
+      <th>spending_deviation_score</th>
+      <th>velocity_score</th>
+      <th>geo_anomaly_score</th>
+      <th>payment_channel</th>
+      <th>ip_address</th>
+      <th>device_hash</th>
+      <th>hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2185037</th>
+      <td>T3154711</td>
+      <td>2023-12-11 23:53:08.903327+00:00</td>
+      <td>ACC247896</td>
+      <td>ACC799578</td>
+      <td>224.51</td>
+      <td>withdrawal</td>
+      <td>utilities</td>
+      <td>Dubai</td>
+      <td>mobile</td>
+      <td>False</td>
+      <td>Not Fraud</td>
+      <td>-3339.180043</td>
+      <td>0.79</td>
+      <td>8</td>
+      <td>0.49</td>
+      <td>card</td>
+      <td>188.113.95.154</td>
+      <td>D2057361</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>2482596</th>
+      <td>T3461026</td>
+      <td>2023-05-06 00:23:18.546703+00:00</td>
+      <td>ACC460461</td>
+      <td>ACC454022</td>
+      <td>16.83</td>
+      <td>payment</td>
+      <td>grocery</td>
+      <td>Berlin</td>
+      <td>mobile</td>
+      <td>False</td>
+      <td>Not Fraud</td>
+      <td>2234.889287</td>
+      <td>0.80</td>
+      <td>18</td>
+      <td>0.06</td>
+      <td>card</td>
+      <td>203.60.84.46</td>
+      <td>D4574144</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>181111</th>
+      <td>T737613</td>
+      <td>2023-03-29 01:48:24.296081+00:00</td>
+      <td>ACC169410</td>
+      <td>ACC432109</td>
+      <td>89.04</td>
+      <td>payment</td>
+      <td>other</td>
+      <td>Toronto</td>
+      <td>web</td>
+      <td>False</td>
+      <td>Not Fraud</td>
+      <td>-794.250890</td>
+      <td>-0.36</td>
+      <td>8</td>
+      <td>0.32</td>
+      <td>card</td>
+      <td>152.29.53.109</td>
+      <td>D6762473</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3571094</th>
+      <td>T4564845</td>
+      <td>2023-11-28 09:11:16.099287+00:00</td>
+      <td>ACC492144</td>
+      <td>ACC410595</td>
+      <td>4.12</td>
+      <td>transfer</td>
+      <td>grocery</td>
+      <td>Dubai</td>
+      <td>web</td>
+      <td>True</td>
+      <td>card_not_present</td>
+      <td>3705.568076</td>
+      <td>0.28</td>
+      <td>11</td>
+      <td>0.18</td>
+      <td>ACH</td>
+      <td>230.161.113.129</td>
+      <td>D8221144</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>972296</th>
+      <td>T1842120</td>
+      <td>2023-04-05 05:37:45.332087+00:00</td>
+      <td>ACC339542</td>
+      <td>ACC130395</td>
+      <td>393.32</td>
+      <td>withdrawal</td>
+      <td>travel</td>
+      <td>Sydney</td>
+      <td>mobile</td>
+      <td>False</td>
+      <td>Not Fraud</td>
+      <td>-4001.069331</td>
+      <td>1.89</td>
+      <td>15</td>
+      <td>0.03</td>
+      <td>ACH</td>
+      <td>13.91.200.205</td>
+      <td>D9433689</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#target column name and list of column indices</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s1">&#39;is_fraud&#39;</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;amount&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;velocity_score&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;geo_anomaly_score&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;transaction_type_TE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;merchant_category_TE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;location_TE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;device_used_TE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;payment_channel_TE&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+
+<span class="c1">#target mean for all columns</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">encode_cols</span><span class="p">:</span>
+    <span class="n">target_means</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col</span><span class="p">)[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1"># command from chatgpt</span>
+    <span class="n">train_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;_TE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_means</span><span class="p">)</span> <span class="c1"># command from chatgpt</span>
+    <span class="n">test_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;_TE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_means</span><span class="p">)</span> <span class="c1"># command from chatgpt</span>
+
+
+<span class="n">corr</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">feature_cols</span> <span class="o">+</span> <span class="p">[</span><span class="n">target_col</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1">#correlation matrix, code taken from Professor Ray&#39;s website</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">feature_cols</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;.2f&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        amount  velocity_score  geo_anomaly_score  \
+amount                1.000000       -0.024284           0.002632   
+velocity_score       -0.024284        1.000000          -0.006721   
+geo_anomaly_score     0.002632       -0.006721           1.000000   
+transaction_type_TE   0.512677       -0.033048           0.008495   
+merchant_category_TE  0.005506       -0.025558           0.011403   
+location_TE          -0.007487       -0.003133           0.009528   
+device_used_TE        0.043387        0.003006           0.001229   
+payment_channel_TE    0.028426        0.005446           0.011014   
+hour                  0.027196        0.004868          -0.019790   
+is_fraud              0.009866       -0.003198           0.003820   
+
+                      transaction_type_TE  merchant_category_TE  location_TE  \
+amount                           0.512677              0.005506    -0.007487   
+velocity_score                  -0.033048             -0.025558    -0.003133   
+geo_anomaly_score                0.008495              0.011403     0.009528   
+transaction_type_TE              1.000000              0.004880    -0.016420   
+merchant_category_TE             0.004880              1.000000    -0.009343   
+location_TE                     -0.016420             -0.009343     1.000000   
+device_used_TE                   0.009352              0.027775     0.016785   
+payment_channel_TE               0.022888              0.003020    -0.013950   
+hour                             0.006624             -0.005921    -0.011389   
+is_fraud                         0.013632              0.051202     0.042580   
+
+                      device_used_TE  payment_channel_TE      hour  is_fraud  
+amount                      0.043387            0.028426  0.027196  0.009866  
+velocity_score              0.003006            0.005446  0.004868 -0.003198  
+geo_anomaly_score           0.001229            0.011014 -0.019790  0.003820  
+transaction_type_TE         0.009352            0.022888  0.006624  0.013632  
+merchant_category_TE        0.027775            0.003020 -0.005921  0.051202  
+location_TE                 0.016785           -0.013950 -0.011389  0.042580  
+device_used_TE              1.000000            0.018502 -0.011701  0.018497  
+payment_channel_TE          0.018502            1.000000 -0.006758  0.050734  
+hour                       -0.011701           -0.006758  1.000000  0.002668  
+is_fraud                    0.018497            0.050734  0.002668  1.000000  
+</pre></div>
+</div>
+<img alt="../_images/502908139b9324d1f8e443a187a82ffa45c4b7d942d7d493e6c434e0fa295fb4.png" src="../_images/502908139b9324d1f8e443a187a82ffa45c4b7d942d7d493e6c434e0fa295fb4.png" />
+</div>
+</div>
+<p>We can see that whether a case is constituted as fraudulent does not have a strong correlation with any of the features. However, this makes sense as a lot of the features take note of the instance of transaction and what device, amount or other characteristics these transactions have. If you think about the real world we would not expect that one characteristic of a transaction would affect very highly whether it is fraud or not.</p>
+</section>
+<section id="addressing-the-minority-class">
+<h2>Addressing the minority class<a class="headerlink" href="#addressing-the-minority-class" title="Link to this heading">#</a></h2>
+<p>In a data set like this, the number of fraudulent cases is expected to be a lot lower just because most financial transactions are not fraudulent. From a suggestion by chatgpt, I began to research SMOTE. SMOTE is advantageous because it creates more instances of the minority cases of the target feature. It is an interesting method as it takes from the concept of <strong>k-nearest neighbors</strong> in interpolating between the existing cases of fraud to create new cases of fraud.</p>
+<p><em>code was learned from: <a class="reference external" href="https://www.geeksforgeeks.org/smote-for-imbalanced-classification-with-python/">https://www.geeksforgeeks.org/smote-for-imbalanced-classification-with-python/</a></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#all feature columns</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;amount&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;velocity_score&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;geo_anomaly_score&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;transaction_type_TE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;merchant_category_TE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;location_TE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;device_used_TE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;payment_channel_TE&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="c1">#applying smote </span>
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># separated the features from the target.</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">]</span>
+
+<span class="c1">#resampling with SMOTE</span>
+<span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Separating my testing sets</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> 
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting before and after smote results</span>
+
+<span class="c1">#converting the training set to a panda series. </span>
+<span class="n">y_train_df</span> <span class="o">=</span> <span class="n">y_train_resampled</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;is_fraud&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Before SMOTE&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Is Fraud&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;is_fraud&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">y_train_df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;After SMOTE&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Is Fraud&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/971d5460f8baa7b8bbf5c4af3bf32aec3afe14f3db460bf7a7784e588de33c6d.png" src="../_images/971d5460f8baa7b8bbf5c4af3bf32aec3afe14f3db460bf7a7784e588de33c6d.png" />
+</div>
+</div>
+</section>
+<section id="logistic-regression">
+<h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h2>
+<p>Now I perform Logistic Regression by fitting on the training set and then predicting the train set. The logistic regression is fit with the SMOTE resampled set. Keep in mind that my my training and testing set only have features that I deem as important. For example, I did not include the columns that contained IP address, identification of case, etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># max_iter from chat gpt</span>
+<span class="c1"># fitting the logistic regression</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span><span class="p">)</span>
+
+<span class="c1"># predicting the amount of fraud from the testing set</span>
+<span class="n">Y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">Y_pred_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">Y_pred</span><span class="p">)</span>
+
+<span class="c1">#resetting the index for the testing and predicted values.</span>
+<span class="n">Y_actual_new_idx</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Y_pred_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">Y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#dataframe for compare test</span>
+<span class="n">df_compare_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s1">&#39;Actual&#39;</span> <span class="p">:</span> <span class="n">Y_actual_new_idx</span><span class="p">,</span> <span class="s1">&#39;Predicted&#39;</span> <span class="p">:</span> <span class="n">Y_pred_series</span><span class="p">})</span>
+
+<span class="c1">#plotting a confusion matrix</span>
+<span class="n">confusion_mtrx</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">df_compare_test</span><span class="p">[</span><span class="s1">&#39;Actual&#39;</span><span class="p">],</span> <span class="n">df_compare_test</span><span class="p">[</span><span class="s1">&#39;Predicted&#39;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_mtrx</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Not Fraud&#39;</span><span class="p">,</span> <span class="s1">&#39;Fraud&#39;</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Not Fraud&#39;</span><span class="p">,</span> <span class="s1">&#39;Fraud&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Actual Label&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(50.722222222222214, 0.5, &#39;Actual Label&#39;)
+</pre></div>
+</div>
+<img alt="../_images/db83ccf9822a6c1460c4d9eba01d4432954fba0d2c9e0b6920a6492ce98a2d47.png" src="../_images/db83ccf9822a6c1460c4d9eba01d4432954fba0d2c9e0b6920a6492ce98a2d47.png" />
+</div>
+</div>
+<p>It seems like a basic logistic regression did not accurately classify non-fraudulent cases. This make sense because logistic regression assumes a linear decision boundary, or in this case, a multidimensional plane. This then further assumes that theres a big distinction between fraudulent and non-fraudulent cases. However, this is not likely because it is very possible that the fraudulent case will be very similar to a non-fraudulent case.</p>
+</section>
+<section id="now-we-can-try-k-nearest-neighbors">
+<h2>Now we can try K nearest neighbors.<a class="headerlink" href="#now-we-can-try-k-nearest-neighbors" title="Link to this heading">#</a></h2>
+<p>We want to start by finding the optimal K.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#testing from 1 nn to 30.</span>
+<span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1">#comparing the score for each value of k neighbors.</span>
+<span class="n">k_scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+    <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+    <span class="n">k_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="c1">#Plotting the accuracy of each k vs. the number I chose for k</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_range</span><span class="p">,</span> <span class="n">k_scores</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Accuracy vs. Number of Neighbors (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Neighbors (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cross-Validated Accuracy&#39;</span><span class="p">)</span>
+
+<span class="n">best_k</span> <span class="o">=</span> <span class="n">k_range</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">k_scores</span><span class="p">)]</span>
+<span class="n">best_score</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">k_scores</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">best_k</span><span class="p">,</span> <span class="n">best_score</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best k = </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best k value: </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best Cross-Val-Score: </span><span class="si">{</span><span class="n">best_score</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">model_knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">best_k</span><span class="p">)</span>
+<span class="n">model_knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span><span class="p">)</span>
+<span class="n">y_pred_knn</span> <span class="o">=</span> <span class="n">model_knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_knn</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Classification Report:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># code from chatgpt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/35d94fc8646310fc973399f258c3bb30ee7d3a1afd9243bbc5fef839ce34f9a4.png" src="../_images/35d94fc8646310fc973399f258c3bb30ee7d3a1afd9243bbc5fef839ce34f9a4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best k value: 1
+Best Cross-Val-Score: 0.8356
+Accuracy: 0.744
+Classification Report:
+              precision    recall  f1-score   support
+
+       False       0.96      0.76      0.85       956
+        True       0.05      0.30      0.09        44
+
+    accuracy                           0.74      1000
+   macro avg       0.51      0.53      0.47      1000
+weighted avg       0.92      0.74      0.82      1000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span><span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Not Fraud&#39;</span><span class="p">,</span> <span class="s1">&#39;Fraud&#39;</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Not Fraud&#39;</span><span class="p">,</span> <span class="s1">&#39;Fraud&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Actual Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/91b337410c2bb055d2be735bc08506999d90763bc010dfc4ce26ab5875f2859c.png" src="../_images/91b337410c2bb055d2be735bc08506999d90763bc010dfc4ce26ab5875f2859c.png" />
+</div>
+</div>
+<p>As we can see, the KNN method seems better at classifying cases than the logistic regression. For example, previously it predicted that 455 of the non-fraud cases were fraudulent however with the choice of 1 nearest neighbor, it classified only 225 non-fraudulent cases incorrectly. So we are seeing that in the case of fraud detection K-nearest neighbors seem more effective, this makes sense because rather than seeing a clear relationship between fraud cases, we are looking at data points that are close to each other.</p>
+<section id="visualization-of-each-feature-and-the-target-value">
+<h3>Visualization of each feature and the target value.<a class="headerlink" href="#visualization-of-each-feature-and-the-target-value" title="Link to this heading">#</a></h3>
+<p>Now, I am interested in finding if there is a specifice feature that is prominent in all of these fraud cases. We will do this by looking at the Random forest importance graph.</p>
+<p>Code adopted from: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html</a></p>
+<p>Code fixed by chatgpt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train model</span>
+<span class="n">rf_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">rf_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span><span class="p">)</span>
+
+<span class="c1"># Plot feature importances</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">X_train_resampled</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="c1"># Create bar plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">importances</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Importance (Random Forest)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Importance Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4d4efee534c98ee46cf0d65a73f4f67dfd30404c1a8cc43c0669e0d537b98175.png" src="../_images/4d4efee534c98ee46cf0d65a73f4f67dfd30404c1a8cc43c0669e0d537b98175.png" />
+</div>
+</div>
+<p>Note that payment_channel_TE has the highest importance value out of all our features. But the importance score is around 0.29, however that is not large compared to an importance value of 1.</p>
+</section>
+</section>
+<section id="interpreting-the-decision-tree">
+<h2>Interpreting the decision tree.<a class="headerlink" href="#interpreting-the-decision-tree" title="Link to this heading">#</a></h2>
+<p>On the decision tree, the value is given in the form <strong>[non-fraud case, fraud case]</strong>.
+<br>
+Code from: <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html">https://scikit-learn.org/stable/modules/tree.html</a>
+<br>
+Learned from: <a class="reference external" href="https://www.geeksforgeeks.org/decision-tree-implementation-python/">https://www.geeksforgeeks.org/decision-tree-implementation-python/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">graphviz</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">export_graphviz</span>
+
+
+<span class="c1"># Create a decision tree classifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+
+<span class="c1"># Fit the classifier on the dataset</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span><span class="p">)</span>
+
+<span class="c1"># Extract decision tree information</span>
+<span class="n">dot_data</span> <span class="o">=</span> <span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_cols</span><span class="p">)</span>
+
+<span class="c1"># Create a graph object and render</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9484cb8da34d3762d60297cde98990c9f3f4cdc34e346576fa707e5c5e5dd920.svg" src="../_images/9484cb8da34d3762d60297cde98990c9f3f4cdc34e346576fa707e5c5e5dd920.svg" />
+</div>
+</div>
+<p>If you look at the final classification, and look at the second branch node to the right, it correctly determined that if the data’s payment_channel_TE value is  <span class="math notranslate nohighlight">\(0.039 \leq x \leq 0.062\)</span>. Then these cases will be fraud cases. So we can take a look at the relation of the payment channel with whether the case is fraud or not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We are looking at the rows that have this feature, but more specifically, the transaction type that corresponds to the value.</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;payment_channel_TE&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mf">0.039</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;payment_channel_TE&#39;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mf">0.062</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>transaction_id</th>
+      <th>timestamp</th>
+      <th>sender_account</th>
+      <th>receiver_account</th>
+      <th>amount</th>
+      <th>transaction_type</th>
+      <th>merchant_category</th>
+      <th>location</th>
+      <th>device_used</th>
+      <th>is_fraud</th>
+      <th>...</th>
+      <th>geo_anomaly_score</th>
+      <th>payment_channel</th>
+      <th>ip_address</th>
+      <th>device_hash</th>
+      <th>hour</th>
+      <th>transaction_type_TE</th>
+      <th>merchant_category_TE</th>
+      <th>location_TE</th>
+      <th>device_used_TE</th>
+      <th>payment_channel_TE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2519793</th>
+      <td>T3499115</td>
+      <td>2023-07-06 02:00:02.246527+00:00</td>
+      <td>ACC536513</td>
+      <td>ACC597424</td>
+      <td>46.06</td>
+      <td>transfer</td>
+      <td>utilities</td>
+      <td>London</td>
+      <td>web</td>
+      <td>False</td>
+      <td>...</td>
+      <td>0.62</td>
+      <td>UPI</td>
+      <td>31.16.229.76</td>
+      <td>D4775399</td>
+      <td>2</td>
+      <td>0.044834</td>
+      <td>0.033272</td>
+      <td>0.045455</td>
+      <td>0.040415</td>
+      <td>0.061866</td>
+    </tr>
+    <tr>
+      <th>3405053</th>
+      <td>T4397515</td>
+      <td>2023-09-06 08:33:07.867799+00:00</td>
+      <td>ACC598679</td>
+      <td>ACC663765</td>
+      <td>16.46</td>
+      <td>transfer</td>
+      <td>entertainment</td>
+      <td>New York</td>
+      <td>pos</td>
+      <td>False</td>
+      <td>...</td>
+      <td>0.69</td>
+      <td>UPI</td>
+      <td>100.127.10.209</td>
+      <td>D8857882</td>
+      <td>8</td>
+      <td>0.044834</td>
+      <td>0.047170</td>
+      <td>0.053030</td>
+      <td>0.045498</td>
+      <td>0.061866</td>
+    </tr>
+    <tr>
+      <th>740399</th>
+      <td>T1563167</td>
+      <td>2023-04-16 05:22:52.174555+00:00</td>
+      <td>ACC804679</td>
+      <td>ACC412353</td>
+      <td>1274.26</td>
+      <td>deposit</td>
+      <td>online</td>
+      <td>Toronto</td>
+      <td>pos</td>
+      <td>False</td>
+      <td>...</td>
+      <td>0.16</td>
+      <td>UPI</td>
+      <td>138.129.139.178</td>
+      <td>D5495797</td>
+      <td>5</td>
+      <td>0.046701</td>
+      <td>0.063877</td>
+      <td>0.035225</td>
+      <td>0.045498</td>
+      <td>0.061866</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 24 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We want to count how many fraud cases there are per payment channel</span>
+<span class="n">fraud_count</span> <span class="o">=</span> <span class="n">stratified_sample</span><span class="p">[</span><span class="n">stratified_sample</span><span class="p">[</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;payment_channel&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">nonfraud_count</span> <span class="o">=</span> <span class="n">stratified_sample</span><span class="p">[</span><span class="n">stratified_sample</span><span class="p">[</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;payment_channel&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+
+<span class="c1">#Then we find how many fraud cases there are vs. non-fraud cases</span>
+<span class="n">total_counts_fraud</span> <span class="o">=</span> <span class="n">stratified_sample</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+
+<span class="c1">#divide the fraud case per payment channel by total fraud case</span>
+<span class="n">fraud_rate</span> <span class="o">=</span> <span class="n">fraud_count</span><span class="o">/</span><span class="n">total_counts_fraud</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1">#divide the non-fraud case per payment channel by total non-fraud case</span>
+<span class="n">nonfraud_rate</span> <span class="o">=</span> <span class="n">nonfraud_count</span><span class="o">/</span><span class="n">total_counts_fraud</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1">#turn these values into a dataframe so they are easily plotted</span>
+<span class="n">rate_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Fraud_Rate&#39;</span><span class="p">:</span><span class="n">fraud_rate</span><span class="p">,</span>
+                        <span class="s1">&#39;Non-Fraud_Rate&#39;</span><span class="p">:</span> <span class="n">nonfraud_rate</span><span class="p">})</span>
+
+<span class="c1">#plot the proportions nect to each other.</span>
+<span class="n">rate_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;crimson&#39;</span><span class="p">,</span> <span class="s1">&#39;steelblue&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fraud Rate by Payment Channel&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Payment Channel&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion of fraud/non-fraud to total fraud/non-fraud cases&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fraud_rate</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">.05</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3414e86e2cee8a6af3a275e95398740b72d764a93a0ec1f73a7047d78fdf60bd.png" src="../_images/3414e86e2cee8a6af3a275e95398740b72d764a93a0ec1f73a7047d78fdf60bd.png" />
+</div>
+</div>
+<section id="conclusion">
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>In conclusion, although we have narrowed down where a lot of fraudulent cases come from, the relationship between fraud and the features I have included is inconclusive. Because we consider that while for the payment channel ‘UPI’, while a lot of the fraud cases corresponded to this payment channel, there is still many cases of non-fraud that makes mayment through UPI. So ultimately the data is inconclusive.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./final_project"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Kelvin.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analysis of the Winners of the Tour de France</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Matt.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Winning Attributes in the League of Legends Worlds 2024 Championship</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stratified-sample">Stratified Sample</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addressing-the-minority-class">Addressing the minority class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-we-can-try-k-nearest-neighbors">Now we can try K nearest neighbors.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-each-feature-and-the-target-value">Visualization of each feature and the target value.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-decision-tree">Interpreting the decision tree.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ray Zirui Zhang 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

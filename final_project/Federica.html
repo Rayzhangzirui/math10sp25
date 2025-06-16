@@ -1,0 +1,1981 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Analysis of Instagram Influencer Metrics &#8212; UCI Math 10, Spring 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_project/Federica';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SMCI Stock Predictor Project" href="Haoyu.html" />
+    <link rel="prev" title="Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis" href="Eugene.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Spring 2025</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Spring 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kaggle.html">Math 10 Kaggle Competition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/nonlinear_dim.html">Nonlinear Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/kmeans.html">Clustering</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/llm.html">LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/llm_demo.html">LLM Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_5.html">Week 4, Fri, 4/25</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_1.html">Week 5, Mon, 4/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_3.html">Week 5, Wed, 4/30</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_5.html">Week 6, Fri, 5/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_1.html">Week 7, Mon, 5/12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_3.html">Week 7, Wed, 5/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_5.html">Week 7, Fri, 5/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_1.html">Week 8, Mon, 5/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_3.html">Week 8, Wed, 5/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_5.html">Week 8, Fri, 5/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_3.html">Week 9, Wed, 5/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_5.html">Week 9, Fri, 5/30</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8_sol.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Final Project</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Abigail.html">Predicting Titanic Survival Using Multiple Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Achyuta.html">Predicting Emergency Department Disposition (Admitted vs Not Admitted) Using Clinical and Socioeconomic Indicators</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Daeseo.html">IMDB Review Predictor</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Daniel.html">Tumor Diagnosis Classification: Breast Cancer Wisconsin</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Elijah.html">Automatic loan verification</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Eugene.html">Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data Analysis of Instagram Influencer Metrics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Haoyu.html">SMCI Stock Predictor Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hongrui.html">IONQ in Focus: Predicting the Future of Quantum Tech Stocks</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Jerry.html">Math 10 Final Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kelvin.html">Analysis of the Winners of the Tour de France</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Madeline.html">Fraud Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Matt.html">Winning Attributes in the League of Legends Worlds 2024 Championship</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Nishant.html"><strong>Cancer Classification using Gene Expression</strong></a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Oliver.html">Forecasting IPO First‑Day Returns – Investment‑Banking Valuation Project</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Rishabh.html">HOUSE PRICES PREDICTOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sandy.html">Predicting Pop Mart’s Stock Price Based on Google Trends</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Scott.html">Predicting various tickers from yfinance</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_project/Federica.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Analysis of Instagram Influencer Metrics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Analysis of Instagram Influencer Metrics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-federica-barbini">Author: Federica Barbini</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-project-uc-irvine-math-10-spring-25">Course Project, UC Irvine, Math 10, Spring 25</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#project-ideas">Project Ideas:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview">Dataset Overview</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-variables-features">Key Variables/Features</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-loading-data">Importing Libraries &amp; Loading Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-values">Handling Missing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-duplicates">Checking for Duplicates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-numeric-columns">Cleaning Numeric Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-type-conversion">Data Type Conversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-cleaned-dataset">Final Cleaned Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling-normalize-followers-engagement">Feature Scaling (normalize followers/engagement)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling-0-1-range">Min-Max Scaling: [0, 1] range</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization">Z-score Standardization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-transformation">Log Transformation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-followers-vs-engagement-rate">Scatter Plot: Followers vs. Engagement Rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms-of-follower-counts-distribution">Histograms of follower counts/distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-follower-distribution-left-plot">Raw Follower Distribution (Left Plot)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-scaled-distribution-right-plot">Log-Scaled Distribution (Right Plot)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots-of-engagement-by-country">Boxplots of engagement by country</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-10-countries-by-average-engagement">Top 10 countries by average engagement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-performers">Top Performers:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mid-tier-engagement">Mid-Tier Engagement:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underperformers">Underperformers:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-analysis">Correlation Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#followers-vs-engagement-rate-weak-negative-correlation-0-08">Followers vs. Engagement Rate: Weak Negative Correlation (-0.08)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#followers-vs-average-likes-strong-positive-correlation-0-56">Followers vs. Average Likes: Strong Positive Correlation (0.56)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engagement-rate-vs-average-likes-moderate-positive-correlation-0-50">Engagement Rate vs. Average Likes: Moderate Positive Correlation (0.50)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-analysis">Regression Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression-follower-count-vs-engagement">Simple Linear Regression: Follower Count vs. Engagement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-regression">Multiple Linear Regression</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-Means Clustering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-machine-learning-models-extra-credit">Advanced Machine Learning Models (Extra Credit)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-based-model">Tree-Based Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-takeaways">Conclusion &amp; Takeaways</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insights-for-marketing-strategy-and-q-a">Insights for Marketing Strategy and Q&amp;A</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-types-of-influencers-have-the-highest-engagement-rates">What types of influencers have the highest engagement rates?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-influencers-from-certain-countries-tend-to-have-higher-engagement">Do influencers from certain countries tend to have higher engagement?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-follower-count-and-engagement">Relationship between follower count and engagement?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-analysis-of-instagram-influencer-metrics">
+<h1>Data Analysis of Instagram Influencer Metrics<a class="headerlink" href="#data-analysis-of-instagram-influencer-metrics" title="Link to this heading">#</a></h1>
+<section id="author-federica-barbini">
+<h2>Author: Federica Barbini<a class="headerlink" href="#author-federica-barbini" title="Link to this heading">#</a></h2>
+</section>
+<section id="course-project-uc-irvine-math-10-spring-25">
+<h2>Course Project, UC Irvine, Math 10, Spring 25<a class="headerlink" href="#course-project-uc-irvine-math-10-spring-25" title="Link to this heading">#</a></h2>
+<p>I would like to post my notebook on the course’s website. Yes</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="project-ideas">
+<h1>Project Ideas:<a class="headerlink" href="#project-ideas" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>What types of influencers have the highest engagement rates?</p></li>
+<li><p>What factors influence engagement rate?</p></li>
+<li><p>Is there a strong relationship between follower count and engagement rate?</p></li>
+<li><p>Do influencers from certain countries tend to have higher engagement?</p></li>
+<li><p>How does niche (genre) impact reach and engagement?</p></li>
+<li><p>Does country or niche affect follower count or engagement?</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>Instagram has become one of the most influential social media platforms, not only for personal expression but also as a powerful tool for brands to connect with audiences through influencer marketing. Influencers, users with large or highly engaged followings, play a crucial role in shaping trends, promoting products, and driving digital engagement. In this project, I will analyze a dataset of top Instagram influencers to explore how factors such as follower count, engagement rate, niche, and country influence an influencer’s performance. Through data visualization and exploratory analysis, I will uncover patterns that help explain what makes an influencer successful and how these insights can inform marketing strategies.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dataset-overview">
+<h1>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading">#</a></h1>
+<section id="source">
+<h2>Source<a class="headerlink" href="#source" title="Link to this heading">#</a></h2>
+<p>This analysis uses the <strong>“Top Instagram Influencers Data (Cleaned)”</strong> dataset from Kaggle (uploaded 3 years ago, circa 2022), available at: <a class="reference external" href="https://www.kaggle.com/datasets/surajjha101/top-instagram-influencers-data-cleaned">https://www.kaggle.com/datasets/surajjha101/top-instagram-influencers-data-cleaned</a></p>
+</section>
+<section id="dataset-description">
+<h2>Dataset Description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h2>
+<p>The dataset contains metrics for 200 of the world’s top Instagram influencers as of 2022, ranked primarily by their follower count. The data has been cleaned and standardized for analysis.</p>
+</section>
+<section id="key-variables-features">
+<h2>Key Variables/Features<a class="headerlink" href="#key-variables-features" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Data Type</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rank</span></code></p></td>
+<td><p>Influencer ranking based on follower count</p></td>
+<td><p>Integer</p></td>
+<td><p>Lower numbers = more followers</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">channel_info</span></code></p></td>
+<td><p>Instagrammer’s username</p></td>
+<td><p>Object</p></td>
+<td><p>Unique identifier</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">influence_score</span></code></p></td>
+<td><p>Influence score of the user: based on mentions, importance, and popularity</p></td>
+<td><p>Integer</p></td>
+<td><p>Higher = more influential</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">posts</span></code></p></td>
+<td><p>Number of posts published as of 2022</p></td>
+<td><p>Float</p></td>
+<td><p>Lifetime count</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">followers</span></code></p></td>
+<td><p>Follower count</p></td>
+<td><p>Float</p></td>
+<td><p>Primary ranking metric</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">avg_likes</span></code></p></td>
+<td><p>Average likes per post</p></td>
+<td><p>Float</p></td>
+<td><p>Calculated as total_likes/posts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">60_day_eng_rate</span></code></p></td>
+<td><p>Engagement rate percentage (last 60 days of 2022)</p></td>
+<td><p>Float</p></td>
+<td><p>Recent performance metric</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">new_post_avg_like</span></code></p></td>
+<td><p>Average likes on new recent posts (2022)</p></td>
+<td><p>Float</p></td>
+<td><p>Short-term popularity</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">total_likes</span></code></p></td>
+<td><p>Total likes across all posts (in billions)</p></td>
+<td><p>Float</p></td>
+<td><p>Lifetime achievement</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">country</span></code></p></td>
+<td><p>Influencer’s country/region of origin</p></td>
+<td><p>Object</p></td>
+<td><p>Geographic origin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="importing-libraries-loading-data">
+<h1>Importing Libraries &amp; Loading Data<a class="headerlink" href="#importing-libraries-loading-data" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;top_insta_influencers_data.csv&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   rank channel_info  influence_score  posts followers avg_likes  \
+0     1    cristiano               92   3.3k    475.8m      8.7m   
+1     2  kyliejenner               91   6.9k    366.2m      8.3m   
+2     3     leomessi               90  0.89k    357.3m      6.8m   
+3     4  selenagomez               93   1.8k    342.7m      6.2m   
+4     5      therock               91   6.8k    334.1m      1.9m   
+
+  60_day_eng_rate new_post_avg_like total_likes        country  
+0           1.39%              6.5m       29.0b          Spain  
+1           1.62%              5.9m       57.4b  United States  
+2           1.24%              4.4m        6.0b            NaN  
+3           0.97%              3.3m       11.5b  United States  
+4           0.20%            665.3k       12.5b  United States  
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 200 entries, 0 to 199
+Data columns (total 10 columns):
+ #   Column             Non-Null Count  Dtype 
+---  ------             --------------  ----- 
+ 0   rank               200 non-null    int64 
+ 1   channel_info       200 non-null    object
+ 2   influence_score    200 non-null    int64 
+ 3   posts              200 non-null    object
+ 4   followers          200 non-null    object
+ 5   avg_likes          200 non-null    object
+ 6   60_day_eng_rate    200 non-null    object
+ 7   new_post_avg_like  200 non-null    object
+ 8   total_likes        200 non-null    object
+ 9   country            138 non-null    object
+dtypes: int64(2), object(8)
+memory usage: 15.8+ KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;top_insta_influencers_data.csv&#39;</span><span class="p">)</span>
+<span class="n">train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rank</th>
+      <th>channel_info</th>
+      <th>influence_score</th>
+      <th>posts</th>
+      <th>followers</th>
+      <th>avg_likes</th>
+      <th>60_day_eng_rate</th>
+      <th>new_post_avg_like</th>
+      <th>total_likes</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>cristiano</td>
+      <td>92</td>
+      <td>3.3k</td>
+      <td>475.8m</td>
+      <td>8.7m</td>
+      <td>1.39%</td>
+      <td>6.5m</td>
+      <td>29.0b</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>kyliejenner</td>
+      <td>91</td>
+      <td>6.9k</td>
+      <td>366.2m</td>
+      <td>8.3m</td>
+      <td>1.62%</td>
+      <td>5.9m</td>
+      <td>57.4b</td>
+      <td>United States</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>leomessi</td>
+      <td>90</td>
+      <td>0.89k</td>
+      <td>357.3m</td>
+      <td>6.8m</td>
+      <td>1.24%</td>
+      <td>4.4m</td>
+      <td>6.0b</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>selenagomez</td>
+      <td>93</td>
+      <td>1.8k</td>
+      <td>342.7m</td>
+      <td>6.2m</td>
+      <td>0.97%</td>
+      <td>3.3m</td>
+      <td>11.5b</td>
+      <td>United States</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>therock</td>
+      <td>91</td>
+      <td>6.8k</td>
+      <td>334.1m</td>
+      <td>1.9m</td>
+      <td>0.20%</td>
+      <td>665.3k</td>
+      <td>12.5b</td>
+      <td>United States</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>196</td>
+      <td>iambeckyg</td>
+      <td>71</td>
+      <td>2.3k</td>
+      <td>33.2m</td>
+      <td>623.8k</td>
+      <td>1.40%</td>
+      <td>464.7k</td>
+      <td>1.4b</td>
+      <td>United States</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>197</td>
+      <td>nancyajram</td>
+      <td>81</td>
+      <td>3.8k</td>
+      <td>33.2m</td>
+      <td>390.4k</td>
+      <td>0.64%</td>
+      <td>208.0k</td>
+      <td>1.5b</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>198</td>
+      <td>luansantana</td>
+      <td>79</td>
+      <td>0.77k</td>
+      <td>33.2m</td>
+      <td>193.3k</td>
+      <td>0.26%</td>
+      <td>82.6k</td>
+      <td>149.2m</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>199</td>
+      <td>nickjonas</td>
+      <td>78</td>
+      <td>2.3k</td>
+      <td>33.0m</td>
+      <td>719.6k</td>
+      <td>1.42%</td>
+      <td>467.7k</td>
+      <td>1.7b</td>
+      <td>United States</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>200</td>
+      <td>raisa6690</td>
+      <td>80</td>
+      <td>4.2k</td>
+      <td>32.8m</td>
+      <td>232.2k</td>
+      <td>0.30%</td>
+      <td>97.4k</td>
+      <td>969.1m</td>
+      <td>Indonesia</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>The data is represented by 10 features and 200 users.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-cleaning">
+<h1>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h1>
+<section id="handling-missing-values">
+<h2>Handling Missing Values<a class="headerlink" href="#handling-missing-values" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check for missing values</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank                  0
+channel_info          0
+influence_score       0
+posts                 0
+followers             0
+avg_likes             0
+60_day_eng_rate       0
+new_post_avg_like     0
+total_likes           0
+country              62
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop any missing values (62 countries)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="c1"># removes rows with any NaN</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify there are no more missing values</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank                 0
+channel_info         0
+influence_score      0
+posts                0
+followers            0
+avg_likes            0
+60_day_eng_rate      0
+new_post_avg_like    0
+total_likes          0
+country              0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-for-duplicates">
+<h2>Checking for Duplicates<a class="headerlink" href="#checking-for-duplicates" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check for duplicate influencers</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate usernames: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;channel_info&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check for duplicate rows</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate rows: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span> <span class="c1"># Drop duplicate rows (if any) </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicate usernames: 0
+Duplicate rows: 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cleaning-numeric-columns">
+<h2>Cleaning Numeric Columns<a class="headerlink" href="#cleaning-numeric-columns" title="Link to this heading">#</a></h2>
+<p>Numeric columns (posts, followers, etc.) are stored as objects/strings because they contain ‘k’, ‘m’, ‘b’ suffixes. Let’s convert them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_numeric_columns</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    
+    <span class="c1"># First ensure all columns are strings</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="s1">&#39;followers&#39;</span><span class="p">,</span> <span class="s1">&#39;avg_likes&#39;</span><span class="p">,</span> <span class="s1">&#39;new_post_avg_like&#39;</span><span class="p">,</span> <span class="s1">&#39;total_likes&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    
+    <span class="c1"># Convert k/m/b values</span>
+    <span class="k">def</span> <span class="nf">convert_value</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="s1">&#39;k&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1_000</span>
+                <span class="k">elif</span> <span class="s1">&#39;m&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1_000_000</span>
+                <span class="k">elif</span> <span class="s1">&#39;b&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1_000_000_000</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    
+    <span class="c1"># Apply to all numeric columns</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">convert_value</span><span class="p">)</span>
+    
+    <span class="c1"># Clean engagement rate - handle both string and numeric cases</span>
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># If it&#39;s already numeric but in percentage form (1.39 instead of 0.0139)</span>
+        <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
+    
+    <span class="k">return</span> <span class="n">df</span>  
+
+<span class="c1"># Apply the cleaning function with correct name and parentheses</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">clean_numeric_columns</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># Not clean_numeric_column(s(df))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     rank   channel_info  influence_score   posts    followers  avg_likes  \
+0       1      cristiano               92  3300.0  475800000.0  8700000.0   
+1       2    kyliejenner               91  6900.0  366200000.0  8300000.0   
+3       4    selenagomez               93  1800.0  342700000.0  6200000.0   
+4       5        therock               91  6800.0  334100000.0  1900000.0   
+5       6  kimkardashian               91  5600.0  329200000.0  3500000.0   
+..    ...            ...              ...     ...          ...        ...   
+195   196      iambeckyg               71  2300.0   33200000.0   623800.0   
+196   197     nancyajram               81  3800.0   33200000.0   390400.0   
+197   198    luansantana               79   770.0   33200000.0   193300.0   
+198   199      nickjonas               78  2300.0   33000000.0   719600.0   
+199   200      raisa6690               80  4200.0   32800000.0   232200.0   
+
+     60_day_eng_rate  new_post_avg_like   total_likes        country  
+0             0.0139          6500000.0  2.900000e+10          Spain  
+1             0.0162          5900000.0  5.740000e+10  United States  
+3             0.0097          3300000.0  1.150000e+10  United States  
+4             0.0020           665300.0  1.250000e+10  United States  
+5             0.0088          2900000.0  1.990000e+10  United States  
+..               ...                ...           ...            ...  
+195           0.0140           464700.0  1.400000e+09  United States  
+196           0.0064           208000.0  1.500000e+09         France  
+197           0.0026            82600.0  1.492000e+08         Brazil  
+198           0.0142           467700.0  1.700000e+09  United States  
+199           0.0030            97400.0  9.691000e+08      Indonesia  
+
+[138 rows x 10 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-type-conversion">
+<h2>Data Type Conversion<a class="headerlink" href="#data-type-conversion" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert appropriate columns to integers</span>
+<span class="n">int_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">,</span> <span class="s1">&#39;influence_score&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="n">int_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">int_cols</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Verify data types</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank                   int64
+channel_info          object
+influence_score        int64
+posts                float64
+followers            float64
+avg_likes            float64
+60_day_eng_rate      float64
+new_post_avg_like    float64
+total_likes          float64
+country               object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="final-cleaned-dataset">
+<h2>Final Cleaned Dataset<a class="headerlink" href="#final-cleaned-dataset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display cleaned data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Save cleaned data </span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;cleaned_influencers_data.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   rank   channel_info  influence_score   posts    followers  avg_likes  \
+0     1      cristiano               92  3300.0  475800000.0  8700000.0   
+1     2    kyliejenner               91  6900.0  366200000.0  8300000.0   
+3     4    selenagomez               93  1800.0  342700000.0  6200000.0   
+4     5        therock               91  6800.0  334100000.0  1900000.0   
+5     6  kimkardashian               91  5600.0  329200000.0  3500000.0   
+
+   60_day_eng_rate  new_post_avg_like   total_likes        country  
+0           0.0139          6500000.0  2.900000e+10          Spain  
+1           0.0162          5900000.0  5.740000e+10  United States  
+3           0.0097          3300000.0  1.150000e+10  United States  
+4           0.0020           665300.0  1.250000e+10  United States  
+5           0.0088          2900000.0  1.990000e+10  United States  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Data preparation for analysis is now ready.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="feature-scaling-normalize-followers-engagement">
+<h1>Feature Scaling (normalize followers/engagement)<a class="headerlink" href="#feature-scaling-normalize-followers-engagement" title="Link to this heading">#</a></h1>
+<p>To prepare the data for analysis, I applied feature scaling to the numerical columns.</p>
+<p>I chose to scale the variables “followers” and “60_day_eng_rate”, as these are on very different scales/ranges.</p>
+<ul class="simple">
+<li><p>Followers range from ~32M to 475M</p></li>
+<li><p>Engagement rate ranges from 0.0001 to 0.10 (just a few percent)</p></li>
+</ul>
+<p>These different scales can cause:</p>
+<ul class="simple">
+<li><p>Skew visualizations</p></li>
+<li><p>Hurt model performance (like regression)</p></li>
+<li><p>Make it hard to compare influencers side-by-side</p></li>
+</ul>
+<p>To avoid/prevent this, we scale the features.
+I applied three techniques:</p>
+<ul class="simple">
+<li><p>Min-Max Scaling (to [0, 1])</p></li>
+<li><p>Z-score Standardization (mean = 0, std = 1)</p></li>
+<li><p>Log Transformation (to compress skewed values)</p></li>
+</ul>
+<p>The transformations allowed for fairer comparisons between influencers and enabled clearer visualizations. For example, log-scaling follower count reduced the dominance of a few extremely popular influencers and revealed the true spread across mid-sized accounts. These scaled features are also more suitable for correlation and regression analysis later in the project.</p>
+<section id="min-max-scaling-0-1-range">
+<h2>Min-Max Scaling: [0, 1] range<a class="headerlink" href="#min-max-scaling-0-1-range" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">min_max_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;followers_minmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;followers&#39;</span><span class="p">]])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;engagement_minmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="z-score-standardization">
+<h2>Z-score Standardization<a class="headerlink" href="#z-score-standardization" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">standard_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;followers_zscore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">standard_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;followers&#39;</span><span class="p">]])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;engagement_zscore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">standard_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="log-transformation">
+<h2>Log Transformation<a class="headerlink" href="#log-transformation" title="Link to this heading">#</a></h2>
+<p>For highly skewed features like followers. Only use log transform on strictly positive values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;log_followers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;followers&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># +1 to avoid log(0)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;followers&#39;</span><span class="p">,</span> <span class="s1">&#39;followers_minmax&#39;</span><span class="p">,</span> <span class="s1">&#39;followers_zscore&#39;</span><span class="p">,</span> <span class="s1">&#39;log_followers&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          followers  followers_minmax  followers_zscore  log_followers
+count  1.380000e+02        138.000000        138.000000     138.000000
+mean   8.372609e+07          0.114957          0.000000       7.806623
+std    8.103318e+07          0.182919          1.003643       0.280323
+min    3.280000e+07          0.000000         -0.630749       7.515874
+25%    4.100000e+07          0.018510         -0.529187       7.612768
+50%    5.270000e+07          0.044921         -0.384276       7.721804
+75%    7.032500e+07          0.084707         -0.165980       7.847109
+max    4.758000e+08          1.000000          4.856063       8.677424
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;engagement_minmax&#39;</span><span class="p">,</span> <span class="s1">&#39;engagement_zscore&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       60_day_eng_rate  engagement_minmax  engagement_zscore
+count       138.000000         138.000000       1.380000e+02
+mean          0.013315           0.129055      -7.079683e-17
+std           0.017964           0.175434       1.003643e+00
+min           0.000100           0.000000      -7.383105e-01
+25%           0.003350           0.031738      -5.567389e-01
+50%           0.006800           0.065430      -3.639935e-01
+75%           0.015100           0.146484       9.971261e-02
+max           0.102500           1.000000       4.982594e+00
+</pre></div>
+</div>
+</div>
+</div>
+<p>What did we learn from this?</p>
+<ul class="simple">
+<li><p>Min-max scaling worked: followers_minmax and engagement_minmax are both now in [0, 1]</p></li>
+<li><p>Z-score worked: values are centered around 0, with std ≈ 1</p></li>
+<li><p>Log scale worked: follower values are now compressed into a much narrower, more linear range (useful for skewed distributions)</p></li>
+</ul>
+<p>Before scaling, the raw followers had huge variance. After scaling/log, we can now compare them more fairly.</p>
+<p>To visualize the comparison between raw and scaled followers, we can also plot a histogram:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;followers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Follower Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Followers&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;log_followers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log-Scaled Follower Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Log(Followers)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d264f2067cbb7fcbe93a88ff57daee15bf7371e7836fcb0c67887df45f8283e6.png" src="../_images/d264f2067cbb7fcbe93a88ff57daee15bf7371e7836fcb0c67887df45f8283e6.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis">
+<h1>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h1>
+<p>Let’s explore the relationships between different influencer metrics through visualizations and statistical summaries.</p>
+<section id="scatter-plot-followers-vs-engagement-rate">
+<h2>Scatter Plot: Followers vs. Engagement Rate<a class="headerlink" href="#scatter-plot-followers-vs-engagement-rate" title="Link to this heading">#</a></h2>
+<p>First, let’s examine the relationship between follower count and engagement rate:</p>
+<p>(Use log-scaled followers to reduce skew)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;log_followers&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Followers vs. Engagement Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Followers (Log Scale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;60-Day Engagement Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/235c82d174c9e51a897c86d1e732eee488fb06821648b92f1a501fc0c789f63d.png" src="../_images/235c82d174c9e51a897c86d1e732eee488fb06821648b92f1a501fc0c789f63d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate correlation coefficient</span>
+<span class="n">correlation</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;log_followers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correlation between followers and engagement rate: </span><span class="si">{</span><span class="n">correlation</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correlation between followers and engagement rate: -0.082
+</pre></div>
+</div>
+</div>
+</div>
+<p>The scatter plot visualizes the relationship between an influencer’s follower count (log-scaled) and their 60-day engagement rate.</p>
+<p>It’s important to observe the negative correlation value. The correlation coefficient of -0.082 indicates a weak but measurable negative trend. As follower count increases, engagement rates tend to decrease slightly. This suggests that micro-influencers, with smaller but more engaged audiences (left side of the plot), show higher and more variable engagement rates. This aligns with industry trends where micro-influencers (typically 1K–100K followers) often foster stronger audience connections, and thus might be more valuable for certain marketing campaigns that prioritize engagement.</p>
+</section>
+<section id="histograms-of-follower-counts-distribution">
+<h2>Histograms of follower counts/distribution<a class="headerlink" href="#histograms-of-follower-counts-distribution" title="Link to this heading">#</a></h2>
+<p>Let’s look at the distribution of follower counts:</p>
+<p>(Use both raw and log-scaled followers)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Raw followers</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;followers&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Original Follower Counts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Followers&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+<span class="c1"># Los-scaled followers</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;log_followers&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Log-Scaled Follower Counts)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Log(Number of Followers)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/45bfcdbfadfc7ef3f57342d3c2bb337207388789779793ca2f753f9ffc65f859.png" src="../_images/45bfcdbfadfc7ef3f57342d3c2bb337207388789779793ca2f753f9ffc65f859.png" />
+</div>
+</div>
+<p>The histograms compare the raw and log-scaled distributions of follower counts across influencers.</p>
+<section id="raw-follower-distribution-left-plot">
+<h3>Raw Follower Distribution (Left Plot)<a class="headerlink" href="#raw-follower-distribution-left-plot" title="Link to this heading">#</a></h3>
+<p>Extreme Right-Skew: The majority of influencers have follower counts clustered at the lower end (likely under 100M), with a long tail of “mega-influencers” (e.g., 400M+ followers). This skew is typical in social media data, where a few accounts amass disproportionately large followings.</p>
+</section>
+<section id="log-scaled-distribution-right-plot">
+<h3>Log-Scaled Distribution (Right Plot)<a class="headerlink" href="#log-scaled-distribution-right-plot" title="Link to this heading">#</a></h3>
+<p>Normalized Shape: After log transformation, the distribution becomes more symmetric (approximately bell-shaped), centered around ~7.6–8.6 (log scale). For example log(10M) ≈ 7.6, log(100M) ≈ 8.2. The advantage of log scaling is that it mitigates skewness, making the data suitable for statistical models (e.g., regression) that assume normality.</p>
+<ul class="simple">
+<li><p>The peak in the log-scaled plot suggests most accounts fall in the 10M–100M follower range (common for macro-influencers).</p></li>
+<li><p>The left tail (values below 7.6, or &lt;10M followers) may represent micro-influencers, while the right tail includes celebrities/brands.</p></li>
+</ul>
+</section>
+</section>
+<section id="boxplots-of-engagement-by-country">
+<h2>Boxplots of engagement by country<a class="headerlink" href="#boxplots-of-engagement-by-country" title="Link to this heading">#</a></h2>
+<p>Now let’s compare engagement rates across different countries (top 10):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get top 10 countries by number of influencers</span>
+<span class="n">top_countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+
+<span class="c1"># Filter data for top countries</span>
+<span class="n">df_top_countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_countries</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_top_countries</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Engagement Rate Distribution by Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;60-Day Engagement Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8e64bbafa86989426a53d23020b536cfa5ee996b4ce2fe0cca44c3be80647919.png" src="../_images/8e64bbafa86989426a53d23020b536cfa5ee996b4ce2fe0cca44c3be80647919.png" />
+</div>
+</div>
+<p>This boxplot visualization shows the distribution of 60-day engagement rates for influencers across the top 10 countries.
+Here are some key takeaways from the plot:</p>
+<ul class="simple">
+<li><p>Mexico stands out: It has the highest median engagement rate among all the countries. Its interquartile range (IQR) is tight and skewed high, indicating consistently high engagement across many influencers.</p></li>
+<li><p>India and Canada: These two countries also show relatively high median engagement rates. India, in particular, has several extreme outliers, suggesting a few influencers with very high engagement.</p></li>
+<li><p>Brazil, Indonesia, Colombia, and France: These countries have the lowest engagement rates, both in terms of median and spread. Their boxplots are compressed near the bottom, indicating low variability and low engagement.</p></li>
+<li><p>United States and United Kingdom: These show a moderate engagement rate, with a fair amount of variability. The US, despite having many influencers, doesn’t lead in engagement.</p></li>
+</ul>
+<p>Outliers: Many countries (e.g., US, Brazil) have a significant number of outliers, which may represent viral content or niche influencers with high engagement.</p>
+</section>
+<section id="top-10-countries-by-average-engagement">
+<h2>Top 10 countries by average engagement<a class="headerlink" href="#top-10-countries-by-average-engagement" title="Link to this heading">#</a></h2>
+<p>Let’s identify which countries have the highest average engagement.</p>
+<p>To explore how engagement rates vary across different countries, I first identified the top 10 countries with the highest average engagement. Then, I visualized the average rate using a horizontal bar chart.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_engagement_by_country</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">)[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">avg_engagement_by_country</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">avg_engagement_by_country</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 10 Countries by Average Engagement Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Average 60-Day Engagement Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top Countries by Average Engagement:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">avg_engagement_by_country</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7593bb15d1bd03ce13ce5352615f9dbda27e6577829bcf9bd400b3f46626d166.png" src="../_images/7593bb15d1bd03ce13ce5352615f9dbda27e6577829bcf9bd400b3f46626d166.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Top Countries by Average Engagement:
+country
+Uruguay           0.054000
+Mexico            0.043600
+CÃ´te d&#39;Ivoire    0.038200
+Australia         0.036900
+India             0.023683
+Canada            0.023467
+Anguilla          0.017600
+United States     0.013962
+Netherlands       0.013100
+United Kingdom    0.010375
+Name: 60_day_eng_rate, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The horizontal barplot ranks countries based on their average 60-day engagement rate, revealing striking differences in audience interaction across regions.</p>
+<section id="top-performers">
+<h3>Top Performers:<a class="headerlink" href="#top-performers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uruguay emerges with the highest average engagement (5.4%), nearly 4x the rate of the U.S. (1.4%).</p></li>
+<li><p>Mexico (4.4%) and Côte d’Ivoire (3.8%) also show strong performance, suggesting cultural or platform-specific trends favoring interaction.</p></li>
+</ul>
+</section>
+<section id="mid-tier-engagement">
+<h3>Mid-Tier Engagement:<a class="headerlink" href="#mid-tier-engagement" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Australia (3.7%) and India (2.4%) fall in the middle, with India’s lower rate potentially due to its vast and diverse influencer market.</p></li>
+</ul>
+</section>
+<section id="underperformers">
+<h3>Underperformers:<a class="headerlink" href="#underperformers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Anguilla (1.8%), United States (1.4%), and United Kingdom (1.0%) rank lowest, despite their high influencer counts.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="correlation-analysis">
+<h1>Correlation Analysis<a class="headerlink" href="#correlation-analysis" title="Link to this heading">#</a></h1>
+<p>To better understand how influencer metrics relate to one another, let’s compute a correlation matrix across key continuous variables: Follower count (log-scaled), Engagement rate, and Average likes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select only numerical variables</span>
+<span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;log_followers&#39;</span><span class="p">,</span> <span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;avg_likes&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute correlation matrix</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 log_followers  60_day_eng_rate  avg_likes
+log_followers         1.000000        -0.081978   0.558735
+60_day_eng_rate      -0.081978         1.000000   0.495045
+avg_likes             0.558735         0.495045   1.000000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize Correlation Matrix with Heatmap</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix of Influencer Metrics&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6ba44adf961d1c9c396344238e617522c436ec8ef6204f742bfedca775a24a57.png" src="../_images/6ba44adf961d1c9c396344238e617522c436ec8ef6204f742bfedca775a24a57.png" />
+</div>
+</div>
+<section id="followers-vs-engagement-rate-weak-negative-correlation-0-08">
+<h2>Followers vs. Engagement Rate: Weak Negative Correlation (-0.08)<a class="headerlink" href="#followers-vs-engagement-rate-weak-negative-correlation-0-08" title="Link to this heading">#</a></h2>
+<p>–&gt; As follower count grows, engagement rates slightly decline. This confirms the micro-influencer advantage we discussed earlier: smaller accounts (e.g., 10K–100K followers) often foster more active communities than mega-influencers.</p>
+</section>
+<section id="followers-vs-average-likes-strong-positive-correlation-0-56">
+<h2>Followers vs. Average Likes: Strong Positive Correlation (0.56)<a class="headerlink" href="#followers-vs-average-likes-strong-positive-correlation-0-56" title="Link to this heading">#</a></h2>
+<p>–&gt; More followers = more likes, but not proportionally (log scale flattens extreme values). This shows that big accounts dominate visibility, but likes don’t guarantee engagement (comments/shares). For content strategy, large influencers may prioritize “likeable” content (e.g., eye-catching visuals over niche discussions).</p>
+</section>
+<section id="engagement-rate-vs-average-likes-moderate-positive-correlation-0-50">
+<h2>Engagement Rate vs. Average Likes: Moderate Positive Correlation (0.50)<a class="headerlink" href="#engagement-rate-vs-average-likes-moderate-positive-correlation-0-50" title="Link to this heading">#</a></h2>
+<p>–&gt; Higher engagement rates correlate with more likes, but not perfectly. This means that accounts with engaged followers (comments/shares) also earn more likes, signaling loyal audiences.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="regression-analysis">
+<h1>Regression Analysis<a class="headerlink" href="#regression-analysis" title="Link to this heading">#</a></h1>
+<section id="simple-linear-regression-follower-count-vs-engagement">
+<h2>Simple Linear Regression: Follower Count vs. Engagement<a class="headerlink" href="#simple-linear-regression-follower-count-vs-engagement" title="Link to this heading">#</a></h2>
+<p>To test whether follower count can predict engagement rate, I ran a simple linear regression using log-transformed follower count as the independent variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Prepare Data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;log_followers&#39;</span><span class="p">]]</span> <span class="c1"># Features</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]</span> <span class="c1"># Target</span>
+
+<span class="c1"># Create and Fit model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Make predictions</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Regression Line&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Simple Linear Regression: Followers vs. Engagement&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Log(Follower Count)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;60-Day Engagement Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Metrics</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coefficient: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE: </span><span class="si">{</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">,</span><span class="w"> </span><span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06cb24682080dbb98940ae3af09cde9fe80a9416f3757f2d1a756850c28344ce.png" src="../_images/06cb24682080dbb98940ae3af09cde9fe80a9416f3757f2d1a756850c28344ce.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R² Score: 0.007
+Coefficient: -0.0053
+Intercept: 0.0543
+RMSE: 0.0178
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/lib/python3.12/site-packages/sklearn/metrics/_regression.py:492: FutureWarning: &#39;squared&#39; is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function&#39;root_mean_squared_error&#39;.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>The resulting regression line shows a weak negative relationship between follower count and engagement (-0.0053), meaning, as followers increase, engagement slightly declines.</p>
+<p>The low R² score (0.007) indicates that follower count alone explains only a small portion of the variation in engagement, suggesting that other factors (such as niche or content type) likely play a more significant role. This supports the idea that having more followers does not necessarily translate to better engagement.</p>
+</section>
+<section id="multiple-linear-regression">
+<h2>Multiple Linear Regression<a class="headerlink" href="#multiple-linear-regression" title="Link to this heading">#</a></h2>
+<p>Let’s now see if adding adding new variables improves prediction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+
+<span class="c1"># Prepare the Data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;followers&#39;</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="s1">&#39;avg_likes&#39;</span><span class="p">,</span> <span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">]]</span>  <span class="c1"># Features</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;influence_score&#39;</span><span class="p">]</span>  <span class="c1"># Target</span>
+
+<span class="c1"># Split the data</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Create and fit model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Make predictions </span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R-squared:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R-squared: 0.17083707300897388
+MSE: 21.476800457151487
+</pre></div>
+</div>
+</div>
+</div>
+<p>R² = 0.1708 → better than the simple model, but still low (only ~17% of the variation in influence_score is explained by these features)</p>
+<p>MSE = 21.47 → model is making moderate errors (depends on the scale of influence_score)</p>
+<p>While this shows improvement, it also suggests that these common metrics alone are not sufficient to accurately predict influence. This highlights the complex nature of social media influence and the need for richer feature sets in marketing analytics.</p>
+<p>Conclusion:
+Adding more features (likes, posts, engagement) improves model performance, but there’s still a lot of unexplained variation. This suggests that influence_score is likely influenced by factors not included in the dataset.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="k-means-clustering">
+<h1>K-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Link to this heading">#</a></h1>
+<p>To identify different types of influencers, I applied K-means clustering using scaled values for followers, engagement rate, and average likes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="n">features</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;log_followers&#39;</span><span class="p">,</span> <span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;avg_likes&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Run KMeans with 3 clusters</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To visualize influencer clusters let’s perform “Dimensionality Reduction” with PCA (for 2D plot)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Reduce to 2D for visualization</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pca_components</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;PCA1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pca_components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;PCA2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pca_components</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Visualize the clusters </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PCA1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PCA2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;K-Means Clusters of Influencers (PCA-Reduced)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PCA Component 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PCA Component 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cluster&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7b55a0be0597edf339c1f9bbab90900c61460e546c25d9e50122a9226173aacf.png" src="../_images/7b55a0be0597edf339c1f9bbab90900c61460e546c25d9e50122a9226173aacf.png" />
+</div>
+</div>
+<p>The resulting clusters grouped influencers into distinct types:</p>
+<p>Cluster 0 (Blue): (Low followers, High engagement). Likely micro-influencers with fewer followers but strong engagement.</p>
+<p>–&gt; This is best for brands prioritizing audience interaction.</p>
+<p>Cluster 1 (Orange): (Moderate followers and engagement). Mid-Tier influencers with balanced PCA coordinates (middle range on both axes).</p>
+<p>–&gt; This is best for campaigns needing both reach and interaction.</p>
+<p>Cluster 2 (Green): (High followers, Low engagement). Likely mega-influencers with large audiences but weaker engagement.</p>
+<p>–&gt; This is best for broad brand awareness (e.g., mass-market campaigns)</p>
+<section id="advanced-machine-learning-models-extra-credit">
+<h2>Advanced Machine Learning Models (Extra Credit)<a class="headerlink" href="#advanced-machine-learning-models-extra-credit" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tree-based-model">
+<h1>Tree-Based Model<a class="headerlink" href="#tree-based-model" title="Link to this heading">#</a></h1>
+<p>We can implement a decision tree to classify influencers into high, medium, or low engagement categories (e.g., based on 60_day_eng_rate thresholds: &gt;1.5% = high, 0.5%-1.5% = medium, &lt;0.5% = low) using the same features. This can offer interpretable rules for marketing strategies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Create engagement categories</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;engagement_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;60_day_eng_rate&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.015</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">])</span>
+
+<span class="c1"># Features and target</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;followers&#39;</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="s1">&#39;avg_likes&#39;</span><span class="p">,</span> <span class="s1">&#39;influence_score&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;engagement_category&#39;</span><span class="p">]</span>
+
+<span class="c1"># Split data</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Train Decision Tree</span>
+<span class="n">dt_model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">dt_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Prediction</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">dt_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="c1"># Plot</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">dt_model</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">importances</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Importance in Decision Tree&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Features&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Importance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.57
+              precision    recall  f1-score   support
+
+        high       0.62      0.71      0.67         7
+         low       0.44      0.57      0.50         7
+      medium       0.64      0.50      0.56        14
+
+    accuracy                           0.57        28
+   macro avg       0.57      0.60      0.58        28
+weighted avg       0.59      0.57      0.57        28
+</pre></div>
+</div>
+<img alt="../_images/73b06198048538d3108a2e034b5db3ca84a482dec403280dcd7884f24a9592df.png" src="../_images/73b06198048538d3108a2e034b5db3ca84a482dec403280dcd7884f24a9592df.png" />
+</div>
+</div>
+<p>The model achieves an accuracy of 0.57 (57%) on the test set, which means it correctly classifies 57% of the influencers into their respective engagement categories (high, medium, low). While this is moderate, it suggests the model has room for improvement, possibly due to the small sample size or imbalanced classes.</p>
+<p>The Decision Tree analysis reveals that average likes per post is the most critical factor in classifying Instagram influencers’ engagement levels, with the number of posts also contributing significantly, while follower count and influence score are less decisive. This suggests that marketing strategies should focus on content performance metrics (likes and posts) rather than raw audience size, though further refinement of the model with additional data or techniques could enhance its reliability for strategic decision-making.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion-takeaways">
+<h1>Conclusion &amp; Takeaways<a class="headerlink" href="#conclusion-takeaways" title="Link to this heading">#</a></h1>
+<section id="insights-for-marketing-strategy-and-q-a">
+<h2>Insights for Marketing Strategy and Q&amp;A<a class="headerlink" href="#insights-for-marketing-strategy-and-q-a" title="Link to this heading">#</a></h2>
+<section id="what-types-of-influencers-have-the-highest-engagement-rates">
+<h3>What types of influencers have the highest engagement rates?<a class="headerlink" href="#what-types-of-influencers-have-the-highest-engagement-rates" title="Link to this heading">#</a></h3>
+<p>We’ve seen that micro-influencers (influencers with a lower number of followers) generally have higher engagement rates. K-Means Clustering revealed that influencers with low follower counts but high engagement form a distinct cluster, making them ideal for audience-driven marketing. Regression analysis also confirmed a weak negative correlation between follower count and engagement, meaning that more followers doesn’t necessarily mean better engagement.</p>
+</section>
+<section id="do-influencers-from-certain-countries-tend-to-have-higher-engagement">
+<h3>Do influencers from certain countries tend to have higher engagement?<a class="headerlink" href="#do-influencers-from-certain-countries-tend-to-have-higher-engagement" title="Link to this heading">#</a></h3>
+<p>Mexico, India, and Canada have the highest median engagement rates, according to the boxplot of the top 10 influencer-rich countries. Countries like Indonesia, Colombia, and Brazil show lower engagement levels, suggesting country-based variance in user behavior or algorithmic exposure.</p>
+<p>Marketing takeaway: Targeting campaigns in Mexico or India may yield better returns in engagement-driven campaigns.</p>
+</section>
+<section id="relationship-between-follower-count-and-engagement">
+<h3>Relationship between follower count and engagement?<a class="headerlink" href="#relationship-between-follower-count-and-engagement" title="Link to this heading">#</a></h3>
+<p>The regression analysis shows a clear inverse relationship: as follower count increases, engagement rate tends to decline. R² was very low (~0.007) in the simple model, suggesting other features are more important predictors.</p>
+<p>Marketing takeaway: Focusing only on large followings is not a reliable strategy for engagement-based KPIs.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>In this analysis of Instagram influencer metrics, we explored a dataset of 200 top influencers from 2022 to understand the relationships between follower count, engagement rate, country, and other key metrics, aiming to identify factors driving influencer success. Through data cleaning, visualization, regression analysis, and K-Means clustering, we uncovered several insights. Micro-influencers with lower follower counts exhibited higher engagement rates, forming a distinct cluster ideal for interaction-driven campaigns, while mega-influencers with large audiences showed lower engagement, better suited for broad brand awareness. A low negative correlation between follower count and engagement rate confirmed that larger followings do not guarantee better engagement. Additionally, influencers from countries like Mexico, India, and Canada displayed higher median engagement rates, suggesting geographic variations in audience behavior. These findings highlight the importance of tailoring marketing strategies to specific influencer types and regions, prioritizing micro-influencers for engagement-focused campaigns and leveraging regional differences for targeted outreach.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./final_project"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Eugene.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Haoyu.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SMCI Stock Predictor Project</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Analysis of Instagram Influencer Metrics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-federica-barbini">Author: Federica Barbini</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-project-uc-irvine-math-10-spring-25">Course Project, UC Irvine, Math 10, Spring 25</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#project-ideas">Project Ideas:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview">Dataset Overview</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-variables-features">Key Variables/Features</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-loading-data">Importing Libraries &amp; Loading Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-values">Handling Missing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-duplicates">Checking for Duplicates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-numeric-columns">Cleaning Numeric Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-type-conversion">Data Type Conversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-cleaned-dataset">Final Cleaned Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling-normalize-followers-engagement">Feature Scaling (normalize followers/engagement)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling-0-1-range">Min-Max Scaling: [0, 1] range</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization">Z-score Standardization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-transformation">Log Transformation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-followers-vs-engagement-rate">Scatter Plot: Followers vs. Engagement Rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms-of-follower-counts-distribution">Histograms of follower counts/distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-follower-distribution-left-plot">Raw Follower Distribution (Left Plot)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-scaled-distribution-right-plot">Log-Scaled Distribution (Right Plot)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots-of-engagement-by-country">Boxplots of engagement by country</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-10-countries-by-average-engagement">Top 10 countries by average engagement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-performers">Top Performers:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mid-tier-engagement">Mid-Tier Engagement:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underperformers">Underperformers:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-analysis">Correlation Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#followers-vs-engagement-rate-weak-negative-correlation-0-08">Followers vs. Engagement Rate: Weak Negative Correlation (-0.08)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#followers-vs-average-likes-strong-positive-correlation-0-56">Followers vs. Average Likes: Strong Positive Correlation (0.56)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engagement-rate-vs-average-likes-moderate-positive-correlation-0-50">Engagement Rate vs. Average Likes: Moderate Positive Correlation (0.50)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-analysis">Regression Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression-follower-count-vs-engagement">Simple Linear Regression: Follower Count vs. Engagement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-regression">Multiple Linear Regression</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-Means Clustering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-machine-learning-models-extra-credit">Advanced Machine Learning Models (Extra Credit)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-based-model">Tree-Based Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-takeaways">Conclusion &amp; Takeaways</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insights-for-marketing-strategy-and-q-a">Insights for Marketing Strategy and Q&amp;A</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-types-of-influencers-have-the-highest-engagement-rates">What types of influencers have the highest engagement rates?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-influencers-from-certain-countries-tend-to-have-higher-engagement">Do influencers from certain countries tend to have higher engagement?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-follower-count-and-engagement">Relationship between follower count and engagement?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ray Zirui Zhang 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

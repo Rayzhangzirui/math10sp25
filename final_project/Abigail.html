@@ -1,0 +1,1514 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Predicting Titanic Survival Using Multiple Machine Learning Models &#8212; UCI Math 10, Spring 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_project/Abigail';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Predicting Emergency Department Disposition (Admitted vs Not Admitted) Using Clinical and Socioeconomic Indicators" href="Achyuta.html" />
+    <link rel="prev" title="Final Project" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Spring 2025</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Spring 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kaggle.html">Math 10 Kaggle Competition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/nonlinear_dim.html">Nonlinear Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/kmeans.html">Clustering</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/llm.html">LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/llm_demo.html">LLM Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_5.html">Week 4, Fri, 4/25</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_1.html">Week 5, Mon, 4/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_3.html">Week 5, Wed, 4/30</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_5.html">Week 6, Fri, 5/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_1.html">Week 7, Mon, 5/12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_3.html">Week 7, Wed, 5/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_5.html">Week 7, Fri, 5/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_1.html">Week 8, Mon, 5/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_3.html">Week 8, Wed, 5/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_5.html">Week 8, Fri, 5/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_3.html">Week 9, Wed, 5/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_5.html">Week 9, Fri, 5/30</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8_sol.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Final Project</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Predicting Titanic Survival Using Multiple Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Achyuta.html">Predicting Emergency Department Disposition (Admitted vs Not Admitted) Using Clinical and Socioeconomic Indicators</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Daeseo.html">IMDB Review Predictor</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Daniel.html">Tumor Diagnosis Classification: Breast Cancer Wisconsin</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Elijah.html">Automatic loan verification</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Eugene.html">Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Federica.html">Data Analysis of Instagram Influencer Metrics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Haoyu.html">SMCI Stock Predictor Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hongrui.html">IONQ in Focus: Predicting the Future of Quantum Tech Stocks</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Jerry.html">Math 10 Final Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kelvin.html">Analysis of the Winners of the Tour de France</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Madeline.html">Fraud Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Matt.html">Winning Attributes in the League of Legends Worlds 2024 Championship</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Nishant.html"><strong>Cancer Classification using Gene Expression</strong></a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Oliver.html">Forecasting IPO First‑Day Returns – Investment‑Banking Valuation Project</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Rishabh.html">HOUSE PRICES PREDICTOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sandy.html">Predicting Pop Mart’s Stock Price Based on Google Trends</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Scott.html">Predicting various tickers from yfinance</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_project/Abigail.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Predicting Titanic Survival Using Multiple Machine Learning Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-preparation">Data Cleaning and Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-rate-overview">Survival Rate Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demographic-factors">Demographic Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#socioeconomic-factors">Socioeconomic Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#family-onboard">Family Onboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embarkation-port">Embarkation Port</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-prediction-and-comparison">Model Prediction and Comparison</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">K-Nearest Neighbors (KNN)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network">Neural Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-extra">Decision Tree(Extra)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-extra">Random Forest(Extra)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-summary-and-comparison">Results Summary and Comparison</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="predicting-titanic-survival-using-multiple-machine-learning-models">
+<h1>Predicting Titanic Survival Using Multiple Machine Learning Models<a class="headerlink" href="#predicting-titanic-survival-using-multiple-machine-learning-models" title="Link to this heading">#</a></h1>
+<p>Author: Abigail Ju</p>
+<p>Course Project, UC Irvine, Math 10, Spring 25</p>
+<p>I would like to post my notebook on the course’s website. [Yes]</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>The sinking of the Titanic has long intrigued researchers for the way it revealed patterns of survival shaped by social class, gender, and age. In this project, I explore these patterns through a classification task aimed at predicting whether a passenger survived, based on features such as sex, age, ticket class, fare, and more. Using the Titanic dataset from Kaggle, I apply five different machine learning models—<strong>Logistic Regression, K-Nearest Neighbors, Neural Network, Decision Tree, and Random Forest</strong>—to compare their predictive performance and uncover which variables had the strongest impact on survival. This project not only serves as a practical application of classification models introduced in Math 10, but also offers insight into the human and structural dynamics that shaped the outcomes of this historical disaster.</p>
+<p>All data used in this project comes from <strong>the Kaggle Titanic - Machine Learning from Disaster dataset</strong>.</p>
+<p><strong>👉🏻 Access to the dataset: <a class="reference external" href="https://www.kaggle.com/competitions/titanic/data">Go to Kaggle Titanic Dataset</a></strong></p>
+</section>
+<section id="data-cleaning-and-preparation">
+<h2>Data Cleaning and Preparation<a class="headerlink" href="#data-cleaning-and-preparation" title="Link to this heading">#</a></h2>
+<p>The dataset used in this project contains detailed information on over 800 Titanic passengers, including their age, gender, ticket class, fare, and whether or not they survived the disaster. It includes both numerical and categorical variables, making it suitable for classification and statistical analysis. In this section, we perform the necessary pre-processing steps to prepare the data for model training and evaluation. These steps include handling missing values, encoding categorical features, removing irrelevant columns, and generating a cleaned dataset ready for further exploration and modeling.</p>
+<p><strong>Data Preprocessing</strong></p>
+<p>Before diving into data preprocessing and model development, it is important to understand the structure and meaning of each relevant variable in the Titanic dataset. This foundational knowledge helps guide feature selection, transformation, and ultimately informs how we interpret the model’s predictions.
+<strong>-survived</strong>: Target variable indicating survival outcome (0 = No, 1 = Yes).</p>
+<p><strong>-pclass</strong>: Passenger’s ticket class; a proxy for socio-economic status (1 = Upper, 2 = Middle, 3 = Lower).</p>
+<p><strong>-sex</strong>: Gender of the passenger (male or female).</p>
+<p><strong>-age</strong>: Age of the passenger in years. If age is below 1, it is fractional.</p>
+<p><strong>-sibsp</strong>: Number of siblings or spouses aboard the Titanic.</p>
+<p><strong>-parch</strong>: Number of parents or children aboard the Titanic.</p>
+<p><strong>-fare</strong>: The fare the passenger paid for the ticket.</p>
+<p><strong>-embarked</strong>: Port of embarkation (C = Cherbourg, Q = Queenstown, S = Southampton).</p>
+<p><strong>Step 1: Load the Dataset and Remove Irrelevant Columns</strong></p>
+<p>We begin by importing the pandas library and loading the Titanic dataset. The dataset is provided as a CSV file containing information on each passenger, including demographic details and whether they survived. Some columns such as <code class="docutils literal notranslate"><span class="pre">PassengerId</span></code>, <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Ticket</span></code>, and <code class="docutils literal notranslate"><span class="pre">Cabin</span></code> are either identifiers or contain high amounts of missing or unstructured data. Since they are not useful for prediction, we remove them at this stage.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;train.csv&quot;</span><span class="p">)</span><span class="c1"># Load the dataset</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Ticket&quot;</span><span class="p">,</span> <span class="s2">&quot;Cabin&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Step 2: Clean Missing Values and Encode Categorical Variables</strong></p>
+<p>In this step, we clean the dataset by removing rows that contain missing values, and then encode categorical variables into numerical format for modeling. Specifically, we drop all rows with null entries using <code class="docutils literal notranslate"><span class="pre">dropna()</span></code>, and use <code class="docutils literal notranslate"><span class="pre">LabelEncoder</span></code> to convert the <code class="docutils literal notranslate"><span class="pre">Sex</span></code> and <code class="docutils literal notranslate"><span class="pre">Embarked</span></code> columns into numeric values. This ensures the dataset is clean and fully numeric, which is required for training machine learning models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1"># Drop rows with any missing values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We use label encoding to assign integer values to each category. In the <code class="docutils literal notranslate"><span class="pre">Sex</span></code> column, <strong>“male” is encoded as 1 and “female” as 0</strong>. In the <code class="docutils literal notranslate"><span class="pre">Embarked</span></code> column, <strong>the three possible values (“C”, “Q”, “S”) are encoded into integers such as 0, 1, and 2</strong>, based on alphabetical or frequency order, depending on the encoder. This transformation ensures compatibility with machine learning models that require numerical input.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">])</span><span class="c1"># Encode &#39;Sex&#39;: male → 1, female → 0 </span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Embarked&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Embarked&quot;</span><span class="p">])</span><span class="c1"># Encode &#39;Embarked&#39;: e.g., S, C, Q → 2, 0, 1 (order depends on frequency)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We preview the cleaned and encoded dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>54.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>51.8625</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>21.0750</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>27.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>11.1333</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>14.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>30.0708</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>16.7000</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We check whether the dataset contains any missing values before proceeding. This helps ensure the data is complete and ready for model training.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Survived    0
+Pclass      0
+Sex         0
+Age         0
+SibSp       0
+Parch       0
+Fare        0
+Embarked    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result shows that there are no missing values in any of the columns. This confirms that the dataset is now clean and fully prepared for further analysis and model training.</p>
+<p><strong>Step 3: Define Features and Split the Dataset</strong>
+In this step, we prepare the data for training by first separating the target variable and input features. The target variable <code class="docutils literal notranslate"><span class="pre">y</span></code> is the <code class="docutils literal notranslate"><span class="pre">Survived</span></code> column, indicating whether each passenger survived. The input features <code class="docutils literal notranslate"><span class="pre">X</span></code> include all other columns.
+We then split the dataset into training and test sets using an 80-20 split. This allows us to train models on one portion of the data and evaluate their performance on unseen data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Survived&quot;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Survived&quot;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="c1"># Split the dataset into training and test sets (80% train, 20% test)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>In this section, we successfully prepared the Titanic dataset for model training.</strong>
+We removed irrelevant columns (<code class="docutils literal notranslate"><span class="pre">PassengerId</span></code>, <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Ticket</span></code>, <code class="docutils literal notranslate"><span class="pre">Cabin</span></code>), handled missing values by dropping incomplete rows, and encoded categorical features such as <code class="docutils literal notranslate"><span class="pre">Sex</span></code> and <code class="docutils literal notranslate"><span class="pre">Embarked</span></code> into numeric format. Finally, we separated the data into input features <code class="docutils literal notranslate"><span class="pre">X</span></code> and target variable <code class="docutils literal notranslate"><span class="pre">y</span></code>, and performed an 80-20 train-test split. The dataset is now clean, numerical, and ready for machine learning models.</p>
+</section>
+<section id="exploratory-data-analysis">
+<h2>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h2>
+<p>In this section, we aim to uncover hidden patterns in the Titanic dataset by examining the relationships between features and survival outcomes. Through visualizations and descriptive statistics, we will gain deeper insights into which factors may have influenced a passenger’s chance of survival.</p>
+<section id="survival-rate-overview">
+<h3>Survival Rate Overview<a class="headerlink" href="#survival-rate-overview" title="Link to this heading">#</a></h3>
+<p>To begin our exploration, we first look at the overall survival distribution in the Titanic dataset. This helps us understand the balance between the two classes in our target variable <code class="docutils literal notranslate"><span class="pre">Survived</span></code>, where 0 indicates death and 1 indicates survival.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Overall Survival Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Survived (0 = No, 1 = Yes)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Passenger Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/69fadcc871f59411f5868e97b073fd9ee2d39a6261e67fdcd8d11863abcfbea4.png" src="../_images/69fadcc871f59411f5868e97b073fd9ee2d39a6261e67fdcd8d11863abcfbea4.png" />
+</div>
+</div>
+<p>Based on the given dataset, we observe that the number of passengers who did not survive (label 0) is higher than the number who survived (label 1). This indicates that the overall survival rate on the Titanic was less than 50%, highlighting the severity of the disaster.</p>
+</section>
+<section id="demographic-factors">
+<h3>Demographic Factors<a class="headerlink" href="#demographic-factors" title="Link to this heading">#</a></h3>
+<p>In this section, we explore how key demographic characteristics—specifically gender and age—influenced survival outcomes on the Titanic. According to the well-known “women and children first” evacuation policy during the disaster, we would expect to observe significantly higher survival rates among female passengers and younger individuals. By analyzing survival distributions across gender and age, we aim to reveal patterns that reflect how social norms and emergency priorities shaped the fate of different groups aboard the ship.</p>
+<p><strong>Sex vs Survived</strong></p>
+<p>We start by examining whether survival rates differed between male and female passengers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Survival Count by Gender&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gender(0 = Female, 1 = Male)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Passenger Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="s1">&#39;Yes&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6eb90b58333dccb0f88de1ba310223c947916a436d15d1cca1a77b55cb1e870d.png" src="../_images/6eb90b58333dccb0f88de1ba310223c947916a436d15d1cca1a77b55cb1e870d.png" />
+</div>
+</div>
+<p>In the given Titanic dataset, there is a clear disparity in survival rates between male and female passengers. <strong>A significantly higher proportion of females survived compared to males</strong>, despite the fact that there were more male passengers overall. This pattern strongly supports the historical evacuation policy of “women and children first,” where women were prioritized for lifeboats during the disaster. This gender-based survival gap highlights how social norms and emergency decisions played a crucial role in shaping outcomes.</p>
+<p><strong>Age Distribution</strong></p>
+<p>Next, we visualize the overall distribution of passengers’ ages to understand how age was spread across the population.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Age Distribution of Passengers&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/90c1a17afc50468516954a3b531add272a1b5f744e9f5ddb6011e11f9947d3bf.png" src="../_images/90c1a17afc50468516954a3b531add272a1b5f744e9f5ddb6011e11f9947d3bf.png" />
+</div>
+</div>
+<p>The histogram of passenger age distribution shows that <strong>most passengers on the Titanic were between 20 and 40 years old</strong>, with a peak in the late 20s. The distribution is <strong>slightly right-skewed</strong>, indicating <strong>fewer older passengers</strong>. Additionally, there is a noticeable number of young children (under 10), suggesting a presence of families on board. Understanding this age composition sets the stage for further analysis of how age impacted survival rates during the disaster.</p>
+<p><strong>Age vs Survived</strong></p>
+<p>Finally, we analyze whether age played a role in survival by comparing the age distributions of those who survived and those who did not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Survival Distribution by Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6217bb18f663d7bf5e526caaeae89c60f43bd69bf93017bc66fee19dec75cc1a.png" src="../_images/6217bb18f663d7bf5e526caaeae89c60f43bd69bf93017bc66fee19dec75cc1a.png" />
+</div>
+</div>
+<p>The KDE plot compares the age distributions of passengers who survived (orange) and those who did not (blue).</p>
+<p>-In the 0–10 age range, the orange curve (Survived = 1) is significantly higher than the blue one. This indicates that children had a higher chance of survival, likely due to the “women and children first” evacuation policy.</p>
+<p>-In the 20–40 age range, the blue curve (Survived = 0) is consistently higher than the orange one, suggesting that most passengers in this age group did not survive.</p>
+<p>For passengers over 60, both curves drop sharply, indicating that elderly passengers were few in number and had low survival rates.</p>
+<p>Age clearly influenced survival outcomes. Children had a noticeably higher chance of survival, while middle-aged adults were less likely to survive, supporting the prioritization of younger passengers during the evacuation.</p>
+<p>In this section, we analyzed the impact of gender and age on survival outcomes. The results show that <strong>female passengers had a much higher likelihood of survival than males</strong>, reflecting the “women and children first” policy followed during evacuation. Additionally, <strong>younger passengers, especially children under 10, were more likely to survive compared to adults</strong>, indicating that age also played a significant role in determining survival chances.</p>
+</section>
+<section id="socioeconomic-factors">
+<h3>Socioeconomic Factors<a class="headerlink" href="#socioeconomic-factors" title="Link to this heading">#</a></h3>
+<p>In this section, we explore how a passenger’s socioeconomic status—reflected by their <strong>ticket class (Pclass)</strong> and <strong>fare paid</strong>—influenced their likelihood of survival. Historically, higher-class passengers were located closer to lifeboats and may have received preferential treatment during evacuation. By analyzing these factors, we aim to understand whether money and status truly offered a better chance of survival on the Titanic.</p>
+<p><strong>Pclass vs Survived</strong></p>
+<p>We begin by examining the relationship between passenger class and survival. The Titanic had three classes: 1st (upper), 2nd (middle), and 3rd (lower), which were highly stratified in terms of cabin location and access to resources.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Survival Count by Passenger Class&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Passenger Class (1 = 1st, 2 = 2nd, 3 = 3rd)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Passenger Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/582b5f20ebf8a39e14a1142e7c2eae0811abb0628492094e9c17c034766d8ec6.png" src="../_images/582b5f20ebf8a39e14a1142e7c2eae0811abb0628492094e9c17c034766d8ec6.png" />
+</div>
+</div>
+<p>The bar chart clearly illustrates a strong correlation between passenger class and survival rate. Passengers in 1st class had the highest number of survivors, noticeably exceeding the number of non-survivors in the same class. In contrast, 3rd class passengers experienced the lowest survival rate, with significantly more non-survivors than survivors. This supports the hypothesis that <strong>higher-class passengers had a greater chance of survival</strong>, likely due to their cabin proximity to lifeboats and possibly prioritized access during evacuation procedures.</p>
+<p><strong>Fare Distribution vs Survival</strong>
+Next, we look at how ticket fare relates to survival. Since fare roughly reflects a passenger’s socioeconomic status, this helps us understand whether people who paid more had a better chance of surviving the disaster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fare Distribution by Survival&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Survived (0 = No, 1 = Yes)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fare&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/002547b0e695c24974b8d73f0966f1d02d1186d692ffc4f79aeceb4a215a07fa.png" src="../_images/002547b0e695c24974b8d73f0966f1d02d1186d692ffc4f79aeceb4a215a07fa.png" />
+</div>
+</div>
+<p>In this chart, we examine how ticket price correlates with survival. <strong>It’s clear that passengers who survived (Survived = 1) generally paid higher fares than those who did not.</strong> The median fare among survivors is noticeably higher, and the overall distribution of fare values for survivors extends to much greater amounts. In contrast, non-survivors mostly fall within the lower fare range.</p>
+<p>In this section, we explored the impact of socioeconomic status, represented by passenger class and fare amount, on survival outcomes. Our analysis showed that passengers in first class had a noticeably higher survival rate compared to those in second and third class, indicating that class-based differences in access to lifeboats may have played a role. Additionally, survivors tended to have paid higher fares on average, reinforcing the idea that wealthier individuals had a better chance of survival during the disaster. Together, these patterns suggest that passengers from higher socioeconomic classes, who could afford more expensive tickets, had a better chance of survival, likely due to better cabin locations or earlier access to lifeboats. <strong>The outcome of survival on the Titanic was shaped not only by chance, but also by clear social and economic divisions.</strong></p>
+</section>
+<section id="family-onboard">
+<h3>Family Onboard<a class="headerlink" href="#family-onboard" title="Link to this heading">#</a></h3>
+<p>In this section, we examine how the presence of family members onboard—captured through the number of siblings/spouses (<code class="docutils literal notranslate"><span class="pre">SibSp</span></code>) and parents/children (<code class="docutils literal notranslate"><span class="pre">Parch</span></code>)—may have influenced a passenger’s chance of survival. Having close relatives during a disaster could provide emotional support and coordination, but larger groups might also complicate escape efforts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;FamilySize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;SibSp&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Parch&#39;</span><span class="p">]</span><span class="c1"># Create a new feature representing total family size</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;FamilySize&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Survival Count by Family Size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Family Size (SibSp + Parch)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Passenger Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/42b788f71122442d61d121ef147034509a794956b23df06bc41677b663fbe33b.png" src="../_images/42b788f71122442d61d121ef147034509a794956b23df06bc41677b663fbe33b.png" />
+</div>
+</div>
+<p>The chart shows a clear relationship between family size and survival likelihood. Passengers with small families—particularly those with <strong>1 to 3</strong> family members onboard—had <strong>higher survival counts</strong> than those traveling alone or in large groups. Those who <strong>traveled alone (FamilySize = 0)</strong> had a significantly <strong>higher number of deaths</strong> compared to survivors. Conversely, very large family sizes (FamilySize ≥ 5) also showed poor survival outcomes, likely due to the difficulty of coordinating during evacuation. This suggests that <strong>being accompanied by a small number of family members may have provided emotional or practical support that improved survival chances, while being alone or in large groups reduced the likelihood of survival.</strong></p>
+</section>
+<section id="embarkation-port">
+<h3>Embarkation Port<a class="headerlink" href="#embarkation-port" title="Link to this heading">#</a></h3>
+<p>In this section, we examine whether a passenger’s port of embarkation had any influence on survival. The Titanic picked up passengers from three ports: Southampton (<code class="docutils literal notranslate"><span class="pre">S</span></code>), Cherbourg (<code class="docutils literal notranslate"><span class="pre">C</span></code>), and Queenstown (<code class="docutils literal notranslate"><span class="pre">Q</span></code>). Since passengers from different ports often belonged to different ticket classes or cabins, this variable may indirectly reflect socioeconomic status.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Survival Count by Embarkation Port&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Embarked (C = Cherbourg, Q = Queenstown, S = Southampton)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Passenger Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/84f57709dd0ed59cb415d8048b4de40d020ad5bfb4eba31703412190f5bff137.png" src="../_images/84f57709dd0ed59cb415d8048b4de40d020ad5bfb4eba31703412190f5bff137.png" />
+</div>
+</div>
+<p>In this section, we analyzed whether the port of embarkation was associated with survival outcomes. The chart clearly shows that passengers who boarded at Southampton (S) had the highest number of deaths compared to other ports. This suggests that <strong>boarding location might be indirectly linked to socioeconomic status</strong>, as passengers from Southampton may have belonged more to third class or paid lower fares. To explore this possibility, we next examine <strong>the relationship between embarkation port and ticket class.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">])</span> <span class="c1"># Make sure there is no missing values.</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Passenger Class by Embarkation Port&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Embarked (C = Cherbourg, Q = Queenstown, S = Southampton)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Passenger Count&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fare Distribution by Embarkation Port&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Embarked (C = Cherbourg, Q = Queenstown, S = Southampton)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fare&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1ce0e61d5b931cb6fceb16be2bc6440efba40bb3a20d692dea8fdb6cb04b5142.png" src="../_images/1ce0e61d5b931cb6fceb16be2bc6440efba40bb3a20d692dea8fdb6cb04b5142.png" />
+</div>
+</div>
+<p>The previous survival chart showed that passengers who boarded at Southampton (coded as 2) had the highest number of deaths. To understand why, we examined the class and fare distribution by embarkation port. The left chart reveals that most Southampton passengers traveled in 3rd class, while the right chart shows they also paid the lowest fares on average. In contrast, Cherbourg (coded as 0) had a higher proportion of 1st class passengers and higher fares. This suggests that <strong>the high mortality rate among Southampton passengers may be attributed to their lower socioeconomic status, as represented by both class and fare.</strong></p>
+</section>
+</section>
+<section id="model-prediction-and-comparison">
+<h2>Model Prediction and Comparison<a class="headerlink" href="#model-prediction-and-comparison" title="Link to this heading">#</a></h2>
+<p>In this section, we aim to predict passenger survival using a variety of machine learning models. Specifically, we will train and evaluate five different classifiers: <strong>Logistic Regression, K-Nearest Neighbors (KNN), Decision Tree, Random Forest, and Neural Network (MLP).</strong> Each model will be trained on the training set and evaluated on the test set to determine its effectiveness.</p>
+<p>To measure performance, we will use <strong>accuracy</strong> as the primary evaluation metric, which tells us the proportion of correct predictions on the test set. Since this is a classification problem (predicting survival as 0 or 1), accuracy provides a clear and interpretable way to compare model performance. The goal is to identify which model generalizes best to unseen data and offers the most reliable prediction results.</p>
+<p>Through this comparative approach, we hope to determine which algorithm is most suitable for this task and gain insights into how different models handle the Titanic dataset.</p>
+<p><strong>Accuracy</strong></p>
+<p>Accuracy measures the proportion of correct predictions out of all predictions. It tells us how often the model predicts survival correctly overall. It is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[\text{Accuracy} = \frac{\text{True Positives} + \text{True Negatives}}{\text{Total Predictions}}\]</div>
+<p>By evaluating models based on both accuracy and F1-score, we can better assess not just how often the model is right, but also how well it identifies the survivors without over- or under-predicting.</p>
+<section id="logistic-regression">
+<h3>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html">Logistic Regression</a> is a simple yet powerful classification algorithm that is particularly suitable for binary outcomes like survival prediction. Since our target variable, Survived, is binary (0 = did not survive, 1 = survived), logistic regression is a natural starting point. It is easy to interpret, computationally efficient, and performs well with smaller or medium-sized datasets like Titanic.</p>
+<p>Logistic regression models the probability that a passenger survives as a function of various features such as age, gender, passenger class, and fare. It assumes a linear relationship between the features and the log-odds of the outcome, which is appropriate for understanding how each factor contributes to survival.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.7972
+</pre></div>
+</div>
+<img alt="../_images/1d89f66108034f6f9dc1684916074253acb6eb75da5c2681112c324eec14da7b.png" src="../_images/1d89f66108034f6f9dc1684916074253acb6eb75da5c2681112c324eec14da7b.png" />
+</div>
+</div>
+<p>Our initial Logistic Regression model achieved an <strong>accuracy</strong> of approximately <strong>0.797</strong>, meaning it correctly predicted survival outcomes nearly 80% of the time on the test set. <strong>The confusion matrix heatmap</strong> shows that the model performs reasonably well overall but misclassifies a number of survivors as non-survivors. Specifically, <strong>22 survivors were predicted as not survived</strong>, indicating the model may have lower recall for the positive class.
+This suggests room for improvement in capturing minority outcomes (i.e., survivors), and highlights a potential <strong>class imbalance</strong> issue affecting the model’s predictions.</p>
+<p>To strengthen the model’s generalizability and interpretability, we now proceed with:</p>
+<p><strong>Cross-validation</strong>: To ensure that our logistic regression model performs consistently across different subsets of the data, we applied <strong>k-fold cross-validation</strong>. This technique splits the dataset into k parts and evaluates the model k times, each time using a different fold for testing and the remaining folds for training. We used <strong>5-fold cross-validation</strong> to assess the model’s generalization ability. A high and stable average accuracy across folds indicates that the model is not overfitting and performs reliably on unseen data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validation scores:&quot;</span><span class="p">,</span> <span class="n">cv_scores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean cross-validation score: </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.75524476 0.82517483 0.78873239 0.76056338 0.81690141]
+Mean cross-validation score: 0.7893
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cross-validation results yielded a mean accuracy of approximately <strong>0.7893</strong>, with individual fold scores ranging <strong>from 0.7552 to 0.8252</strong>. This indicates that the logistic regression model performs consistently across different subsets of the data, with only minor fluctuations between folds. Such stability suggests that the model generalizes well and is not overly sensitive to the specific partitioning of the dataset.</p>
+<p>From these results, we can draw the following conclusions regarding key modeling concepts:</p>
+<p><strong>Overfitting</strong>: There is no significant gap between the training accuracy (around 0.73), the test accuracy (around 0.80), and the cross-validation scores. This consistency implies that the model is not overfitting and is able to perform well on unseen data.</p>
+<p><strong>Cross-validation</strong>: The application of 5-fold cross-validation confirmed the model’s robustness and reliability. The relatively narrow range of accuracy scores across the five folds shows that the model maintains good predictive power regardless of the specific data split.</p>
+<p><strong>Bias-variance tradeoff</strong>: The model strikes a good balance. The high test and cross-validation accuracy suggest that <strong>bias is low</strong>, while the small variation across folds and the lack of overfitting suggest that <strong>variance is also well-controlled</strong>. This means the model does not underfit or overfit, which is desirable in predictive modeling.</p>
+</section>
+<section id="k-nearest-neighbors-knn">
+<h3>K-Nearest Neighbors (KNN)<a class="headerlink" href="#k-nearest-neighbors-knn" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://scikit-learn.org/1.5/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">K-Nearest Neighbors (KNN)</a> is a non-parametric, instance-based learning algorithm that makes predictions based on the majority class of the k closest data points in the feature space. It does not assume any underlying distribution and makes decisions purely based on data similarity, making it highly intuitive and flexible.</p>
+<p>For the Titanic dataset, KNN is useful because the dataset is not too large, and many of the input features like age, fare, and passenger class are numeric or easily encoded. KNN allows the model to classify survival by “comparing” new passengers to those with similar traits, such as age or fare paid. While KNN can be sensitive to feature scaling and irrelevant variables, with proper preprocessing, it can perform competitively and offer an interpretable baseline for comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_knn</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">knn_acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KNN Accuracy: </span><span class="si">{</span><span class="n">knn_acc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">cm_knn</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm_knn</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KNN Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KNN Accuracy: 0.6923
+</pre></div>
+</div>
+<img alt="../_images/45ab6b64ef3e4f2ec73f22057124bb2633d989187f6c8bf3cfab24be2d8b3c5d.png" src="../_images/45ab6b64ef3e4f2ec73f22057124bb2633d989187f6c8bf3cfab24be2d8b3c5d.png" />
+</div>
+</div>
+<p>Our K-Nearest Neighbors (KNN) model achieved an accuracy of approximately <strong>0.692</strong>, indicating it correctly predicted survival outcomes about 69% of the time on the test set. It performs reasonably well and offers valuable insights into local patterns within the data. <strong>The confusion matrix heatmap</strong> shows that the KNN model correctly classified <strong>55 non-survivors and 44 survivors</strong>, but misclassified <strong>25 survivors as non-survivors and 19 non-survivors as survivors</strong>. This suggests that the model may be somewhat less balanced in handling class boundaries and is more sensitive to noise or overlapping features between the survivor and non-survivor groups.</p>
+<p>Similarly, to strengthen the model’s generalizability and interpretability, we now proceed with:</p>
+<p><strong>Cross-validation</strong>: To ensure that our KNN model performs consistently across different subsets of the data, we applied <strong>k-fold cross-validation</strong>. This technique splits the dataset into k parts and evaluates the model k times, each time using a different fold for testing and the remaining folds for training. We used <strong>5-fold cross-validation</strong> to assess the model’s generalization ability. A stable average accuracy across folds indicates that the model is not overfitting and performs reliably on unseen data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">cv_scores_knn</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">knn_model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KNN Cross-validation scores:&quot;</span><span class="p">,</span> <span class="n">cv_scores_knn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean KNN cross-validation score: </span><span class="si">{</span><span class="n">cv_scores_knn</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KNN Cross-validation scores: [0.58741259 0.66433566 0.70422535 0.70422535 0.74647887]
+Mean KNN cross-validation score: 0.6813
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cross-validation results yielded a mean accuracy of approximately <strong>0.6813</strong>, with individual fold scores ranging <strong>from 0.5874 to 0.7465</strong>. This wider variation across folds compared to logistic regression suggests that the KNN model’s performance is more sensitive to how the data is split and may generalize less consistently.</p>
+<p>From these results, we can draw the following conclusions regarding key modeling concepts:</p>
+<p><strong>Overfitting</strong>: The KNN model exhibits a slight gap between training and test performance (e.g., test accuracy around 0.692, mean CV score around 0.681). While this does not indicate severe overfitting, it does suggest that the model may be more sensitive to local patterns and potentially overfit on small variations in the training data.</p>
+<p><strong>Cross-validation</strong>: The application of 5-fold cross-validation revealed moderate fluctuations across folds, indicating that the model’s predictive performance is somewhat unstable depending on the subset. This variability may limit the robustness of the KNN model in production or unseen scenarios.</p>
+<p><strong>Bias-variance tradeoff</strong>: Compared to logistic regression, the KNN model appears to have <strong>lower bias but higher variance</strong>. It captures more local patterns in the data, which helps in certain cases but also leads to inconsistent generalization. This reflects the typical tradeoff of KNN: strong local learning at the cost of higher variance across different data splits.</p>
+</section>
+<section id="neural-network">
+<h3>Neural Network<a class="headerlink" href="#neural-network" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://scikit-learn.org/1.5/modules/generated/sklearn.neural_network.MLPClassifier.html">Neural Networks</a> are a class of powerful machine learning models designed to capture complex, non-linear relationships between input features and output labels. Unlike simpler models such as logistic regression, neural networks can learn from intricate patterns in the data by stacking multiple layers of computations.</p>
+<p>In the context of the Titanic dataset, where survival might depend on nuanced interactions between features like age, fare, gender, and class, neural networks are particularly suitable. They are able to model such interactions without explicitly specifying them and are well-suited to binary classification tasks like predicting survival outcomes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+
+<span class="n">nn_model</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,),</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">nn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_nn</span> <span class="o">=</span> <span class="n">nn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">nn_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neural Network Accuracy: </span><span class="si">{</span><span class="n">nn_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nn</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neural Network Accuracy: 0.7483
+</pre></div>
+</div>
+<img alt="../_images/d50555339a1f69f016075ba22d211b74dfc8849697a3aa13d659037ece212129.png" src="../_images/d50555339a1f69f016075ba22d211b74dfc8849697a3aa13d659037ece212129.png" />
+</div>
+</div>
+<p>Our Neural Network (NN) model achieved an accuracy of approximately <strong>0.748</strong>, correctly predicting survival outcomes about 75% of the time on the test set. It reflects the NN model’s ability to capture non-linear relationships within the data. <strong>The confusion matrix heatmap</strong> shows that the model correctly classified <strong>60 non-survivors and 47 survivors</strong>, but misclassified <strong>20 survivors as non-survivors and 16 non-survivors as survivors</strong>. This pattern suggests that the NN has a moderate grasp on both classes, but there’s still room for improvement in distinguishing borderline cases, especially those that share overlapping features.</p>
+<p>To ensure that the NN model generalizes well and is not overfitting to the training data, we will next apply <strong>5-fold cross-validation</strong>. This technique divides the dataset into five equal parts and rotates through them, training on four folds and validating on the fifth each time. A consistently stable performance across folds will demonstrate the model’s robustness and reliability on unseen data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nn_model</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,),</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">cv_scores_nn</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">nn_model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Neural Network Cross-validation scores:&quot;</span><span class="p">,</span> <span class="n">cv_scores_nn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Neural Network cross-validation score: </span><span class="si">{</span><span class="n">cv_scores_nn</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neural Network Cross-validation scores: [0.74825175 0.83216783 0.73943662 0.76056338 0.83802817]
+Mean Neural Network cross-validation score: 0.7837
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cross-validation results yielded a mean accuracy of approximately <strong>0.7837</strong>, with individual fold scores ranging <strong>from 0.7394 to 0.8380</strong>. This relatively narrow range across folds indicates that the neural network model performs stably and consistently on different subsets of the data. Compared to KNN, the neural network generalizes better and is less sensitive to data partitioning, which is desirable for predictive reliability.</p>
+<p>From these results, we can draw the following conclusions regarding key modeling concepts:</p>
+<p><strong>Overfitting</strong>: The neural network model demonstrates no strong signs of overfitting. The test accuracy (~0.748) and the mean cross-validation score (~0.784) are closely aligned, suggesting the model can generalize well without memorizing the training data.</p>
+<p><strong>Cross-validation</strong>: The application of 5-fold cross-validation revealed consistent performance across folds. This consistency confirms the robustness of the model and its reliability when applied to unseen data.</p>
+<p><strong>Bias-variance tradeoff</strong>: The neural network achieves a good tradeoff between bias and variance. Its ability to capture complex nonlinear relationships contributes to <strong>low bias</strong>, while the stable cross-validation scores indicate <strong>controlled variance</strong>, meaning the model is both expressive and stable.</p>
+</section>
+<section id="decision-tree-extra">
+<h3>Decision Tree(Extra)<a class="headerlink" href="#decision-tree-extra" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://scikit-learn.org/1.5/modules/generated/sklearn.tree.DecisionTreeClassifier.html">Decision Tree</a> is a widely used supervised learning algorithm that models decisions and their possible consequences using a tree-like structure. It recursively splits the dataset into subsets based on the most informative features, with each internal node representing a decision on a feature, each branch representing an outcome, and each leaf node representing a predicted class label. Decision trees are intuitive, easy to interpret, and capable of handling both categorical and numerical data.</p>
+<p>Decision Tree is well-suited for predicting survival on the Titanic because the dataset includes a mix of categorical and numerical features, such as passenger class, sex, age, and fare. Decision trees can naturally handle this variety without requiring feature scaling or complex preprocessing. Moreover, they can model non-linear interactions between variables—for example, how being a child in first class may impact survival differently than being an adult in third class. Their ability to reveal interpretable rules also makes them especially useful for understanding which features most influence survival outcomes in this historical context.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="n">dt_model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">dt_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_dt</span> <span class="o">=</span> <span class="n">dt_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">accuracy_dt</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_dt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decision Tree Accuracy: </span><span class="si">{</span><span class="n">accuracy_dt</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_dt</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Tree Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decision Tree Accuracy: 0.7063
+</pre></div>
+</div>
+<img alt="../_images/82557f7bf64de4b64f2d4cf595c0acf0429828e7b3d991e3d98c5799e00b9bf7.png" src="../_images/82557f7bf64de4b64f2d4cf595c0acf0429828e7b3d991e3d98c5799e00b9bf7.png" />
+</div>
+</div>
+<p>Our Decision Tree model achieved an accuracy of approximately <strong>0.706</strong>, meaning it correctly predicted survival outcomes about 71% of the time on the test set. It reflects a solid baseline and offers valuable interpretability. <strong>The confusion matrix heatmap</strong> shows that the model correctly classified <strong>63 non-survivors and 38 survivors</strong>, but misclassified <strong>17 survivors as non-survivors and 25 non-survivors</strong> as survivors. This indicates that while the model captures some important decision rules, it may struggle with certain borderline or overlapping cases.</p>
+<p>To evaluate the model’s generalizability, we applied <strong>5-fold cross-validation</strong>, which helps us assess the model’s consistency across different data splits and guards against overfitting. A stable average accuracy across folds would indicate that the model performs reliably and is not overly sensitive to a specific data partition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="n">dt_model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">cv_scores_dt</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">dt_model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decision Tree Cross-validation scores:&quot;</span><span class="p">,</span> <span class="n">cv_scores_dt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Decision Tree cross-validation score: </span><span class="si">{</span><span class="n">cv_scores_dt</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decision Tree Cross-validation scores: [0.68531469 0.81118881 0.75352113 0.74647887 0.8028169 ]
+Mean Decision Tree cross-validation score: 0.7599
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cross-validation results yielded a mean accuracy of approximately <strong>0.7599</strong>, with individual fold scores ranging <strong>from 0.6853 to 0.8112</strong>. This variation suggests that the Decision Tree model performs moderately well across different subsets of the dataset, though the wider score range compared to logistic regression and neural networks may reflect some instability in generalization.</p>
+<p>From these results, we can draw the following conclusions regarding key modeling concepts:</p>
+<p><strong>Overfitting</strong>:The Decision Tree model shows a visible gap between the training and test performance, and the relatively wide range of validation scores also implies that the model may overfit certain subsets of the training data. Decision trees are prone to overfitting, especially when they are deep and not pruned, which may reduce their reliability on unseen data.</p>
+<p><strong>Cross-validation</strong>:The application of 5-fold cross-validation indicates that while the model can achieve high accuracy on some folds, its performance is not entirely consistent across all folds. This variability reflects the model’s tendency to be influenced by different training samples, suggesting less robustness than logistic regression or neural networks.</p>
+<p><strong>Bias-variance tradeoff</strong>:The Decision Tree model appears to have <strong>low bias but high variance</strong>. It can fit training data very well (low bias), but may not generalize as reliably due to the high sensitivity to small changes in the data (high variance). This tradeoff is typical of unpruned decision trees and could be addressed with ensemble techniques like Random Forests or by limiting tree depth.</p>
+</section>
+<section id="random-forest-extra">
+<h3>Random Forest(Extra)<a class="headerlink" href="#random-forest-extra" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://scikit-learn.org/1.5/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Random Forest</a>  is an ensemble learning method that builds multiple decision trees during training and outputs the majority vote for classification tasks. Each tree is trained on a random subset of the data and features, which introduces diversity and reduces the risk of overfitting compared to a single decision tree. This aggregation of multiple models improves overall accuracy, robustness, and generalization performance. Random Forest is especially effective for datasets with complex feature relationships and does not require assumptions about the distribution of the data, making it a versatile and powerful classifier for many real-world tasks.</p>
+<p>Random Forest is well-suited for predicting survival on the Titanic because it handles structured data with mixed feature types effectively. The dataset includes both numerical (age, fare) and categorical (sex, class, embarked) variables, and Random Forest can model complex interactions between them without requiring extensive preprocessing. It is also robust to outliers and missing values, and provides built-in feature importance, making it easier to interpret which variables most influence survival. Additionally, because Random Forest reduces overfitting through ensemble averaging, it tends to generalize well to unseen data—an essential quality for reliable prediction in real-world scenarios like the Titanic dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">rf_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rf_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">rf_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Forest Accuracy: </span><span class="si">{</span><span class="n">rf_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">cm_rf</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm_rf</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Random Forest Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest Accuracy: 0.7902
+</pre></div>
+</div>
+<img alt="../_images/c33a644a7d9ba8765f315b3f4ec40a8780d603d3a083f7d6851692152ab96345.png" src="../_images/c33a644a7d9ba8765f315b3f4ec40a8780d603d3a083f7d6851692152ab96345.png" />
+</div>
+</div>
+<p>Our Random Forest model achieved an accuracy of approximately <em>0.790</em>, indicating that it correctly predicted survival outcomes nearly 79% of the time on the test set. This performance demonstrates Random Forest’s ability to handle complex, real-world datasets effectively.</p>
+<p>The confusion matrix reveals that the model correctly predicted <strong>67 non-survivors and 46 survivors</strong>, while it misclassified <strong>13 survivors as non-survivors and 17 non-survivors as survivors</strong>. This suggests a good balance in prediction performance across both classes, with relatively low misclassification rates, especially for survivors—a critical aspect in survival prediction tasks.</p>
+<p>To further evaluate the generalizability and stability of the Random Forest model, we now apply <strong>k-fold cross-validation</strong>, which will allow us to assess its performance across different subsets of the dataset. This ensures that the model’s performance is not overly dependent on any specific data split and provides a more robust evaluation metric. Let’s proceed to cross-validation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">cv_scores_rf</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf_model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Forest Cross-validation scores:&quot;</span><span class="p">,</span> <span class="n">cv_scores_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Random Forest cross-validation score: </span><span class="si">{</span><span class="n">cv_scores_rf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest Cross-validation scores: [0.73426573 0.81118881 0.78169014 0.77464789 0.83802817]
+Mean Random Forest cross-validation score: 0.7880
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cross-validation results yielded a mean accuracy of approximately <strong>0.7880</strong>, with individual fold scores ranging <strong>from 0.7343 to 0.8380</strong>. This performance indicates that the Random Forest model generalizes well to unseen data and maintains relatively stable accuracy across different folds. Compared to other models tested, it combines both strong predictive accuracy and consistency, which highlights its robustness and suitability for the Titanic classification task.</p>
+<p>From these results, we can draw the following conclusions regarding key modeling concepts:</p>
+<p><strong>Overfitting</strong>: The Random Forest model shows minimal signs of overfitting. The small gap between the test accuracy (approximately 0.7902) and the cross-validation mean score (0.7880) suggests that the model does not rely heavily on any specific subset of training data and performs reliably on new data.</p>
+<p><strong>Cross-validation</strong>: The application of 5-fold cross-validation demonstrated the model’s generalizability and stability. The narrow range of scores across the folds indicates that Random Forest is less sensitive to data splits and can maintain good performance across various data subsets.</p>
+<p><strong>Bias-variance tradeoff</strong>: The model achieves a strong balance between bias and variance. The high and stable accuracy indicates <strong>low bias</strong>, while the small variability across folds suggests <strong>well-controlled variance</strong>. This makes Random Forest a powerful and balanced predictive model in this context.</p>
+</section>
+<section id="results-summary-and-comparison">
+<h3>Results Summary and Comparison<a class="headerlink" href="#results-summary-and-comparison" title="Link to this heading">#</a></h3>
+<p>To determine the most reliable model for predicting Titanic survival, we compared test accuracy and cross-validation performance across five different classification algorithms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Test Accuracy Comparison ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logistic Regression: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;K-Nearest Neighbors: </span><span class="si">{</span><span class="n">knn_acc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neural Network: </span><span class="si">{</span><span class="n">nn_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decision Tree: </span><span class="si">{</span><span class="n">accuracy_dt</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Forest: </span><span class="si">{</span><span class="n">rf_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Mean Cross-Validation Score Comparison ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logistic Regression: </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;K-Nearest Neighbors: </span><span class="si">{</span><span class="n">cv_scores_knn</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neural Network: </span><span class="si">{</span><span class="n">cv_scores_nn</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decision Tree: </span><span class="si">{</span><span class="n">cv_scores_dt</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Forest: </span><span class="si">{</span><span class="n">cv_scores_rf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Test Accuracy Comparison ===
+Logistic Regression: 0.7972
+K-Nearest Neighbors: 0.6923
+Neural Network: 0.7483
+Decision Tree: 0.7063
+Random Forest: 0.7902
+
+=== Mean Cross-Validation Score Comparison ===
+Logistic Regression: 0.7893
+K-Nearest Neighbors: 0.6813
+Neural Network: 0.7837
+Decision Tree: 0.7599
+Random Forest: 0.7880
+</pre></div>
+</div>
+</div>
+</div>
+<p>Based on our evaluation of five classification models—Logistic Regression, K-Nearest Neighbors (KNN), Neural Network, Decision Tree, and Random Forest—we find that Logistic Regression demonstrated the most balanced and reliable performance, achieving the highest accuracy and generalization across different data splits. Random Forest closely followed, benefiting from its ensemble structure that helps reduce overfitting while maintaining strong predictive power. In contrast, K-Nearest Neighbors consistently underperformed, likely due to its sensitivity to local variations and lack of global learning structure. Overall, Logistic Regression and Random Forest emerge as the most effective models for this classification task, offering both interpretability and robustness.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>In this project, we analyzed the Titanic dataset to predict passenger survival using various machine learning models. After performing initial data cleaning, feature encoding, and splitting the dataset into training and testing sets, we explored five classification models: Logistic Regression, K-Nearest Neighbors (KNN), Neural Network (MLPClassifier), Decision Tree, and Random Forest.</p>
+<p>Each model was trained and evaluated using both test accuracy and 5-fold cross-validation to assess performance, generalization, and stability. Confusion matrices were generated to visualize prediction results and understand model behavior across classes. We also addressed important modeling considerations such as overfitting, cross-validation reliability, and the bias-variance tradeoff.</p>
+<p>Among the models, Logistic Regression and Random Forest delivered the strongest overall performance, combining high accuracy with consistent cross-validation results. KNN, by contrast, showed weaker and more variable performance, likely due to its sensitivity to local patterns. The analysis underscores the importance of model selection, cross-validation, and evaluation metrics in building robust predictive systems.</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+<p>Dataset from Kaggle: <a class="reference external" href="https://www.kaggle.com/competitions/titanic/data">https://www.kaggle.com/competitions/titanic/data</a>.</p>
+<p>Codes adapted from Class Lecture Notes for Math 10 in Spring 2025 and ChatGPT.</p>
+<p>scikit-learn documentation: <a class="reference external" href="https://scikit-learn.org/1.5/api/sklearn.html">https://scikit-learn.org/1.5/api/sklearn.html</a>, specific modules linked throughout the project.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./final_project"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Final Project</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Achyuta.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Predicting Emergency Department Disposition (Admitted vs Not Admitted) Using Clinical and Socioeconomic Indicators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-preparation">Data Cleaning and Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-rate-overview">Survival Rate Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demographic-factors">Demographic Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#socioeconomic-factors">Socioeconomic Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#family-onboard">Family Onboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embarkation-port">Embarkation Port</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-prediction-and-comparison">Model Prediction and Comparison</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">K-Nearest Neighbors (KNN)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network">Neural Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-extra">Decision Tree(Extra)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-extra">Random Forest(Extra)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-summary-and-comparison">Results Summary and Comparison</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ray Zirui Zhang 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

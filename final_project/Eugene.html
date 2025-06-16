@@ -1,0 +1,1563 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis &#8212; UCI Math 10, Spring 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_project/Eugene';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Analysis of Instagram Influencer Metrics" href="Federica.html" />
+    <link rel="prev" title="Automatic loan verification" href="Elijah.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Spring 2025</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Spring 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kaggle.html">Math 10 Kaggle Competition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Multiclass Classification with Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/nonlinear_dim.html">Nonlinear Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/kmeans.html">Clustering</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/llm.html">LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/llm_demo.html">LLM Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_3.html">Week 1, Wed, 4/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w1_5.html">Week 1, Fri, 4/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_1.html">Week 2, Mon, 4/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_3.html">Week 2, Wed, 4/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w2_5.html">Week 2, Fri, 4/11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_1.html">Week 3, Mon, 4/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_3.html">Week 3, Wed, 4/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w3_5.html">Week 3, Fri, 4/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_1.html">Week 4, Mon, 4/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_3.html">Week 4, Wed, 4/23</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w4_5.html">Week 4, Fri, 4/25</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_1.html">Week 5, Mon, 4/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w5_3.html">Week 5, Wed, 4/30</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_3.html">Week 6, Wed, 5/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w6_5.html">Week 6, Fri, 5/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_1.html">Week 7, Mon, 5/12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_3.html">Week 7, Wed, 5/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w7_5.html">Week 7, Fri, 5/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_1.html">Week 8, Mon, 5/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_3.html">Week 8, Wed, 5/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w8_5.html">Week 8, Fri, 5/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_3.html">Week 9, Wed, 5/28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/w9_5.html">Week 9, Fri, 5/30</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 4/4/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 4/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 4/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 4/25/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 5/2/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 5/14/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 5/21/2025 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8_sol.html">Homework 8 (Due 6/4/2025 at 11:59pm)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Final Project</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Abigail.html">Predicting Titanic Survival Using Multiple Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Achyuta.html">Predicting Emergency Department Disposition (Admitted vs Not Admitted) Using Clinical and Socioeconomic Indicators</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Daeseo.html">IMDB Review Predictor</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Daniel.html">Tumor Diagnosis Classification: Breast Cancer Wisconsin</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Elijah.html">Automatic loan verification</a></li>
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Federica.html">Data Analysis of Instagram Influencer Metrics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Haoyu.html">SMCI Stock Predictor Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hongrui.html">IONQ in Focus: Predicting the Future of Quantum Tech Stocks</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Jerry.html">Math 10 Final Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kelvin.html">Analysis of the Winners of the Tour de France</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Madeline.html">Fraud Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Matt.html">Winning Attributes in the League of Legends Worlds 2024 Championship</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Nishant.html"><strong>Cancer Classification using Gene Expression</strong></a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Oliver.html">Forecasting IPO First‑Day Returns – Investment‑Banking Valuation Project</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Rishabh.html">HOUSE PRICES PREDICTOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sandy.html">Predicting Pop Mart’s Stock Price Based on Google Trends</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Scott.html">Predicting various tickers from yfinance</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_project/Eugene.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dataset-overview">The Dataset Overview</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-apple-watch-data">Visualization of Apple Watch Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-fitbit-data">Visualization of Fitbit Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-dataset-overview">Revised Dataset Overview</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation-function">Model Evaluation Function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-regression">Binary Logistic Regression</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-regression-apple-watch-model">Binary Logistic Regression - Apple Watch Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-regression-fitbit-model">Binary Logistic Regression - Fitbit Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-apple-watch-model">KNN - Apple Watch Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-fitbit-model">KNN - Fitbit Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-apple-watch-model">Decision Trees - Apple Watch Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-fitbit-model">Decision Trees - Fitbit Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-apple-watch-model">Random Forest - Apple Watch Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-fitbit-model">Random Forest - Fitbit Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="wearable-devices-predicting-users-behaviour-on-machine-learning-analysis">
+<h1>Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis<a class="headerlink" href="#wearable-devices-predicting-users-behaviour-on-machine-learning-analysis" title="Link to this heading">#</a></h1>
+<p>Author: Eugene Gu</p>
+<p>Course Project, UC Irvine, Math 10, Spring 25</p>
+<p>I would like to post my notebook on the course’s website. Yes</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>Commercial wearable devices, such as smartwatches and fitness trackers, have become increasingly popular tools for monitoring physical activity. Equipped with a variety of sensors, these devices can track parameters such as heart rate, step count, distance traveled, and calories burned. The widespread adoption of wearable devices presents a significant opportunity for monitoring and analyzing physical activity on a large scale.</p>
+<p>These devices not only provide users with real-time feedback to help maintain motivation and achieve fitness goals, but they also collect valuable data that can be leveraged for health research and epidemiological studies. By analyzing the data captured by wearable devices, researchers can gain insights into physical activity patterns and broader health trends across diverse populations.</p>
+<p>This study aims to explore: (1) the ability of two commercial wearable devices, Fitbit Charge HR2 and Apple Watch Series 2, to accurately predict physical activities; and (2) the performance of various advanced machine learning techniques in achieving this goal.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-dataset-overview">
+<h1>The Dataset Overview<a class="headerlink" href="#the-dataset-overview" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">apple_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data_for_aw.csv&quot;</span><span class="p">)</span>
+
+<span class="n">fitbit_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data_for_fb.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The dataset contains the following features:</p>
+<p><strong>age</strong>：Integer values representing participant’s age in years. (range: 18 ~ 56)</p>
+<p><strong>gender</strong>：Binary values representing participant’s gender (0 = female, 1 = male). (range: 0 ~ 1)</p>
+<p><strong>height</strong>：Participant’s height in centimeters. (range: 143.0 ~ 191.0 cm)</p>
+<p><strong>weight</strong>：Participant’s weight in kilograms. (range: 43.0 ~ 115.0 kg)</p>
+<p><strong>Steps_LE</strong>：Number of steps per minute. (range: 1.0 ~ 1714.0 steps/min)</p>
+<p><strong>Heart_LE</strong>：Average heart rate per minute. (range: 33.0 ~ 194.33 bpm)</p>
+<p><strong>Calories_LE</strong>：Number of calories burned per minute. (range: 0.056 ~ 29.242 cal/min)</p>
+<p><strong>Distance_LE</strong>：Distance traveled per minute, in meters. (range: 0.00044 ~ 1.08779 meters/min)</p>
+<p><strong>EntropyHeartPerDay_LE</strong>：Entropy of heart rate measurements over a day (measure of heart rate variability). (range: 5.119 ~ 6.408)</p>
+<p><strong>EntropyStepsPerDay_LE</strong>：Entropy of steps measurements over a day (measure of variability in steps). (range: 5.655 ~ 6.409)</p>
+<p><strong>RestingHeartrate_LE</strong>：Resting heart rate (beats per minute). (range: 34.15 ~ 97.0 bpm)</p>
+<p><strong>CorrelationHeartrateSteps_LE</strong>：Correlation between heart rate and steps. (range: -1.0 ~ 1.0)</p>
+<p><strong>NormalizedHeartrate_LE</strong>：Normalized value of heart rate. (range: -31.53 ~ 128.5)</p>
+<p><strong>Intensity_LE</strong>：Intensity of physical activity. (range: -0.271 ~ 1.298)</p>
+<p><strong>SDNormalizedHR_LE</strong>：Standard deviation of normalized heart rate. (range: 0.0032 ~ 56.138)</p>
+<p><strong>StepsXDistance_LE</strong>：Product of steps and distance (proxy for physical exertion). (range: 0.00069 ~ 1721.42162)</p>
+<p><strong>activity_trimmed</strong>：Original activity label with 6 classes: <em>Lying, Sitting, Self Pace Walk, Running 3 METs, Running 5 METs, Running 7 METs</em>.</p>
+<p>The original dataset was collected from 49 participants using Apple Watch Series 2 and Fitbit Charge HR2 during a 65-minute activity protocol [Kaggle, n.d.]. With these features in mind, it is helpful to gain an idea of their importance by predicting users’ physical activities. More specifically, we will visualize how the data in different ways to preprocess the dataset. To implement the prediction in an effective way, I decide to change the <strong>activity_trimmed</strong> to <strong>activity_category</strong>, which only includes two categories: Stationary and Moving. Stationary includes original activity label with <em>Lying, Sitting</em>, and Moving includes original activity label with <em>Self Pace Walk, Running 3 METs, RUNNING 5 METs, Running 7 METs</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Map activity_category</span>
+<span class="n">activity_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Lying&#39;</span><span class="p">:</span> <span class="s1">&#39;stationary&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sitting&#39;</span><span class="p">:</span> <span class="s1">&#39;stationary&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Self Pace walk&#39;</span><span class="p">:</span> <span class="s1">&#39;moving&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Running 3 METs&#39;</span><span class="p">:</span> <span class="s1">&#39;moving&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Running 5 METs&#39;</span><span class="p">:</span> <span class="s1">&#39;moving&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Running 7 METs&#39;</span><span class="p">:</span> <span class="s1">&#39;moving&#39;</span>
+<span class="p">}</span>
+
+<span class="n">apple_df</span><span class="p">[</span><span class="s1">&#39;activity_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">apple_df</span><span class="p">[</span><span class="s1">&#39;activity_trimmed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">activity_mapping</span><span class="p">)</span>
+<span class="n">fitbit_df</span><span class="p">[</span><span class="s1">&#39;activity_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fitbit_df</span><span class="p">[</span><span class="s1">&#39;activity_trimmed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">activity_mapping</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="visualization-of-apple-watch-data">
+<h1>Visualization of Apple Watch Data<a class="headerlink" href="#visualization-of-apple-watch-data" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Define numerical features we want to plot</span>
+<span class="n">numerical_features</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;age&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;gender&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;height&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;weight&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Applewatch.Steps_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Applewatch.Heart_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Applewatch.Calories_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Applewatch.Distance_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EntropyApplewatchHeartPerDay_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EntropyApplewatchStepsPerDay_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RestingApplewatchHeartrate_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CorrelationApplewatchHeartrateSteps_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NormalizedApplewatchHeartrate_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ApplewatchIntensity_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SDNormalizedApplewatchHR_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ApplewatchStepsXDistance_LE&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Plot numerical features vs activity_category</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">numerical_features</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">apple_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;activity_category&#39;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1"> Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d031e2cb1f26381fe0066f8985da4041820fef6298e879ec4c9f84f4e6d772a3.png" src="../_images/d031e2cb1f26381fe0066f8985da4041820fef6298e879ec4c9f84f4e6d772a3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correlation matrix</span>
+<span class="n">apple_corr</span> <span class="o">=</span> <span class="n">apple_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">apple_corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix - Apple Watch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/46a14f8101a5bc55caa8d314e25c049ae5c7d6faca0c722f6d006fb192eab1c6.png" src="../_images/46a14f8101a5bc55caa8d314e25c049ae5c7d6faca0c722f6d006fb192eab1c6.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="visualization-of-fitbit-data">
+<h1>Visualization of Fitbit Data<a class="headerlink" href="#visualization-of-fitbit-data" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define numerical features we want to plot</span>
+<span class="n">fitbit_numerical_features</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;age&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;gender&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;height&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;weight&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Fitbit.Steps_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Fitbit.Heart_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Fitbit.Calories_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Fitbit.Distance_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EntropyFitbitHeartPerDay_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EntropyFitbitStepsPerDay_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RestingFitbitHeartrate_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CorrelationFitbitHeartrateSteps_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NormalizedFitbitHeartrate_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FitbitIntensity_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SDNormalizedFitbitHR_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FitbitStepsXDistance_LE&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Plot numerical features vs activity_category (Fitbit)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fitbit_numerical_features</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># adjust grid based on number of features</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">fitbit_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;activity_category&#39;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1"> Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a297240fe86a855cdfd480b21f6ab3ef3752d56a779344dae9d4318da955a1b4.png" src="../_images/a297240fe86a855cdfd480b21f6ab3ef3752d56a779344dae9d4318da955a1b4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correlation matrix for Fitbit</span>
+<span class="n">fitbit_corr</span> <span class="o">=</span> <span class="n">fitbit_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">fitbit_corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix - Fitbit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1b30d5f3dc13b4322ced92d5297753d1a02d67e67f5dccb17cc6d411d9310a56.png" src="../_images/1b30d5f3dc13b4322ced92d5297753d1a02d67e67f5dccb17cc6d411d9310a56.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="preprocessing">
+<h1>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h1>
+<p>Before training machine learning models, we performed feature selection to remove features that are unlikely to contribute meaningfully to the prediction task or are redundant.</p>
+<p>Based on exploratory data analysis and domain knowledge, the following features were removed from the dataset:</p>
+<ul class="simple">
+<li><p><strong>Height</strong> and <strong>weight</strong>: <strong>BMI</strong>, which could be more influential to the prediction, replace them because height and weight are correlated.</p></li>
+<li><p><strong>EntropyHeartPerDay_LE</strong>: Distributions between stationary and moving activities showed little difference.</p></li>
+<li><p><strong>EntropyStepsPerDay_LE</strong>: Distributions between stationary and moving activities showed little difference.</p></li>
+<li><p><strong>RestingHeartrate_LE</strong>: It is a relatively static value, which is not indicative of current activity.</p></li>
+<li><p><strong>CorrelationHeartrateSteps_LE</strong>: Distributions between stationary and moving activities showed little difference.</p></li>
+<li><p><strong>NormalizedHeartrate_LE</strong>: Highly correlated with <strong>Heart_LE</strong> or <strong>Intensity_LE</strong>, removed to avoid redundancy.</p></li>
+<li><p><strong>SDNormalizedHR_LE</strong>: Distributions between stationary and moving activities showed little difference.</p></li>
+<li><p><strong>activity_trimmed</strong>: It was transformed into the binary activity_category variable for this analysis (‘stationary’ and ‘moving’).</p></li>
+</ul>
+<p>By removing these features, we aimed to simplify the model and reduce potential noise, focusing only on the most informative features for predicting activity category.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apple Watch and Fitbit BMI preprocessing</span>
+<span class="n">apple_df</span><span class="p">[</span><span class="s1">&#39;BMI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">apple_df</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">((</span><span class="n">apple_df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">fitbit_df</span><span class="p">[</span><span class="s1">&#39;BMI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fitbit_df</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">((</span><span class="n">fitbit_df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Features to drop for Apple Watch</span>
+<span class="n">features_to_drop_aw</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EntropyApplewatchHeartPerDay_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EntropyApplewatchStepsPerDay_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RestingApplewatchHeartrate_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CorrelationApplewatchHeartrateSteps_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NormalizedApplewatchHeartrate_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SDNormalizedApplewatchHR_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;activity_trimmed&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Apple Watch Updated Data</span>
+<span class="n">X_apple</span> <span class="o">=</span> <span class="n">apple_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">features_to_drop_aw</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;activity_category&#39;</span><span class="p">])</span>
+<span class="n">y_apple</span> <span class="o">=</span> <span class="n">apple_df</span><span class="p">[</span><span class="s1">&#39;activity_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;stationary&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;moving&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+<span class="c1"># Features to drop for Fitbit</span>
+<span class="n">features_to_drop_fb</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EntropyFitbitHeartPerDay_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EntropyFitbitStepsPerDay_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RestingFitbitHeartrate_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CorrelationFitbitHeartrateSteps_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NormalizedFitbitHeartrate_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SDNormalizedFitbitHR_LE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;activity_trimmed&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Fitbit Updated Data</span>
+<span class="n">X_fitbit</span> <span class="o">=</span> <span class="n">fitbit_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">features_to_drop_fb</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;activity_category&#39;</span><span class="p">])</span>
+<span class="n">y_fitbit</span> <span class="o">=</span> <span class="n">fitbit_df</span><span class="p">[</span><span class="s1">&#39;activity_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;stationary&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;moving&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="revised-dataset-overview">
+<h1>Revised Dataset Overview<a class="headerlink" href="#revised-dataset-overview" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_apple</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_apple</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      age  gender  Applewatch.Steps_LE  Applewatch.Heart_LE  \
+0      20       1            10.771429            78.531302   
+1      20       1            11.475325            78.453390   
+2      20       1            12.179221            78.540825   
+3      20       1            12.883117            78.628260   
+4      20       1            13.587013            78.715695   
+...   ...     ...                  ...                  ...   
+3651   46       0           163.000000           157.250000   
+3652   46       0             6.666667           157.307692   
+3653   46       0             6.750000           156.250000   
+3654   46       0             6.791667           158.090909   
+3655   46       0             6.750000           157.230769   
+
+      Applewatch.Calories_LE  Applewatch.Distance_LE  ApplewatchIntensity_LE  \
+0                   0.344533                0.008327                0.138520   
+1                   3.287625                0.008896                0.137967   
+2                   9.484000                0.009466                0.138587   
+3                  10.154556                0.010035                0.139208   
+4                  10.825111                0.010605                0.139828   
+...                      ...                     ...                     ...   
+3651                0.701500                0.075200                0.822898   
+3652                0.701500                0.075475                0.823508   
+3653                0.732000                0.075695                0.812325   
+3654                0.612500                0.077270                0.831789   
+3655                0.671000                0.075965                0.822695   
+
+      ApplewatchStepsXDistance_LE        BMI  
+0                        0.089692  23.171769  
+1                        0.102088  23.171769  
+2                        0.115287  23.171769  
+3                        0.129286  23.171769  
+4                        0.144088  23.171769  
+...                           ...        ...  
+3651                    12.257600  28.783069  
+3652                     0.503167  28.783069  
+3653                     0.510941  28.783069  
+3654                     0.524792  28.783069  
+3655                     0.512764  28.783069  
+
+[3656 rows x 9 columns]
+0       0
+1       0
+2       0
+3       0
+4       0
+       ..
+3651    1
+3652    1
+3653    1
+3654    1
+3655    1
+Name: activity_category, Length: 3656, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_fitbit</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_fitbit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      age  gender  Fitbit.Steps_LE  Fitbit.Heart_LE  Fitbit.Calories_LE  \
+0      20       1              1.0       132.000000                 1.0   
+1      20       1              1.0       132.777778                 1.0   
+2      20       1              1.0       129.888889                 1.0   
+3      20       1              1.0       129.142857                 1.0   
+4      20       1              1.0       134.555556                 3.5   
+...   ...     ...              ...              ...                 ...   
+2603   46       0              1.0        35.000000                20.5   
+2604   46       0              1.0        35.000000                20.5   
+2605   46       0              1.0        35.000000                20.5   
+2606   46       0              1.0        35.000000                20.5   
+2607   46       0              1.0        35.000000                20.5   
+
+      Fitbit.Distance_LE  FitbitIntensity_LE  FitbitStepsXDistance_LE  \
+0                    1.0            0.022587                      1.0   
+1                    1.0            0.033767                      1.0   
+2                    1.0           -0.007757                      1.0   
+3                    1.0           -0.018480                      1.0   
+4                    1.0            0.059320                      1.0   
+...                  ...                 ...                      ...   
+2603                 1.0            0.000000                      1.0   
+2604                 1.0            0.000000                      1.0   
+2605                 1.0            0.000000                      1.0   
+2606                 1.0            0.000000                      1.0   
+2607                 1.0            0.000000                      1.0   
+
+            BMI  
+0     23.171769  
+1     23.171769  
+2     23.171769  
+3     23.171769  
+4     23.171769  
+...         ...  
+2603  28.783069  
+2604  28.783069  
+2605  28.783069  
+2606  28.783069  
+2607  28.783069  
+
+[2608 rows x 9 columns]
+0       0
+1       0
+2       0
+3       0
+4       1
+       ..
+2603    1
+2604    1
+2605    1
+2606    1
+2607    1
+Name: activity_category, Length: 2608, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="model-evaluation-function">
+<h1>Model Evaluation Function<a class="headerlink" href="#model-evaluation-function" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">accuracy_score</span><span class="p">,</span>
+    <span class="n">precision_score</span><span class="p">,</span>
+    <span class="n">recall_score</span><span class="p">,</span>
+    <span class="n">f1_score</span><span class="p">,</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+    <span class="c1"># 1. Predict &amp; predict_proba</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;predict_proba&quot;</span><span class="p">):</span>
+        <span class="n">y_score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">y_score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+  
+    <span class="c1"># 2. Compute metrics</span>
+    <span class="n">acc</span>   <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">prec</span>  <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">rec</span>   <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">f1</span>    <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Print summary</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;=== </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy : </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precision: </span><span class="si">{</span><span class="n">prec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall   : </span><span class="si">{</span><span class="n">rec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1-score : </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+    
+    <span class="c1"># 4. Confusion matrix</span>
+    <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pred 0&quot;</span><span class="p">,</span><span class="s2">&quot;pred 1&quot;</span><span class="p">],</span>
+                <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;true 0&quot;</span><span class="p">,</span><span class="s2">&quot;true 1&quot;</span><span class="p">],</span>
+                <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> — Confusion Matrix&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True label&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted label&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="binary-logistic-regression">
+<h1>Binary Logistic Regression<a class="headerlink" href="#binary-logistic-regression" title="Link to this heading">#</a></h1>
+<p>Binary logistic regression is a form of regression used when the target variable is binary, which means it has only two possible outcomes (such as yes/no, positive/negative, or category 0/1)[El-Habil, 2012]. Unlike linear regression that predicts continuous results, binary logistic regression models the probability that the observed values belong to the positive class (usually marked as 1). It achieves this by applying the sigmoid (logical) function to the linear combination of input features, which converts the result into probabilities between 0 and 1. The relationship between this probability and the explanatory variables is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\mathbf{x}) = \sigma(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_p x_p)
+\]</div>
+<p>The sigmoid function is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\]</div>
+<p>which maps any real-valued input ( z ) to the range (0, 1), allowing the model to represent probabilities.</p>
+<p>In this project, the application of binary logistic regression through the LogisticRegression model was employed to classify activity states as either stationary or moving.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="binary-logistic-regression-apple-watch-model">
+<h1>Binary Logistic Regression - Apple Watch Model<a class="headerlink" href="#binary-logistic-regression-apple-watch-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare data</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Split Apple Watch data</span>
+<span class="n">X_train_aw</span><span class="p">,</span> <span class="n">X_test_aw</span><span class="p">,</span> <span class="n">y_train_aw</span><span class="p">,</span> <span class="n">y_test_aw</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_apple</span><span class="p">,</span> <span class="n">y_apple</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_apple</span><span class="p">)</span>
+
+<span class="c1"># Feature scaling</span>
+<span class="n">scaler_aw</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_aw_scaled</span> <span class="o">=</span> <span class="n">scaler_aw</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_aw</span><span class="p">)</span>
+<span class="n">X_test_aw_scaled</span> <span class="o">=</span> <span class="n">scaler_aw</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_aw</span><span class="p">)</span>
+
+<span class="c1"># Train logistic regression</span>
+<span class="n">clf_aw</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">clf_aw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_aw_scaled</span><span class="p">,</span> <span class="n">y_train_aw</span><span class="p">)</span>
+
+<span class="c1"># Evaluate Model</span>
+<span class="n">evaluate_model</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Binary Logistic Regression (Apple Watch)&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">clf_aw</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="o">=</span><span class="n">X_test_aw_scaled</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="o">=</span><span class="n">y_test_aw</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Binary Logistic Regression (Apple Watch) ===
+Accuracy : 0.686
+Precision: 0.709
+Recall   : 0.856
+F1-score : 0.775
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0      0.610     0.392     0.477       268
+           1      0.709     0.856     0.775       464
+
+    accuracy                          0.686       732
+   macro avg      0.660     0.624     0.626       732
+weighted avg      0.673     0.686     0.666       732
+</pre></div>
+</div>
+<img alt="../_images/3df1e1708660f05d289db33cbd1d8cd22f6a1b525ce62c0ffc0f00f129e36ccc.png" src="../_images/3df1e1708660f05d289db33cbd1d8cd22f6a1b525ce62c0ffc0f00f129e36ccc.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="binary-logistic-regression-fitbit-model">
+<h1>Binary Logistic Regression - Fitbit Model<a class="headerlink" href="#binary-logistic-regression-fitbit-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split Fitbit data</span>
+<span class="n">X_train_fb</span><span class="p">,</span> <span class="n">X_test_fb</span><span class="p">,</span> <span class="n">y_train_fb</span><span class="p">,</span> <span class="n">y_test_fb</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_fitbit</span><span class="p">,</span> <span class="n">y_fitbit</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_fitbit</span><span class="p">)</span>
+
+<span class="c1"># Feature scaling</span>
+<span class="n">scaler_fb</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_fb_scaled</span> <span class="o">=</span> <span class="n">scaler_fb</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_fb</span><span class="p">)</span>
+<span class="n">X_test_fb_scaled</span> <span class="o">=</span> <span class="n">scaler_fb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_fb</span><span class="p">)</span>
+
+<span class="c1"># Train logistic regression</span>
+<span class="n">clf_fb</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">clf_fb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_fb_scaled</span><span class="p">,</span> <span class="n">y_train_fb</span><span class="p">)</span>
+
+<span class="c1"># Evaluate Model</span>
+<span class="n">evaluate_model</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Binary Logistic Regression (Fitbit)&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">clf_fb</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="o">=</span><span class="n">X_test_fb_scaled</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="o">=</span><span class="n">y_test_fb</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Binary Logistic Regression (Fitbit) ===
+Accuracy : 0.793
+Precision: 0.844
+Recall   : 0.823
+F1-score : 0.833
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0      0.713     0.742     0.727       194
+           1      0.844     0.823     0.833       328
+
+    accuracy                          0.793       522
+   macro avg      0.778     0.783     0.780       522
+weighted avg      0.795     0.793     0.794       522
+</pre></div>
+</div>
+<img alt="../_images/5ba27c240cca29f11ded5d8a478a8777fb5870525e7cc2bdd3839c1612bb5076.png" src="../_images/5ba27c240cca29f11ded5d8a478a8777fb5870525e7cc2bdd3839c1612bb5076.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="knn">
+<h1>KNN<a class="headerlink" href="#knn" title="Link to this heading">#</a></h1>
+<p>The KNN algorithm is a simple but powerful method that can be used for classification and regression tasks in supervised learning. In the context of classification, KNN operates by identifying k training examples that are closest to the given input based on the selected distance metric (usually the Euclidean distance) [Zhang, 2025]. Then, it assigns the input to the most common class among these neighbors. KNN is a non-parametric and instance-based method, which means it has no explicit assumptions about the underlying data distribution. Instead, it stores the entire training dataset and uses it directly during prediction. The choice of k has a significant impact on the behavior of the model: a smaller k value may lead to high variance and overfitting, while a larger k value may result in high bias and underfitting. Because KNN relies on distance calculation, it is particularly sensitive to feature scaling - to achieve the best performance, it is usually necessary to standardize or normalize features. In this project, KNN can predict the activity category (stationary or moving) by analyzing the distance of data points from Fitbit or Apple Watch sensors in the feature space.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="knn-apple-watch-model">
+<h1>KNN - Apple Watch Model<a class="headerlink" href="#knn-apple-watch-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="n">X_train_aw</span><span class="p">,</span> <span class="n">X_test_aw</span><span class="p">,</span> <span class="n">y_train_aw</span><span class="p">,</span> <span class="n">y_test_aw</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_apple</span><span class="p">,</span> <span class="n">y_apple</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_apple</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize KNN</span>
+<span class="n">knn_aw</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Train KNN</span>
+<span class="n">knn_aw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_aw</span><span class="p">,</span> <span class="n">y_train_aw</span><span class="p">)</span>
+
+<span class="c1"># Evaluate Model</span>
+<span class="n">evaluate_model</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;K-Nearest Neighbors (Apple Watch)&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">knn_aw</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="o">=</span><span class="n">X_test_aw</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="o">=</span><span class="n">y_test_aw</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== K-Nearest Neighbors (Apple Watch) ===
+Accuracy : 0.777
+Precision: 0.805
+Recall   : 0.856
+F1-score : 0.830
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0      0.720     0.642     0.679       268
+           1      0.805     0.856     0.830       464
+
+    accuracy                          0.777       732
+   macro avg      0.762     0.749     0.754       732
+weighted avg      0.774     0.777     0.774       732
+</pre></div>
+</div>
+<img alt="../_images/d58763da672445025955f0f0e63aaefd5ab406cc3959bb2ae24e3f909897f4d5.png" src="../_images/d58763da672445025955f0f0e63aaefd5ab406cc3959bb2ae24e3f909897f4d5.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="knn-fitbit-model">
+<h1>KNN - Fitbit Model<a class="headerlink" href="#knn-fitbit-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="n">X_train_fb</span><span class="p">,</span> <span class="n">X_test_fb</span><span class="p">,</span> <span class="n">y_train_fb</span><span class="p">,</span> <span class="n">y_test_fb</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_fitbit</span><span class="p">,</span> <span class="n">y_fitbit</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_fitbit</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize KNN</span>
+<span class="n">knn_fb</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Train KNN</span>
+<span class="n">knn_fb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_fb</span><span class="p">,</span> <span class="n">y_train_fb</span><span class="p">)</span>
+
+<span class="c1"># Evaluate Model</span>
+<span class="n">evaluate_model</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;K-Nearest Neighbors (Fitbit)&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">knn_fb</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="o">=</span><span class="n">X_test_fb</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="o">=</span><span class="n">y_test_fb</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== K-Nearest Neighbors (Fitbit) ===
+Accuracy : 0.864
+Precision: 0.870
+Recall   : 0.921
+F1-score : 0.895
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0      0.851     0.768     0.808       194
+           1      0.870     0.921     0.895       328
+
+    accuracy                          0.864       522
+   macro avg      0.861     0.844     0.851       522
+weighted avg      0.863     0.864     0.862       522
+</pre></div>
+</div>
+<img alt="../_images/9abc917d4c877caa0789b36828d3d28cc875daa28764462a963d185970787d3c.png" src="../_images/9abc917d4c877caa0789b36828d3d28cc875daa28764462a963d185970787d3c.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="decision-tree">
+<h1>Decision Tree<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h1>
+<p>Decision tree algorithm is a supervised learning method widely used in classification and regression tasks. In classification problems, decision trees model data by learning a series of if-then-else rules based on eigenvalues, and these eigenvalues divide the data into increasingly pure subsets [Suthaharan and Suthaharan, 2016]. The tree structure consists of nodes (test eigenvalues), branches (representing test results), and leaves (assigning the final class labels). This model is established through a process called recursive segmentation. At each step, the algorithm selects the features and segmentation points that can best separate the data based on criteria such as Gini impurities or information gain. Decision trees are highly interpretable and require minimal preprocessing because they are insensitive to feature scaling and can handle both numerical and categorical data. However, if the trees grow too deep, they may be prone to overfitting and capturing the noise in the training data instead of the general pattern; Techniques such as pruning or setting constraints (such as the maximum depth) are usually used to alleviate this situation.</p>
+<p>We will use the Gini Impurity metric to determine the optimal splits. Gini Impurity measures the probability of incorrectly classifying a randomly chosen element from the dataset if it were randomly labeled according to the distribution of labels in the subset:</p>
+<div class="math notranslate nohighlight">
+\[
+Gini = 1 - \sum_{i=1}^{2} p_i^2
+\]</div>
+<p>where ( p_i ) is the probability of a data point belonging to class ( i ).</p>
+<p>In this project, a decision tree classifier can be used to distinguish between stationary and moving activities by learning decision rules based on Apple Watch or Fitbit sensor features.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="decision-trees-apple-watch-model">
+<h1>Decision Trees - Apple Watch Model<a class="headerlink" href="#decision-trees-apple-watch-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="n">X_train_aw</span><span class="p">,</span> <span class="n">X_test_aw</span><span class="p">,</span> <span class="n">y_train_aw</span><span class="p">,</span> <span class="n">y_test_aw</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_apple</span><span class="p">,</span> <span class="n">y_apple</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_apple</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize and train Decision Tree</span>
+<span class="n">dt_aw</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dt_aw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_aw</span><span class="p">,</span> <span class="n">y_train_aw</span><span class="p">)</span>
+
+<span class="c1"># Evaluate Model</span>
+<span class="n">evaluate_model</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Decision Tree (Apple Watch)&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">dt_aw</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="o">=</span><span class="n">X_test_aw</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="o">=</span><span class="n">y_test_aw</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Decision Tree (Apple Watch) ===
+Accuracy : 0.816
+Precision: 0.843
+Recall   : 0.871
+F1-score : 0.857
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0      0.763     0.720     0.741       268
+           1      0.843     0.871     0.857       464
+
+    accuracy                          0.816       732
+   macro avg      0.803     0.795     0.799       732
+weighted avg      0.814     0.816     0.814       732
+</pre></div>
+</div>
+<img alt="../_images/6575db49b356dfe19428bf78b1301823c8cae139d2b9b849a8319d409aae42fe.png" src="../_images/6575db49b356dfe19428bf78b1301823c8cae139d2b9b849a8319d409aae42fe.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="decision-trees-fitbit-model">
+<h1>Decision Trees - Fitbit Model<a class="headerlink" href="#decision-trees-fitbit-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_fb</span><span class="p">,</span> <span class="n">X_test_fb</span><span class="p">,</span> <span class="n">y_train_fb</span><span class="p">,</span> <span class="n">y_test_fb</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_fitbit</span><span class="p">,</span> <span class="n">y_fitbit</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_fitbit</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize and train Decision Tree</span>
+<span class="n">dt_fb</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dt_fb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_fb</span><span class="p">,</span> <span class="n">y_train_fb</span><span class="p">)</span>
+
+<span class="c1"># Evaluate Model</span>
+<span class="n">evaluate_model</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Decision Tree (Fitbit)&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">dt_fb</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="o">=</span><span class="n">X_test_fb</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="o">=</span><span class="n">y_test_fb</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Decision Tree (Fitbit) ===
+Accuracy : 0.885
+Precision: 0.896
+Recall   : 0.924
+F1-score : 0.910
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0      0.864     0.820     0.841       194
+           1      0.896     0.924     0.910       328
+
+    accuracy                          0.885       522
+   macro avg      0.880     0.872     0.876       522
+weighted avg      0.884     0.885     0.884       522
+</pre></div>
+</div>
+<img alt="../_images/bbf0ec05049a487217da5e2c5e1f580793ee6dec1a4408ffc9fb9619ea6a1ae3.png" src="../_images/bbf0ec05049a487217da5e2c5e1f580793ee6dec1a4408ffc9fb9619ea6a1ae3.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="random-forest">
+<h1>Random Forest<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h1>
+<p>Random forest is an ensemble learning method used for both classification and regression tasks. They consist of a collection of randomized base regression trees. Each tree is built using a different random subset of the training data and a random subset of features [Biau, 2012]. The outputs of these individual trees are then aggregated to form the final prediction. In this study, the features include variables such as Steps, Heart Rate, Calories, and more, derived from wearable devices.</p>
+<p>The final aggregated regression estimate is computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{r}_n(X, \mathcal{D}_n) = \mathbb{E}_{\Theta} \left[ r_n(X, \Theta, \mathcal{D}_n) \right],
+\]</div>
+<p>In this project, a random forest classifier can be used to distinguish between stationary and moving activities by aggregating decision rules from multiple randomized decision trees based on Apple Watch or Fitbit sensor features.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="random-forest-apple-watch-model">
+<h1>Random Forest - Apple Watch Model<a class="headerlink" href="#random-forest-apple-watch-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">X_train_aw</span><span class="p">,</span> <span class="n">X_test_aw</span><span class="p">,</span> <span class="n">y_train_aw</span><span class="p">,</span> <span class="n">y_test_aw</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_apple</span><span class="p">,</span> <span class="n">y_apple</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_apple</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize and train Random Forest with 500 trees</span>
+<span class="n">rf_aw</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rf_aw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_aw</span><span class="p">,</span> <span class="n">y_train_aw</span><span class="p">)</span>
+
+<span class="c1"># Evaluate Model</span>
+<span class="n">evaluate_model</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Random Forest (Apple Watch)&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">rf_aw</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="o">=</span><span class="n">X_test_aw</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="o">=</span><span class="n">y_test_aw</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Random Forest (Apple Watch) ===
+Accuracy : 0.866
+Precision: 0.884
+Recall   : 0.907
+F1-score : 0.896
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0      0.832     0.795     0.813       268
+           1      0.884     0.907     0.896       464
+
+    accuracy                          0.866       732
+   macro avg      0.858     0.851     0.854       732
+weighted avg      0.865     0.866     0.865       732
+</pre></div>
+</div>
+<img alt="../_images/fd1e7e70f1c82e71e107e6cf32ea0b181f07d1485fd1433dcc7364361fa63101.png" src="../_images/fd1e7e70f1c82e71e107e6cf32ea0b181f07d1485fd1433dcc7364361fa63101.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="random-forest-fitbit-model">
+<h1>Random Forest - Fitbit Model<a class="headerlink" href="#random-forest-fitbit-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_fb</span><span class="p">,</span> <span class="n">X_test_fb</span><span class="p">,</span> <span class="n">y_train_fb</span><span class="p">,</span> <span class="n">y_test_fb</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_fitbit</span><span class="p">,</span> <span class="n">y_fitbit</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_fitbit</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize and train Random Forest with 500 trees</span>
+<span class="n">rf_aw</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rf_aw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_fb</span><span class="p">,</span> <span class="n">y_train_fb</span><span class="p">)</span>
+
+<span class="c1"># Evaluate Model</span>
+<span class="n">evaluate_model</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Random Forest (Fitbit)&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">rf_aw</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="o">=</span><span class="n">X_test_fb</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="o">=</span><span class="n">y_test_fb</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Random Forest (Fitbit) ===
+Accuracy : 0.910
+Precision: 0.905
+Recall   : 0.957
+F1-score : 0.930
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0      0.920     0.830     0.873       194
+           1      0.905     0.957     0.930       328
+
+    accuracy                          0.910       522
+   macro avg      0.912     0.894     0.901       522
+weighted avg      0.911     0.910     0.909       522
+</pre></div>
+</div>
+<img alt="../_images/0a082811a31d8341422f6526cb8e0b76bec00025384f56b9caf0303c998a67bd.png" src="../_images/0a082811a31d8341422f6526cb8e0b76bec00025384f56b9caf0303c998a67bd.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
+<p>The results of this study demonstrate that commercial wearable devices, particularly the Fitbit Charge HR2, are more capable of predicting users’ physical activity accurately. Among the four models tested, the random forest model achieved the highest accuracy for both devices. This suggests that the ensemble learning approach of random forests— which aggregates predictions from multiple decision trees— is especially well-suited for this type of predictive analysis.</p>
+<p>However, the study has several limitations. First, it was conducted on a convenience sample of 49 participants, which may not be representative of the broader population. The relatively small sample size and limited population diversity constrain the generalizability of the findings to all potential users. Second, the study evaluated only two specific models of wearable devices. The results may not extend to other models or brands, as these may differ in sensor features and data accuracy.</p>
+<p>Another limitation lies in the quality of the data collected by the wearable devices. Prediction accuracy is highly dependent on sensor data, and any inaccuracies or inconsistencies in sensor readings can significantly affect model performance. For example, the dataset contained possible errors in the Apple Watch Series 2 data, such as an abnormally low average resting heart rate. Due to these concerns, this type of data was excluded from the machine learning analyses.</p>
+<p>To address these limitations, future studies should recruit a larger and more diverse sample of participants. Expanding the sample will help ensure that the results are more representative and generalizable to a wider population. Additionally, future research should include multiple models from different manufacturers. This will enable comparisons of sensor characteristics and data accuracy across devices, providing a more comprehensive understanding of their predictive capabilities. Finally, future studies should consider integrating data from multiple sources to cross-validate the accuracy of wearable devices. For instance, incorporating additional sensors or external measurement tools, such as chest-strap heart rate monitors, could help verify the readings obtained from wearable devices.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
+<p>[Biau, 2012] Biau, G. (2012). Analysis of a random forests model. The Journal of Machine Learning
+Research, 13(1):1063–1095.</p>
+<p>[El-Habil, 2012] El-Habil, A. M. (2012). An application on multinomial logistic regression model. Pakistan
+journal of statistics and operation research, pages 271–291.</p>
+<p>[Kaggle, n.d.] Kaggle. (n.d.). Apple Watch and Fitbit Data. Retrieved from <a class="reference external" href="https://www.kaggle.com/datasets/aleespinosa/apple-watch-and-fitbit-data">https://www.kaggle.com/datasets/aleespinosa/apple-watch-and-fitbit-data</a>.</p>
+<p>[OpenAI, 2025] OpenAI. (2025). ChatGPT. Retrieved from <a class="reference external" href="https://chatgpt.com/">https://chatgpt.com/</a>.</p>
+<p>[Suthaharan and Suthaharan, 2016] Suthaharan, S. and Suthaharan, S. (2016). Decision tree learning. Ma-
+chine Learning Models and Algorithms for Big Data Classification: Thinking with Examples for Effective
+Learning, pages 237–269.</p>
+<p>[Zhang, 2025] Zhang, R. (2025). Class Lecture Notes for Math 10, Spring 2025. Retrieved from <a class="reference external" href="https://rayzhangzirui.github.io/math10sp25/notes/notes_intro.html">https://rayzhangzirui.github.io/math10sp25/notes/notes_intro.html</a>.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./final_project"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Elijah.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Automatic loan verification</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Federica.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Analysis of Instagram Influencer Metrics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Wearable Devices Predicting Users’ Behaviour On Machine Learning Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dataset-overview">The Dataset Overview</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-apple-watch-data">Visualization of Apple Watch Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-fitbit-data">Visualization of Fitbit Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-dataset-overview">Revised Dataset Overview</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation-function">Model Evaluation Function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-regression">Binary Logistic Regression</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-regression-apple-watch-model">Binary Logistic Regression - Apple Watch Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-regression-fitbit-model">Binary Logistic Regression - Fitbit Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-apple-watch-model">KNN - Apple Watch Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-fitbit-model">KNN - Fitbit Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-apple-watch-model">Decision Trees - Apple Watch Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-fitbit-model">Decision Trees - Fitbit Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-apple-watch-model">Random Forest - Apple Watch Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-fitbit-model">Random Forest - Fitbit Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ray Zirui Zhang 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
